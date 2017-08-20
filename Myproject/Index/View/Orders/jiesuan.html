@@ -1,0 +1,106 @@
+<extend name="Public:head" />
+
+<block name="title">确认订单</block>
+
+<block name="header">
+
+</block>
+
+<block name="content">
+<div class="rol qrdd-top">
+    <div class="m-box">
+        <span></span>确认订单后请尽快付款，过时订单将自动取消
+    </div>
+</div>
+<div class="rol qrdd-adr-box">
+    <div class="m-box">
+    	<neq name='myads' value='0'>
+       <div class="lt qrdd-adr"></div>
+        <div class="lt">
+            <div class="qrdd-adr-dz">{$myads.sheng|lookdiziname}  {$myads.shi|lookdiziname}  {$myads.xian|lookdiziname}  {$myads.addresval}</div>
+            <div class="qrdd-adr-nam">{$myads.name}    {$myads.shtel|telyincang}</div>
+        </div>
+        <eq name="myads.setmr" value="1"><div class="qrdd-adr-mr lt">默认</div></eq>
+        <a href="{:U('User/mydizhi',array('action'=>'list','ordnum'=>$ordnum))}"><div class="qrdd-adr-mr lt" style="float: right; font-size: 30px;">修改</div></a>
+        <else />
+        	<a href="{:U('User/mydizhi',array('action'=>'add','ordnum'=>$ordnum))}"><div class="qrdd-adr-mr lt" style="float: right; font-size: 30px;">新增</div></a>
+        </neq>
+    </div>
+</div>
+<div class="rol qrdd-cp-list-box">
+   <div class="m-box">
+       <div class="qrdd-cp-list1">
+       		<volist name='list' id='list'>
+           <div class="rol qrdd-cp-list">
+               <img class="lt" src="{$list.titlepic}" alt=""/>
+               <div class="lt qrdd-cp-list-lt">
+                   <div class="rol">
+                       <div class="lt">{$list.title} </div>
+                       <div class="gt">¥ {$list.price}</div>
+                   </div>
+                   <div class="gt">×{$list.num}</div>
+               </div>
+           </div>
+           </volist>
+           
+       </div>
+       <div class="rol zjg">
+           共{$sumval}件商品  
+       </div>
+   </div>
+</div>
+<div class="rol dqrdd-spjh">
+    <div class="m-box">
+        <div class="lt dqrdd-spjh-lt">商品金额： </div>
+        <div class="gt dqrdd-spjh-gt">合计：¥ {$sumjiage}</div>
+    </div>
+</div>
+<form name="qrdd" action="{:U('Mypay/index')}" method="post">
+<div class="rol wxzf">
+    <div class="m-box">
+        <span class="wx"></span>微信支付
+        <div class="gt">
+            <input type="radio" id="nba" checked="checked" name="sport" value="1">
+            <label name="nba" class="checked" for="nba"></label>
+        </div>
+    </div>
+</div>
+<div class="rol wxzf">
+    <div class="m-box">
+        <span class="xxzf"></span>线下支付
+        <div class="gt">
+            <input type="radio" id="cba" name="sport" value="2">
+            <label name="cba" for="cba"></label>
+        </div>
+    </div>
+</div>
+<div class="rol">
+   <div class="m-box">
+   	
+    		<input type="hidden" name="ordnum" id="ordnum" value="{$ordnum}" />
+    		<input type="hidden" name="addidval" id="addidval" value="{$myads}" />
+      		<input type="submit" value="确认支付"  class="qrzf" />
+   </div>
+</div>
+</form>
+<script>
+	$(".qrzf").click(function(e) {
+		if($('#addidval').val()==0){
+			alert('请填写你的收货地址！');
+			$('#username').focus();
+			return false;
+		}
+		return true;
+	});
+</script>
+
+<!--<div class="rol dqrdd-spjh">
+    <div class="m-box qrdd-sfjh">
+    	<form name="qrdd" action="#" method="post">
+    		<input type="hidden" name="ordnum" id="ordnum" value="{$ordnum}" />
+    		<input type="hidden" name="addidval" id="addidval" value="{$myads.id}" />
+        实付款：¥ {$sumjiage}<button>确认订单</button>
+        </form>
+    </div>
+</div>-->
+</block>

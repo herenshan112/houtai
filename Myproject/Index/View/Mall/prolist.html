@@ -1,0 +1,94 @@
+<extend name="Public:head" />
+
+<block name="title">产品中心</block>
+
+<block name="header">
+	<div class="rol sc-pro-top">
+		<form method="post" action="{:U('Message/sousuo')}" name="ssform">
+      <input class="sc-pro-ss-txt" type="submit" value="搜索"/>
+      <div class="sc-pro-top-ss">
+          <input class="sc-pro-ss-inp" type="search"/>
+          <input class="sc-pro-txt" type="text" placeholder="请输入您要搜索的商品" name="ssgjc" />
+      </div>
+      </form>
+  	</div>
+  	<input type="hidden" name="actval" id="actval" value="{$action}" />
+  	<input type="hidden" name="setlst" id="setlst" value="0" />
+  	<input type="hidden" name="pageset" id="pageset" value="1" />
+  	
+  	<input type="hidden" name="mrsetval" id="mrsetval" value="0" />
+  	<input type="hidden" name="rmsetval" id="rmsetval" value="0" />
+  	<input type="hidden" name="sqsetval" id="sqsetval" value="0" />
+  	<input type="hidden" name="xlsetval" id="xlsetval" value="0" />
+  	
+  	<input type="hidden" name="tpval" id="tpval" value="{$tpval}" />
+  	
+  	<div class="rol sc-pro-nav">
+  	  <a href="{:U('prolist')}"><div <eq name="action" value="all">class="sc-pro-nav-act"</eq> data-type = "0">默认<span></span></div></a>
+      <a href="{:U('prolist',array('action'=>'tj'))}"><div <eq name="action" value="tj">class="sc-pro-nav-act"</eq> data-type = "1">推荐<span></span></div></a>
+      <a href="{:U('prolist',array('action'=>'xp'))}"><div <eq name="action" value="xp">class="sc-pro-nav-act"</eq> data-type = "2">新品<span></span></div></a>
+      <a href="{:U('prolist',array('action'=>'tuij'))}"><div <eq name="action" value="tuij">class="sc-pro-nav-act"</eq> data-type = "3">推荐<span></span></div></a>
+  	</div>
+</block>
+
+<block name="content">
+
+<div class="rol ind-new">
+    <div class="zrrx-list" id="porlist">
+    	
+    	<volist name='list' id='list'>
+        <a href="{:U('procont',array('id'=>$list['id']))}">
+            <img src="{$list.titlepic}" alt="{$list.title}"/>
+            <div class="zrrx-list-txt"><span>{$list.tyname}</span>{$list.title}</div>
+            <div class="zrrx-list-bot">
+            	
+                <div class="lt zrrx-jh pro-jg2">
+                	
+                	<in name='list.tejia' value='2,5,6'>
+	               		<neq name='list.tejiaprice' value='0'>
+	               			<span>￥{$list.tejiaprice}</span>
+	               			<s class="rjg">¥ {$list.price}</s>
+	               		<else />
+	               			<span>￥{$list.price}</span>
+	               		</neq>
+	               	<else />
+	               		<span>￥{$list.price}</span>
+	               	</in>
+                </div>
+                <div class="gt zrrx-fx">
+                    <span class="zrrx-fx-img"></span>
+                    <div class="zrrx-fx-txt">月销{$list.salenum}笔</div>
+                </div>
+            </div>
+            <switch name="list.tejia">    
+            	<case value="1"><span class="rm">热卖</span></case>    
+	            	<case value="2"><span class="rm">促销</span></case>   
+	            	<case value="3"><span class="rm">新品</span></case>   
+	            	<case value="4"><span class="rm">超值</span></case>   
+	            	<case value="5"><span class="rm">打折</span></case>   
+	            	<case value="6"><span class="rm">特价</span></case>    
+            	<default />
+            </switch>
+            
+        </a>
+        </volist>
+        
+    </div>
+    <div onclick="click_cxtj(2)" class="gengduo_pro"><span id='sky_next'>查看更多商品</span></div>
+    
+</div>
+
+<script>
+	var $body = $('body');
+document.title = '{$cptitle}';
+var $iframe = $('<iframe src="/favicon.ico"></iframe>');
+$iframe.on('load',function() {
+  setTimeout(function() {
+      $iframe.off('load').remove();
+  }, 0);
+}).appendTo($body);
+</script>
+
+
+{:W('Base/showFooter')}
+</block>

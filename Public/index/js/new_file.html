@@ -1,0 +1,246 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>测试</title>
+    <script src="jquery-1.9.1.min.js" type="text/javascript"></script>
+</head>
+<body style="background-color: rgb(204, 232, 207);">
+    <input id="GetStoreList" onclick="GetStoreList()" type="button" value="GetStoreList">  
+    <br>
+    <br>
+    <input id="GetMemberClassHours" onclick="GetMemberClassHours()" type="button" value="GetMemberClassHours">  
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <input id="GetMemberCourseData" onclick="GetMemberCourseData()" type="button" value="GetMemberCourseData">
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <input id="GetMemberDoCourseData" onclick="GetMemberDoCourseData()" type="button" value="GetMemberDoCourseData">
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <input id="GetCourseData" onclick="GetCourseData()" type="button" value="GetCourseData">
+    <br>
+    <br>
+    <input id="AddMemberCourse" onclick="AddMemberCourse()" type="button" value="AddMemberCourse">
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <input id="CancelMemberCourseByMC" onclick="CancelMemberCourseByMC()" type="button" value="CancelMemberCourseByMC">
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <input id="CancelMemberCourse" onclick="CancelMemberCourse()" type="button" value="CancelMemberCourse">
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <input id="GetDoData" onclick="GetDoData()" type="button" value="GetDoData">
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <input id="GetContractData" onclick="GetContractData()" type="button" value="GetContractData">
+    <br>
+    <br>
+    <input id="AddMemberDoCourse" onclick="AddMemberDoCourse()" type="button" value="AddMemberDoCourse">
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <input id="CancelMemberDoCourseByMD" onclick="CancelMemberDoCourseByMD()" type="button" value="CancelMemberDoCourseByMD">
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <input id="CancelMemberDoCourse" onclick="CancelMemberDoCourse()" type="button" value="CancelMemberDoCourse">
+
+    <br>
+    <br>
+    <br>
+    <div id="divResult">[{"StoreGuid":"afe81cdd-ec3d-4574-8f3d-726a80e4fe9b","StoreName":"北京富力中心","ShortCode":"ilovegym101","Address":"北京市朝阳区东三环中路双井VIVA北京富力广场购物中心四层","MasterName":"Alex","MasterPhone":"13811680528","AreaName":"北京市","NAreaName":null},{"StoreGuid":"dfb1ffc6-4e24-42f4-bd45-81501deb166f","StoreName":"北京大悦城中心","ShortCode":"ilovegym102","Address":"北京市朝阳区朝阳北路大悦城购物中心10层D04","MasterName":"Vicky","MasterPhone":"18611128320","AreaName":"北京市","NAreaName":null},{"StoreGuid":"99be48e1-5b4f-4806-b2d2-b89fc50114b8","StoreName":"北京大峡谷中心","ShortCode":"ilovegym103","Address":"北京市丰台区南三环洋桥首地大峡谷购物中心三层","MasterName":"Cindy","MasterPhone":"18210781322","AreaName":"北京市","NAreaName":null},{"StoreGuid":"03f3694a-23c5-437c-a53e-e04903bf142b","StoreName":"方庄新业广场中心","ShortCode":"ilovegym104","Address":"北京市丰台区南三环成寿寺路甲2号新业广场购物中心二层","MasterName":"Barbie","MasterPhone":"18600089726","AreaName":"北京市","NAreaName":null},{"StoreGuid":"40ee2d4c-dc2c-4a37-971c-7a7a7cd6131f","StoreName":"北京健翔桥中心","ShortCode":"ilovegym105","Address":"北京市朝阳区祁家豁子甲8号马甸经典家园1号楼1层","MasterName":"Queena","MasterPhone":"13520214455","AreaName":"北京市","NAreaName":null},{"StoreGuid":"11efaf4f-a04e-481f-93cc-fa4592c198a7","StoreName":"北京广安门中心","ShortCode":"ilovegym108","Address":"北京市西城区广安门外大街马连道新年华购物中心3层","MasterName":"Jack","MasterPhone":"18601280574","AreaName":"北京市","NAreaName":null},{"StoreGuid":"477d1c5d-7744-463e-b768-11577168ea30","StoreName":"北京常营华联中心","ShortCode":"ilovegym109","Address":"北京市朝阳区管庄常营华联购物中心三层","MasterName":"Ruidy","MasterPhone":"18500188692","AreaName":"北京市","NAreaName":null},{"StoreGuid":"05976086-6b1c-4362-aed5-8c45e3eed52e","StoreName":"北京回龙观华联中心","ShortCode":"ilovegym110","Address":"北京市昌平区回龙观同城街BHG华联购物中心三层F3-15(城铁回龙观地铁对面）","MasterName":"Kevin","MasterPhone":"18811188122","AreaName":"北京市","NAreaName":null},{"StoreGuid":"2ed3f942-c08b-404b-87e7-990092a1ed3b","StoreName":"北京亚奥中心","ShortCode":"ilovegym111","Address":"北京市朝阳区北四环东路73号远洋未来广场购物中心四层02A","MasterName":"程意平","MasterPhone":"13901228185","AreaName":"北京市","NAreaName":null},{"StoreGuid":"09715719-aec4-41c8-a735-c23d072bc16e","StoreName":"北京学院路中心","ShortCode":"ilovegym112","Address":"北京市海淀区学清路8号圣熙8号购物中心三层","MasterName":"Anita","MasterPhone":"13720024122","AreaName":"北京市","NAreaName":null},{"StoreGuid":"1e203d7e-013c-4b04-97ee-a887df2f9767","StoreName":"北京西直门中心","ShortCode":"ilovegym113","Address":"北京市西城区西直门外大街枫蓝国际购物中心三层","MasterName":"孙宇","MasterPhone":"13601005673","AreaName":"北京市","NAreaName":null},{"StoreGuid":"8ecba407-6857-45ed-80e7-2b2d3e028ac4","StoreName":"广东梅州中心","ShortCode":"ilovegym116","Address":"广东省梅州市梅江区彬芳大道南南园新村D2-5栋（梅园新村正对面）","MasterName":"Candy","MasterPhone":"13824593456","AreaName":"广东省","NAreaName":null},{"StoreGuid":"5e205101-1b27-4d2f-8141-91b9bc349b1c","StoreName":"天津远洋中心","ShortCode":"ilovegym121","Address":"天津市河东区新开路远洋未来广场购物中心B1层","MasterName":"May","MasterPhone":"18622816565","AreaName":"天津市","NAreaName":null},{"StoreGuid":"26f8f83e-0f34-49fd-846f-d3b70a55dab9","StoreName":"武汉徐东中心","ShortCode":"ilovegym120","Address":"湖北省武汉市武昌区徐东新世界购物广场二层","MasterName":"高丽萍","MasterPhone":"18602752088","AreaName":"湖北省","NAreaName":null},{"StoreGuid":"b1af85e3-8249-4a78-b6fe-9e49bcbc81be","StoreName":"成都乐享中心","ShortCode":"ilovegym401","Address":"四川省成都市高新区天仁北一街凯德·天府商场三层31#","MasterName":"赵晶晶","MasterPhone":"028-86137051","AreaName":"四川省","NAreaName":null},{"StoreGuid":"2801541a-5d05-4b83-9d4d-d910b0b82f89","StoreName":"西安经开中心","ShortCode":"ilovegym115","Address":"陕西省西安市未央经开区凤城六路东段EE新城小区南门","MasterName":"逯惠卿","MasterPhone":"13991222627","AreaName":"陕西省","NAreaName":null},{"StoreGuid":"68e9dbbb-9ee7-43e5-87f7-40fb60b9d624","StoreName":"重庆龙湖中心","ShortCode":"ilovegym501","Address":"重庆市渝中区大坪大石路龙湖时代天街购物中心三层","MasterName":"孟洁","MasterPhone":"18611312080","AreaName":"重庆市","NAreaName":null},{"StoreGuid":"89d61a99-207e-42d9-a5a9-448e08457e54","StoreName":"山西临汾中心","ShortCode":"ilovegym122","Address":"山西临汾市尧都区向阳西路中大街口","MasterName":"郑鑫","MasterPhone":"13623436876","AreaName":"山西省","NAreaName":null},{"StoreGuid":"50b83d31-d38c-464c-8ccf-d4f845caefdd","StoreName":"爱乐国际（内蒙）赤峰万达中心","ShortCode":"ilovegym125","Address":"","MasterName":"杨颖","MasterPhone":"18811085158","AreaName":"内蒙古自治区","NAreaName":null},{"StoreGuid":"1bc2b363-cdfd-4d6f-8682-83b99e95ab34","StoreName":"衡阳西湖中心","ShortCode":"ilovegym123","Address":"","MasterName":"赵应龙","MasterPhone":"18627347677","AreaName":"湖南省","NAreaName":null},{"StoreGuid":"b2bebb2f-cdc1-430b-8132-b2c1d4830b4f","StoreName":"石家庄高新中心","ShortCode":"ilovegym119","Address":"","MasterName":"","MasterPhone":"","AreaName":"河北省","NAreaName":null},{"StoreGuid":"275351e7-9188-4486-9da8-35aaab774569","StoreName":"河南许昌中心","ShortCode":"ilovegym302","Address":"","MasterName":"","MasterPhone":"","AreaName":"河南省","NAreaName":null},{"StoreGuid":"6865c221-b606-41bf-9ebe-e9166b339efc","StoreName":"湖南长沙中心","ShortCode":"ilovegym117","Address":"长沙市天心区芙蓉中路三段380号汇金国际银座302","MasterName":"单灿","MasterPhone":"13874843558","AreaName":"湖南省","NAreaName":null},{"StoreGuid":"9f944c82-00e6-456b-9efa-bafc5bd50f47","StoreName":"河南濮阳中心","ShortCode":"ilovegym303","Address":"","MasterName":"邢总","MasterPhone":"","AreaName":"河南省","NAreaName":null},{"StoreGuid":"976f69c4-d2d1-4b82-8f82-629ee6f60410","StoreName":"爱乐早教绍兴柯桥中心","ShortCode":"ilovegym124","Address":"世贸中心二期B区11栋122室","MasterName":"王英","MasterPhone":"15988216628","AreaName":"浙江省","NAreaName":null},{"StoreGuid":"ac40f4de-bd58-4fda-b075-15615c6c1b23","StoreName":"洛阳盛唐至尊中心","ShortCode":"ilovegym304","Address":"","MasterName":"jessica","MasterPhone":"","AreaName":"河南省","NAreaName":null},{"StoreGuid":"6471372a-43c5-4e44-84f5-dd77cfc8a10b","StoreName":"湖南祁东中心","ShortCode":"ilovegym126","Address":"湖南省衡阳市祁东县莲花西路盛世宏城门面","MasterName":"李军","MasterPhone":"15873459861","AreaName":"湖南省","NAreaName":null},{"StoreGuid":"e754af44-6951-4911-a2f2-20d9c803994b","StoreName":"爱乐国际早教昆明中心","ShortCode":"ilovegym310","Address":"云南省昆明市同德广场3层","MasterName":"tony","MasterPhone":"13888302071","AreaName":"云南省","NAreaName":null},{"StoreGuid":"f6733c9a-a2fa-41b8-8601-15de5d25613b","StoreName":"爱乐早教教学部","ShortCode":"ilovegym","Address":"","MasterName":"","MasterPhone":"","AreaName":"北京市","NAreaName":null},{"StoreGuid":"f9befa14-83a4-4f94-8ce0-22dd4dc647b3","StoreName":"爱乐早教沧州中心","ShortCode":"ilovegym128","Address":"河北省市沧州市运河区荣盛购物中心三层","MasterName":"杨女士","MasterPhone":"15227202956","AreaName":"河北省","NAreaName":null},{"StoreGuid":"9fab16d8-1205-47e4-9cc7-4334250e247c","StoreName":"爱乐早教南京中心","ShortCode":"ilovegym601","Address":"江苏省南京市鼓楼区江东北路333号金盛国际（郑和国际广场）mall 1楼","MasterName":"宋波","MasterPhone":"18697165309","AreaName":"江苏省","NAreaName":"南京"},{"StoreGuid":"c2447563-f630-453b-acdd-5141a1defe7f","StoreName":"爱乐早教龙湖中心","ShortCode":"ilovegym000","Address":"","MasterName":"andy","MasterPhone":"","AreaName":"北京市","NAreaName":"朝阳区"},{"StoreGuid":"f84ac98b-c825-46d9-bd2b-eef64be4aad8","StoreName":"四川成都光华中心","ShortCode":"ilovegym402","Address":"四川省成都市青羊区光华东三路486号中铁西城一期15号楼二层","MasterName":"刘润天(Sky)","MasterPhone":"15982345686","AreaName":"四川省","NAreaName":null},{"StoreGuid":"513c4a2d-1030-408c-8b3d-18d791203a6c","StoreName":"测试","ShortCode":"ilovegym1","Address":"","MasterName":"","MasterPhone":"","AreaName":"北京市","NAreaName":null},{"StoreGuid":"5f4846f1-6eab-45fc-8f1e-ce4fdb68a4ca","StoreName":"河北衡水怡然城中心","ShortCode":"ilovegym1603","Address":"河北省衡水市桃城区大庆东路369号怡然城购物中心3层","MasterName":"宋惠丽","MasterPhone":"15201107811","AreaName":"河北省","NAreaName":null},{"StoreGuid":"97386572-6099-4824-b600-5b06ea1d9d15","StoreName":"山西吕梁中心","ShortCode":"ilovegym1609","Address":"","MasterName":"王勇","MasterPhone":"13753810125","AreaName":"山西省","NAreaName":null},{"StoreGuid":"c99fc8b4-a835-495a-ae8d-b9f3c8e01160","StoreName":"河南郑州万科城中心","ShortCode":"ilovegym1602","Address":"河南省郑州市高新区万科城生活广场","MasterName":"卢黎阳(Sunny)","MasterPhone":"17788133122","AreaName":"河南省","NAreaName":null},{"StoreGuid":"23e2f21d-40b7-4462-8262-c9f298910ef2","StoreName":"爱乐早教南京金鹰中心","ShortCode":"ilovegym602","Address":"","MasterName":"宋波","MasterPhone":"18602522266","AreaName":"江苏省","NAreaName":null},{"StoreGuid":"825892ba-3ca2-4f0c-b70b-23705179364e","StoreName":"河南新乡辉县中心","ShortCode":"ilovegym1601","Address":"河南省辉县市百泉路与铁路支路交叉口向西50米路北（梅溪馨苑老铁路桥向西50米路北）","MasterName":"王琳","MasterPhone":"13598713888","AreaName":"河南省","NAreaName":null},{"StoreGuid":"516d8b61-2691-4fc4-8a1d-05f52b452f67","StoreName":"江苏张家港缇香广场中心","ShortCode":"ilovegym1605","Address":"江苏省张家港市华昌路缇香广场A座201室","MasterName":"赵鑫艺","MasterPhone":"13913008318","AreaName":"江苏省","NAreaName":null},{"StoreGuid":"83dae7c9-dd65-4399-a1fa-54c24ede53b1","StoreName":"浙江绍兴上虞中心","ShortCode":"ilovegym1607","Address":"浙江省绍兴市上虞区峰山南路390号","MasterName":"龚玲娜","MasterPhone":"0575- 8298 2525","AreaName":"浙江省","NAreaName":null},{"StoreGuid":"3ea12aba-429d-4dfa-aef8-d608198d602d","StoreName":"安徽合肥中心","ShortCode":"ilovegym1608","Address":"安徽省合肥市政务区聚云路138号（合肥市广电中心北门）","MasterName":"朱林超","MasterPhone":"158 5690 5490","AreaName":"安徽省","NAreaName":"合肥"},{"StoreGuid":"36f71186-3a4e-4777-b65b-4ab475f2515d","StoreName":"吉林长春七彩城中心","ShortCode":"ilovegym1606","Address":"吉林省长春市湖西路与泰来街交汇处中东七彩城购物中心三层","MasterName":"王乐群","MasterPhone":"13578973699","AreaName":"吉林省","NAreaName":"长春"},{"StoreGuid":"ad1af4e2-215f-4646-ab2b-0723bb755b1a","StoreName":"爱乐总部","ShortCode":"ilovegymchina","Address":"","MasterName":"James","MasterPhone":"13701070383","AreaName":"北京市","NAreaName":null},{"StoreGuid":"fe46fabe-b31d-4cb3-a8eb-4771f3b2af76","StoreName":"爱乐早教","ShortCode":"ilovegym001","Address":"","MasterName":"James","MasterPhone":"13701070383","AreaName":"北京市","NAreaName":null},{"StoreGuid":"cc82f668-1e48-4b70-98e9-d1a91b462692","StoreName":"内蒙巴彦淖尔中心","ShortCode":"ilovegym1614","Address":"内蒙古巴彦淖尔市","MasterName":"李强","MasterPhone":"18686109900","AreaName":"内蒙古自治区","NAreaName":null},{"StoreGuid":"64caed0d-c204-4869-91aa-c73603a8f06b","StoreName":"湖北荆州人信汇中心","ShortCode":"ilovegym1612","Address":"湖北省荆州市沙市区人信汇购物中心3楼","MasterName":"曾凡超","MasterPhone":"18007169997","AreaName":"湖北省","NAreaName":null},{"StoreGuid":"db588655-2298-4632-808b-827b774848d2","StoreName":"大庆新潮国际中心","ShortCode":"ilovegym1616","Address":"","MasterName":"陈建","MasterPhone":"","AreaName":"黑龙江","NAreaName":"大庆"},{"StoreGuid":"c2d65bf3-1238-435e-9f02-8a8f4e5b2106","StoreName":"凯德-天津湾中心","ShortCode":"ilovegym131","Address":"","MasterName":"崔莹","MasterPhone":"","AreaName":"天津市","NAreaName":null},{"StoreGuid":"ac5f4225-3eb5-47b5-8019-fdf1fd2ec61d","StoreName":"湖北黄石市大冶中心","ShortCode":"ilovegym1615","Address":"","MasterName":"罗维","MasterPhone":"","AreaName":"湖北省","NAreaName":null},{"StoreGuid":"0eba417f-97d2-40cb-a1ac-62444df13aea","StoreName":"爱乐乐享浙江杭州中心","ShortCode":"ilovegym1611","Address":"浙江省杭州市江干区九沙大道399号地铁东城广场","MasterName":"金妍希","MasterPhone":"","AreaName":"浙江省","NAreaName":null},{"StoreGuid":"a835e505-d6fe-48da-8abc-cbc588d27e50","StoreName":"重庆恒大中渝广场中心","ShortCode":"ilovegym1610","Address":"","MasterName":"孟洁","MasterPhone":"","AreaName":"重庆市","NAreaName":null},{"StoreGuid":"1754761b-264c-4d3d-b0c8-f119121f890a","StoreName":"深圳龙岗中心","ShortCode":"ilovegym202","Address":"","MasterName":"","MasterPhone":"","AreaName":"深圳","NAreaName":null},{"StoreGuid":"f127f857-9f2f-4ff4-9bf9-24df3545170c","StoreName":"大连联合路中心","ShortCode":"ilovegym1620","Address":"","MasterName":"于淼","MasterPhone":"","AreaName":"辽宁","NAreaName":null},{"StoreGuid":"e78a58a4-556d-48d7-9977-1526ef48a20b","StoreName":"江苏宿迁中心","ShortCode":"ilovegym1613","Address":"","MasterName":"李娟","MasterPhone":"","AreaName":"江苏省","NAreaName":null},{"StoreGuid":"e2a9bbe5-f062-46ad-b809-799b931a4d87","StoreName":"廊坊万向城中心","ShortCode":"ilovegym1617","Address":"","MasterName":"","MasterPhone":"","AreaName":"河北省","NAreaName":null},{"StoreGuid":"f67a4bca-8c6c-404c-8503-5ffc1d392d87","StoreName":"山西运城中心","ShortCode":"ilovegym1619","Address":"","MasterName":"","MasterPhone":"","AreaName":"山西省","NAreaName":null},{"StoreGuid":"6780f8cb-18bb-49a0-a8bc-e45813351bed","StoreName":"爱乐早教通州中心","ShortCode":"ilovegym106","Address":"","MasterName":"","MasterPhone":"","AreaName":"北京市","NAreaName":"朝阳区"},{"StoreGuid":"7248909a-2523-4868-96cc-33fe9cec8c21","StoreName":"昆明爱琴海中心","ShortCode":"ilovegym301","Address":"","MasterName":"","MasterPhone":"","AreaName":"云南省","NAreaName":null},{"StoreGuid":"d5ead47f-68f0-4e03-9df6-7d9752453475","StoreName":"爱乐乐享成都双流万达中心","ShortCode":"ilovegym1701","Address":"","MasterName":"巍衡","MasterPhone":"","AreaName":"四川省","NAreaName":null},{"StoreGuid":"68bf164a-e374-4c86-a3f1-fa69ccbf7dea","StoreName":"爱乐乐享石家庄荣盛广场中心","ShortCode":"ilovegym1618","Address":"河北省石家庄荣盛国际广场二层","MasterName":"","MasterPhone":"","AreaName":"河北省","NAreaName":null},{"StoreGuid":"746a5e7b-96eb-4299-885e-9c85263f743d","StoreName":"爱乐乐享绵阳乐荟城中心","ShortCode":"ilovegym1702","Address":"","MasterName":"","MasterPhone":"","AreaName":"四川省","NAreaName":null},{"StoreGuid":"4ddb92c7-b748-4036-b592-65f2fc2fc492","StoreName":"ilovegym000","ShortCode":"ilovegym0000","Address":"","MasterName":"","MasterPhone":"","AreaName":"北京市","NAreaName":"朝阳区"}]</div>
+    <script type="text/javascript">
+        function CreateEnvelopeForTemsInTermset(methedname, paramlist) {
+            var soapXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+            "<soap12:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
+            "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" " +
+            "xmlns:soap12=\"http://www.w3.org/2003/05/soap-envelope\">" +
+            "<soap12:Header>" +
+            "<MyHeader xmlns=\"http://tempuri.org/\">" +
+            "<Username>admin</Username>" +
+            "<Password>21232F297A57A5A743894A0E4A801FC3</Password>" +
+            "</MyHeader>" +
+            "</soap12:Header>" +
+            "<soap12:Body>" +
+            "<" + methedname + " xmlns=\"http://tempuri.org/\">";
+
+            for (var i = 0; i < paramlist.length; i++) {
+                soapXml = soapXml + "<" + paramlist[i].name + ">" + paramlist[i].value + "</" + paramlist[i].name + ">";
+            }
+            soapXml = soapXml + "</" + methedname + ">" +
+            "</soap12:Body>" +
+            "</soap12:Envelope>";
+            return soapXml;
+        };
+
+        function GetStoreList() {
+            var soapxml = CreateEnvelopeForTemsInTermset("GetStoreList", [{ "name": "key", "value": "FC39B6DA-DB31-4FA6-BCCF-9FEBA7EDC3C4" }]);
+            alert(soapxml);
+            $('#divResult').html(soapxml);
+            $.ajax({
+                type: "post",
+                url: "http://123.56.231.176:8080/Service.asmx",
+                dataType: "json",
+                data: soapxml,
+                contentType: "text/xml; charset=\"utf-8\"",
+                success: function (data) {
+                    $("#divResult").html(JSON.stringify(data.ResultData));
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+        }
+
+        //string mobile, string realName, int doStatus, string teacherName
+        function GetMemberClassHours() {
+            var soapxml = CreateEnvelopeForTemsInTermset("GetMemberClassHours", [{ "name": "key", "value": "FC39B6DA-DB31-4FA6-BCCF-9FEBA7EDC3C4" },
+                { "name": "storeId", "value": "1cc6d323-0c33-4c8d-846a-3429da998496" },
+                { "name": "memberinfo", "value": "18200666670" }]);
+            $.ajax({
+                type: "post",
+                url: "http://123.56.231.176:8080/Service.asmx",
+                dataType: "json",
+                data: soapxml,
+                contentType: "text/xml; charset=\"utf-8\"",
+                success: function (data) {
+                    $("#divResult").html(JSON.stringify(data.ResultData));
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+        }
+
+        function GetMemberCourseData() {
+            var soapxml = CreateEnvelopeForTemsInTermset("GetMemberCourseData", [{ "name": "key", "value": "FC39B6DA-DB31-4FA6-BCCF-9FEBA7EDC3C4" },
+                { "name": "storeId", "value": "1cc6d323-0c33-4c8d-846a-3429da998496" },
+                { "name": "mobile", "value": "18200666660" },
+                { "name": "start", "value": "2017-02-15" },
+                { "name": "end", "value": "2017-03-15" }]);
+            $.ajax({
+                type: "post",
+                url: "http://192.168.6.227:5012/Service.asmx",
+                dataType: "json",
+                data: soapxml,
+                contentType: "text/xml; charset=\"utf-8\"",
+                success: function (data) {
+                    $("#divResult").html(JSON.stringify(data.ResultData));
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+        }
+
+        function GetMemberDoCourseData() {
+            var soapxml = CreateEnvelopeForTemsInTermset("GetMemberDoCourseData", [{ "name": "key", "value": "FC39B6DA-DB31-4FA6-BCCF-9FEBA7EDC3C4" },
+                { "name": "storeId", "value": "1cc6d323-0c33-4c8d-846a-3429da998496" },
+                { "name": "mobile", "value": "18200666670" }]);
+            $.ajax({
+                type: "post",
+                url: "http://192.168.6.227:5012/Service.asmx",
+                dataType: "json",
+                data: soapxml,
+                contentType: "text/xml; charset=\"utf-8\"",
+                success: function (data) {
+                    $("#divResult").html(JSON.stringify(data.ResultData));
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+        }
+
+        function GetCourseData() {
+            var soapxml = CreateEnvelopeForTemsInTermset("GetCourseData", [{ "name": "key", "value": "FC39B6DA-DB31-4FA6-BCCF-9FEBA7EDC3C4" },
+                { "name": "storeId", "value": "1cc6d323-0c33-4c8d-846a-3429da998496" },
+                { "name": "start", "value": "2017-01-15" },
+                { "name": "end", "value": "2017-02-15" }]);
+            $.ajax({
+                type: "post",
+                url: "http://192.168.6.227:5012/Service.asmx",
+                dataType: "json",
+                data: soapxml,
+                contentType: "text/xml; charset=\"utf-8\"",
+                success: function (data) {
+                    $("#divResult").html(JSON.stringify(data.ResultData));
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+        }
+
+        function AddMemberCourse() {
+            var soapxml = CreateEnvelopeForTemsInTermset("AddMemberCourse", [{ "name": "key", "value": "FC39B6DA-DB31-4FA6-BCCF-9FEBA7EDC3C4" },
+                { "name": "storeId", "value": "1cc6d323-0c33-4c8d-846a-3429da998496" },
+                { "name": "memberid", "value": "6E81E667-4D0D-42AF-B160-673D1E14626C" },
+                { "name": "courseid", "value": "FE716CCB-D798-48C9-A2EF-F266644FEF01" }]);
+            $.ajax({
+                type: "post",
+                url: "http://192.168.6.227:5012/Service.asmx",
+                dataType: "json",
+                data: soapxml,
+                contentType: "text/xml; charset=\"utf-8\"",
+                success: function (data) {
+                    $("#divResult").html(JSON.stringify(data.MessageInfo));
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+        }
+
+        function CancelMemberCourseByMC() {
+            var soapxml = CreateEnvelopeForTemsInTermset("CancelMemberCourseByMC", [{ "name": "key", "value": "FC39B6DA-DB31-4FA6-BCCF-9FEBA7EDC3C4" },
+                { "name": "storeId", "value": "1cc6d323-0c33-4c8d-846a-3429da998496" },
+                { "name": "memberid", "value": "6E81E667-4D0D-42AF-B160-673D1E14626C" },
+                { "name": "courseid", "value": "FE716CCB-D798-48C9-A2EF-F266644FEF01" }]);
+            $.ajax({
+                type: "post",
+                url: "http://192.168.6.227:5012/Service.asmx",
+                dataType: "json",
+                data: soapxml,
+                contentType: "text/xml; charset=\"utf-8\"",
+                success: function (data) {
+                    $("#divResult").html(JSON.stringify(data.MessageInfo));
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+        }
+
+        function CancelMemberCourse() {
+            var soapxml = CreateEnvelopeForTemsInTermset("CancelMemberCourse", [{ "name": "key", "value": "FC39B6DA-DB31-4FA6-BCCF-9FEBA7EDC3C4" },
+                { "name": "storeId", "value": "1cc6d323-0c33-4c8d-846a-3429da998496" },
+                { "name": "membercourseguid", "value": "D1A7C1CC-9F7C-4E9E-A69C-522CBC7A0439" }]);
+            $.ajax({
+                type: "post",
+                url: "http://192.168.6.227:5012/Service.asmx",
+                dataType: "json",
+                data: soapxml,
+                contentType: "text/xml; charset=\"utf-8\"",
+                success: function (data) {
+                    $("#divResult").html(JSON.stringify(data.MessageInfo));
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+        }
+
+        function GetDoData() {
+            var soapxml = CreateEnvelopeForTemsInTermset("GetDoData", [{ "name": "key", "value": "FC39B6DA-DB31-4FA6-BCCF-9FEBA7EDC3C4" },
+                { "name": "storeId", "value": "1cc6d323-0c33-4c8d-846a-3429da998496" },
+                { "name": "type", "value": "1" }]);
+            $.ajax({
+                type: "post",
+                url: "http://192.168.6.227:5012/Service.asmx",
+                dataType: "json",
+                data: soapxml,
+                contentType: "text/xml; charset=\"utf-8\"",
+                success: function (data) {
+                   $("#divResult").html(JSON.stringify(data.ResultData));
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+        }
+
+        </script>
+
+
+
+
+</body></html>

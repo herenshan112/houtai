@@ -1,0 +1,69 @@
+<extend name="Public:base" />
+
+<block name="title">患者信息咨询</block>
+
+<block name="header"></block>
+
+<block name="content">
+
+<header class="rol place-header">
+    <div class="m-box">
+        <a href="javascript:history.go(-1);" class="lt">
+            <img src="__PUBLIC__/wx/img/return-1.png" class="pro-return-1" alt="">
+        </a>
+        <div class="lt pro-header-font">患者信息咨询</div>
+        <a href="{:U('Index/index')}" class="gt">
+            <img src="__PUBLIC__/wx/img/home-1.png" class="pro-home-1" alt="">
+        </a>
+    </div>
+</header>
+<div class="rol">
+    <div class="m-box">
+        <form action="__ACTION__" method="POST">
+        <div class="rol n-zx-title">1.您曾受到哪种过敏困扰？</div>
+        <select name="q1" class="rol zx-select">
+            <foreach name="probes" item="probe_item">
+            <option class="rol zx-option" value="{$probe_item.title}">{$probe_item.title}</option>
+            </foreach>
+        </select>
+        <div class="rol n-zx-title">2.是否知道自己明确的过敏原？</div>
+        <div class="rol">
+            <div class="rol n-zx-font">
+                <div class="lt n-zx-input1"><input class="n-zx-chan" type="radio" name="q2" value="1">是</div>
+                <div class="lt n-zx-input1"><input class="n-zx-chan" type="radio" name="q2" checked value="2">否</div>
+            </div>
+            <div class="rol n-zx-input2" id="q2_detail" style="display: none;">
+                <input type="text" placeholder="请填写种类" name="q2a" class="n-zx-input rol">
+            </div>
+        </div>
+        <div class="rol n-zx-title">3.罹患过敏性疾病的时间？</div>
+        <select name="q3" class="rol zx-select">
+            <option class="rol zx-option" value="&lt;1年">&lt;1年</option>
+            <option class="rol zx-option" value="1-2年">1-2年</option>
+            <option class="rol zx-option" value="2-5年">2-5年</option>
+            <option class="rol zx-option" value="5-10年">5-10年</option>
+            <option class="rol zx-option" value="&gt;10年">&gt;10年</option>
+        </select>
+
+        <button type="submit" class="rol sign-submit" id="goreg" style="margin-top: 50px;">提交</button>
+        </form>
+    </div>
+</div>
+
+<script>
+$(function() {
+    $("body").addClass('n-use-body');
+
+    $("html").css('background', '#f9fffd ');
+
+    $("input[name='q2']").click(function(event) {
+        if($(this).val() == 2) {
+            $("#q2_detail").hide();
+        } else {
+            $("#q2_detail").show();
+        }
+
+    });
+});
+</script>
+</block>

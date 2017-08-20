@@ -1,0 +1,26 @@
+<extend name="Public:base" />
+
+<block name="title">{$movie.title}</block>
+
+<block name="content">
+<div class="rol">
+    <div class="m-box">
+        <div class="news-1-title rol">{$movie.title}</div>
+
+        <div class="rol center">
+            <div class="news-1-time">
+                视频中心
+                <span><?php echo date('m-d', strtotime($movie['addtime'])); ?></span>
+            </div>
+        </div>
+        <div class="rol news-1-img">
+            <img src="{$news_row.titlepic}" alt="" class="rol">
+        </div>
+        <div class="rol news-1-font3">
+        {$movie.content|htmlspecialchars_decode}
+        </div>
+    </div>
+</div>
+
+{:W('Base/showFooter')}
+</block>

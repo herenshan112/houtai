@@ -1,0 +1,113 @@
+<extend name="Public:main" />
+
+<block name="cssjs">
+
+</block>
+
+<body>
+
+	<block name="area">
+
+		<li><a href="#">列表</a></li>
+		<ul class="toolbar1">
+			<li class="click"><a href="{:U('News/zizhiadd',array('action'=>'add'))}"><span></span>添加资质</a></li>				
+		</ul>
+	</block>
+
+	
+
+ <block name="content">
+
+    <div class="rightinfo">
+	<form action="{:U('delall')}" method="POST" id="delall_form">
+		<table class="imgtable">
+
+			<thead>
+
+			<tr>
+			<th><input type="checkbox" id="checkall" /></th>
+			<th>标题</th>
+			<th>推荐</th>
+			<th>发布时间</th>
+			<th>操作</th>
+
+			</tr>
+
+			</thead>
+
+		
+
+			<tbody>
+
+			<foreach item="list" name="news_list">
+
+				<tr>
+				<td><input name="opid[]" type="checkbox" value="{$list.id}" /></td>
+				<td title="{$list.title}"><?php if(mb_strlen($list['title'])>50){echo mb_substr($list['title'],0,30,'utf-8').'...';}else{echo $list['title'];} ?></td>
+				<if condition="$list['tuijian'] eq 0">
+				<td>否</td>
+				<else />
+				<td>是</td>
+				</if>
+				<td>{$list.addtime}</td>
+				<td>
+
+					<p><a href="__CONTROLLER__/zizhiadd/action/eite/id/{$list.id}">修改</a></p>
+
+					<p><a href="__CONTROLLER__/zizhiadd/id/{$list.id}" onclick="if (confirm('确定要删除吗？')) return true; else return false;">删除</a></p>
+
+				</td>
+
+				</tr>
+
+			</foreach>
+
+			</tbody>
+
+		
+
+		</table>
+
+		<div class="yellow"><button type="button" id="delall_btn" style="position: absolute;left: 10px;background-color: #f24141;color: #FFF; border-radius: 5px; padding: 5px 10px;cursor: pointer; width: 50px;">删除</button>{$page}</div>
+		</form>
+
+    </div>
+
+    
+<script type="text/javascript">
+$('.imgtable tbody tr:odd').addClass('odd');
+
+$("#delall_btn").click(function(event) {
+	event.preventDefault();
+
+	if (!confirm("是否要删除，删除后不可恢复?")) return false;
+
+	$("#delall_form").submit();
+});
+
+$("#checkall").click(function(event) {
+	if ($(this).is(':checked')) {
+		$("input[name='opid[]']").each(function(index, el) {
+			$(this).attr("checked",true);
+		});
+	} else {
+		$("input[name='opid[]']").each(function(index, el) {
+			$(this).attr("checked",false);
+		});
+	}
+});
+</script>
+<script type="text/javascript">
+
+	$('.imgtable tbody tr:odd').addClass('odd');
+
+	</script>
+
+</block>
+
+</body>
+
+
+
+</html>
+

@@ -1,0 +1,20 @@
+<extend name="Public:base" />
+
+<block name="title">下载中心</block>
+
+<block name="header"></block>
+
+<block name="content">
+<foreach name="news_rows" item="news_rows_item">
+<div class="rol down-rol">
+    <div class="m-box">
+        <div class="lt down-img">
+            <img src="__PUBLIC__/wx/img/down-icon1.png" alt="">
+        </div>
+        <a href="{$news_rows_item.titlepic}" class="lt down-font">{$news_rows_item.title}</a>
+    </div>
+</div>
+</foreach>
+
+{:W('Base/showFooter')}
+</block>

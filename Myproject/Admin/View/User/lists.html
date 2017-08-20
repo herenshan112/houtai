@@ -1,0 +1,100 @@
+<extend name="Public:main" />
+
+<block name="cssjs"></block>
+
+<block name="area">
+<li><a href="#">列表</a></li>
+</block>
+
+<block name="content">
+    <div class="rightinfo">
+    	<div class="tools">
+	    	<ul class="seachform" style="float:left;">
+	    		<form name="search_form" action="__ACTION__" method="GET">
+				<li><label>查询手机号：</label><input type="text" class="scinput" name="user" placeholder="请输入手机号查询..." value="{$Think.get.user}" /></li>
+				<!--li><label>：</label><input type="text" class="scinput" name="domain" placeholder="请输入域查询..." value="{$Think.get.domain}" /></li-->
+				<li><label>&nbsp;</label><input type="submit" value="查询" class="scbtn" /></li>
+				</form>
+			</ul>
+
+			<ul class="toolbar1">
+				<eq name='op' value='2'>
+					<li class="click"><a href="{:U('addjxs', array('typeid'=>$op,'action'=>'add'))}"><span></span>添加经销商</a></li>
+				<else />
+					<li class="click"><a href="{:U('addhuiyuan', array('typeid'=>$op,'action'=>'add'))}"><span></span>添加会员</a></li>
+				</eq>
+				
+				<li class="click"><a href="{:U('export', array('typeid'=>$op))}" target="_blank"><span></span>信息导出</a></li>
+			</ul>
+
+			<!--ul class="toolbar1">
+			<li><span><img src="images/t05.png" /></span>设置</li>
+			</ul-->
+		</div>
+
+		<form action="{:U('delall')}" method="POST" id="delall_form">
+		<table class="imgtable">
+
+			<thead>
+			<tr>
+			<th width="50"><input type="checkbox" id="checkall" /></th>
+			<th>ID</th>
+			<th>帐号</th>
+			<th>姓名</th>
+			<th>手机号</th>
+			
+			<th>所在城市</th>
+			
+			<th>注册时间</th>
+			<th>操作</th>
+			</tr>
+			</thead>
+
+			<tbody>
+			<if condition="$lists neq null">
+				<foreach name="lists" item="list_item" key="k">
+					<tr style="height:32px">
+					<td><input name="opid[]" type="checkbox" value="{$list_item.id}" /></td>
+					<td>{$k+1}</td>
+					<td>{$list_item.username}</td>
+					<td>{$list_item.nickname}</td>
+					<td>{$list_item.phone}</td>
+					
+					<td><?php echo szcitycx($list_item['city'],$list_item['county'],$list_item['address'],$list_item['provinces'],$op)?></td>
+					
+					<td>{$list_item.addtime|date='Y-m-d H:i:s',###}</td>
+					<td><a href="{:U('detail', array('id'=>$list_item['id'], 'op'=>$op))}">查看</a> <a href="{:U('mod', array('id'=>$list_item['id']))}">修改密码</a> <eq name='op' value='2'><a href="{:U('addjxs', array('action'=>'eite','id'=>$list_item['id'],'typeid'=>$op))}">修改资料</a><else /><a href="{:U('addhuiyuan', array('action'=>'eite','id'=>$list_item['id'],'typeid'=>$op))}">修改资料</a></eq> <a href="{:U('del', array('id'=>$list_item['id']))}" onclick="return confirm('是否要删除此条记录，删除后不可恢复?');">删除</a>&nbsp;&nbsp;<a href="{:U('usnotice',array('id'=>$list_item['id']))}">信息中心</a></td>
+					</tr>
+				</foreach>
+			<else />
+				<tr style="height:32px"><td colspan="8">暂无记录！</td></tr>
+			</if>
+			</tbody>
+		</table>
+		<div class="yellow"><button type="button" id="delall_btn" style="position: absolute;left: 10px;background-color: #f24141;color: #FFF; border-radius: 5px; padding: 5px 10px;cursor: pointer; width: 50px;">删除</button>{$page}</div>
+		</form>
+    </div>
+<script type="text/javascript">
+$('.imgtable tbody tr:odd').addClass('odd');
+
+$("#delall_btn").click(function(event) {
+	event.preventDefault();
+
+	if (!confirm("是否要删除，删除后不可恢复?")) return false;
+
+	$("#delall_form").submit();
+});
+
+$("#checkall").click(function(event) {
+	if ($(this).is(':checked')) {
+		$("input[name='opid[]']").each(function(index, el) {
+			$(this).attr("checked",true);
+		});
+	} else {
+		$("input[name='opid[]']").each(function(index, el) {
+			$(this).attr("checked",false);
+		});
+	}
+});
+</script>
+</block>

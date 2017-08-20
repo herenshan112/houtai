@@ -1,0 +1,33 @@
+<extend name="Public:main" />
+
+<block name="cssjs"></block>
+
+
+<block name="area"><li><a href="#">修改分类</a></li></block>
+
+<block name="content">
+    <div class="formbody">
+		<div class="formtitle"><span>修改</span></div>
+		<form action="__ACTION__" method="post" enctype="multipart/form-data" name="myform">
+		<ul class="forminfo">
+		<input type="hidden" name="id" value="{$cate_row.id}" />
+		
+		<li>
+			<label>所属栏目</label>      
+			<select class="sellect" name="partsid">
+			<foreach name="parts_rows" item="list_item">
+			<option value="{$list_item.id}"<?php if($list_item['id']==$cate_row['partsid']){echo ' selected';}?>>{$list_item.title}</option>
+			</foreach>
+			</select>
+		</li>
+
+		<li><label>分类标题:</label><input name="title"  class="dfinput" type="text" value="{$cate_row.title}" /><i></i></li>
+
+		<li><label>简介:</label><textarea name="smalltext" class="textinput" style="height: 80px">{$cate_row.smalltext}</textarea><i></i></li>
+
+		<li><label>&nbsp;</label><input  type="submit" class="btn" value="确认修改"/></li>
+
+		</ul>
+		</form>
+    </div>
+</block>

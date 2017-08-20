@@ -1,0 +1,29 @@
+<extend name="Public:head_myus" />
+
+<block name="title">放弃发货</block>
+
+<block name="header">
+<div class="rol cw-tit fhfs">
+    <div class="m-box">
+        放弃发货
+    </div>
+</div>
+</block>
+
+<block name="content">
+<form action="__ACTION__/action/fqfhclcx" method="post" name="myform">  
+<div class="rol">
+    <div class="bz-f1-tit wlfh"><b></b>放弃发货<span class="gt rjt rjt1" id='fhxz1'></span></div>
+    <div class="wlfh-condb" id='con_fhxz_1'>
+        <div>放弃原因：<span><input type="text" class="xggrszl" name="kuaidinum" id="kuaidinum" placeholder="请输入放弃原因" /></span></div>
+    </div>
+</div>
+
+<div class="rol">
+    <div class="m-box">
+    	<input type="hidden" name="ordid" id="ordid" value="{$id}" />
+    	<input type="submit" name="anzhuang" id="anzhuang" value="确认"  class="qr" />
+    </div>
+</div>
+</form>
+</block>

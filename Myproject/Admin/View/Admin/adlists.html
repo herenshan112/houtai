@@ -1,0 +1,63 @@
+<extend name="Public:main" />
+
+<block name="cssjs"></block>
+
+<block name="area">
+<li><a href="#">列表</a></li>
+</block>
+
+<block name="content">
+    <div class="rightinfo">
+		<div class="tools">
+
+			<ul class="toolbar">
+			<li class="click"><a href="{:U('adduser')}"><span><img src="__PUBLIC__/Admin/images/t01.png" /></span>添加</a></li>
+			</ul>
+
+
+			<!--ul class="toolbar1">
+			<li><span><img src="images/t05.png" /></span>设置</li>
+			</ul-->
+
+		</div>
+		<table class="imgtable">
+
+			<thead>
+			<tr>
+			<th>ID</th>
+			<th>用户名</th>
+			<th>昵称</th>
+			<th>权限</th>
+			<th>操作</th>
+			</tr>
+			</thead>
+
+			<tbody>
+			<if condition="$lists neq null">
+				<foreach name="lists" item="list_item">
+					<tr style="height:32px">
+					<td>{$list_item.id}</td>
+					<td>{$list_item.username}</td>
+					<td>{$list_item.nickname}</td>
+					<td>{$list_item.authority}</td>
+					<td><a href="{:U('moduser', array('id'=>$list_item['id']))}">修改</a> <a href="{:U('deluser', array('id'=>$list_item['id']))}" onclick="return confirm('是否要删除此条记录，删除后不可恢复?');">删除</a></td>
+					</tr>
+				</foreach>
+			<else />
+				<tr style="height:32px"><td colspan="6">暂无记录！</td></tr>
+			</if>
+			</tbody>
+
+		
+
+		</table>
+
+		<div class="yellow">{$pageshow}</div>
+
+    </div>
+
+<script type="text/javascript">
+$('.imgtable tbody tr:odd').addClass('odd');
+
+</script>
+</block>

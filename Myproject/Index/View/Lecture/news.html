@@ -1,0 +1,53 @@
+<extend name="Public:base" />
+
+<block name="title">健康常识</block>
+
+<block name="content">
+<div class="rol banner-box">
+    <img src="__PUBLIC__/wx/img/banner.jpg" alt="">
+</div>
+<div class="rol index-page1">
+    <div class="m-box">
+        <div class="rol title1"></div>
+        <div class="rol center">
+            <div class="title2">{$cate_row.title}</div>
+        </div>
+    </div>
+</div>
+
+<div class="rol news-box">
+    <div class="m-box">
+        <foreach name="news_rows" key="news_key" item="news_item">
+        <!--if condition="$news_key eq 0">
+            <a href="{:U('News/detail', array('id'=>$news_item['id']))}" class="rol news-title-box">
+                <div class="rol news-title-title">{$news_item.title}</div>
+                <div class="rol news-title-img">
+                    <img src="{$news_item.titlepic}" alt="{$news_item.title}" class="rol">
+                </div>
+                <div class="rol index-news-font2">
+                    <span class="lt"><?php echo date('m-d', strtotime($news_item['addtime'])); ?></span>
+                    <span class="gt index-news-num">{$news_item.hits}</span>
+                </div>
+            </a>
+        <else /-->
+        <a href="{:U('News/detail', array('id'=>$news_item['id']))}" class="rol news-p-box">
+            <div class="lt news-lt-box">
+                <div class="rol news-p-title">{$news_item.title}</div>
+                <div class="rol index-news-font2">
+                    <span class="lt"><?php echo date('m-d', strtotime($news_item['addtime'])); ?></span>
+                    <span class="gt index-news-num">{$news_item.hits}</span>
+                </div>
+            </div>
+            <div class="gt news-gt-box">
+                <img src="{$news_item.titlepic}" alt="" class="rol">
+            </div>
+        </a>
+        </foreach>
+    </div>
+</div>
+
+<div class="rol index-page1">
+</div>
+
+{:W('Base/showFooter')}
+</block>

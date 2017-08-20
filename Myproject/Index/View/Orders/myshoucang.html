@@ -1,0 +1,61 @@
+<extend name="Public:head_myus" />
+
+<block name="title">我的收藏</block>
+
+<block name="header">
+	
+
+<div class="rol cw-tit ddzx">
+    <div class="m-box">
+        <div class=""><a href="{:U('UserInfo/index')}" class="lt"><span class="lt cw-fh"></span></a>我的收藏</div>
+    </div>
+</div>
+
+</block>
+
+<block name="content">
+
+<div class="rol wdsc">
+    <div class="m-box">
+        <div class="rol ddzx-list">
+        	<volist name='list' id='list'>
+            <div class="rol cwzx-box2 wdsc-bot">
+                <div class="rol cwzx-cp-list ddzx-cp-list">
+                	<a href="{:U('Mall/procont',array('id'=>$list['id']))}">
+                    <div class="lt cwzx-cp-lt">
+                       <img src="{$list.titlepic}" alt="{$list.title}" class="gwc_img" />
+                    </div>
+                    <div class="lt cwzx-cp-gt wdsc-lt2">
+                       <div class="cwzx-cp-tit">
+                          <span>{$list.type|shoptype}</span>{$list.title}
+                       </div>
+                       <div class="zrrx-list-bot wdsc-tit-bot">
+                          <div class="lt zrrx-jh">
+                          	
+                          	<in name='list.tejia' value='2,5,6'>
+			               		<neq name='list.tejiaprice' value='0'>
+			               			<span>￥{$list.tejiaprice}</span>
+			               			<s class="rjg">¥ {$list.price}</s>
+			               		<else />
+			               			<span>￥{$list.price}</span>
+			               		</neq>
+			               	<else />
+			               		<span>￥{$list.price}</span>
+			               	</in>
+                          	
+                          </div>
+                       </div>
+                    </div>
+                    </a>
+                    <div class="gt zrrx-fx wdsc-lt3">
+                       <a href="{:U('Orders/deltsc',array('id'=>$list['sc_id']))}" onclick="if (confirm('确定要取消该收藏吗？')) return true; else return false;"><span class="zrrx-fx-img"></span></a>
+                       <div class="zrrx-fx-txt">月销{$list.salenum}笔</div>
+                    </div>
+                </div>
+            </div>
+           </volist>
+        </div>
+    </div>
+</div>
+
+</block>

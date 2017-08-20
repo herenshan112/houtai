@@ -1,0 +1,78 @@
+<extend name="Public:head" />
+
+<block name="title">购物车</block>
+
+<block name="header">
+<div class="rol cw-tit">
+    <div class="m-box">
+        <div class="lt" onclick="javascript:history.go(-1);"><span class="lt cw-fh gwc-top"></span>购物车({$shopsum})</div>
+        <!--div class="gt bj">编辑</div-->
+    </div>
+</div>
+</block>
+
+<block name="content">
+
+<div class="rol" id='jsazmff'>
+	<volist name="list" id="list">
+    <div class="gwc-list rol" id='xihgwui{$i}'>
+        <div class="m-box" >
+            <div class="lt gwc-list-lt">
+                <input type="checkbox" data-numv="{$i}" value="{$list.sid}" name="items" id='items{$i}' />
+            </div>
+            <div class="lt gwc-list-con">
+                <div class="lt cwzx-cp-lt">
+                    <img class="gwc_img" src="{$list.titlepic}" alt="{$list.title}"/>
+                </div>
+                <div class="lt cwzx-cp-gt gwc-cp-gt">
+                    <div class="cwzx-cp-tit">
+                        <span>{$list.type|shoptype}</span>{$list.title}
+                    </div>
+                    <div class="delt_shop">
+                    	<em onclick=deltgwsp({$i},{$list.sid})>&nbsp;</em>
+                    </div>
+                    <div class="cwzx-cp-jg">
+                        <span class="ddzx-jk">￥{$list.jiage}</span>
+                        <span class="gt">
+                           <table class="tab">
+                               <tr>
+                                   <td class="jiancaoz" onclick="jianjscz({$i})">-</td>
+                                   <td>
+                                   	<input name="shopsum" class="shop_gwcsum" value="{$list.num}" type="text"  id='itsum{$i}' />
+                                    <input name="danjiag" class="shop_danj" value="{$list.jiage}" type="hidden"  id='itpicer{$i}' />
+                                   </td>
+                                   <td class="jiacaoz" onclick="jiajscz({$i})">+</td>
+                               </tr>
+                           </table>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </volist>
+    
+
+</div>
+
+
+
+
+
+
+<!--底部-->
+<div class="rol gwc-foot">
+    <div >
+        <div class="lt gwc-foot-qc">
+            <input  id="all" class="check" type="checkbox"/><span class="qc">全选</span>
+        </div>
+        <div class="lt gwc-foot-hj">
+            合计：
+            <span id="gwcspzj">¥ 0</span>
+        </div>
+        <div class="gt gwc-foot-js">
+            <a onclick="addordercl({$list.uid})">去结算({$shopsum})</a>
+        </div>
+    </div>
+</div>
+</block>

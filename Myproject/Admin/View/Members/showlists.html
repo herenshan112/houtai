@@ -1,0 +1,63 @@
+<extend name="Public:main" />
+
+<block name="cssjs"></block>
+
+<block name="area">
+<li><a href="#">列表</a></li>
+</block>
+
+<block name="content">
+
+    <div class="rightinfo">
+
+		<table class="imgtable">
+
+			<thead>
+
+			<tr>
+			<th>ID</th>
+			<th>部门</th>
+			<th>用户名</th>
+			<th>真实姓名</th>
+			<th>电话</th>
+			<th>授权状态</th>
+			<th>添加时间</th>
+			<th>操作</th>
+
+			</tr>
+
+			</thead>
+
+		
+
+			<tbody>
+			<if condition="$users_rows neq null">
+				<foreach item="listrow" name="users_rows">
+					<tr style="height:32px">
+					<td>{$listrow.id}</td>
+					<td>{$listrow.detail.team}</td>
+					<td>{$listrow.username}</td>
+					<td>{$listrow.detail.truename}</td>
+					<td>{$listrow.phonenum}</td>
+					<td><a href="{:U('Members/detail', array('memberid'=>$listrow['id']))}"><if condition="$listrow['authid'] eq 0">未授权<elseif condition="$listrow['authid'] eq 1" />普通<elseif condition="$listrow['authid'] eq 2" />A级</if></a></td>
+					<td>{$listrow.addtime}</td>
+					<td><a href="{:U('Members/mod', array('memberid'=>$listrow['id']))}">修改</a>&#12288;<a href="{:U('Members/del', array('memberid'=>$listrow['id']))}" onclick="if (confirm('确定要删除吗？')) return true; else return false;">删除</a></td>
+					</tr>
+				</foreach>
+			<else />
+				<tr style="height:32px"><td colspan="7">暂无记录！</td></tr>
+			</if>
+			</tbody>
+
+		
+
+		</table>
+
+		<div class="yellow">{$pageshow}</div>
+
+    </div>
+
+<script type="text/javascript">
+$('.imgtable tbody tr:odd').addClass('odd');
+</script>
+</block>

@@ -1,0 +1,151 @@
+<extend name="Public:main" />
+
+<block name="cssjs"></block>
+
+<block name="area"><li><a href="#">用户处理</a></li></block>
+
+<block name="content">
+    <div class="formbody">
+		<div class="formtitle"><span>用户处理</span></div>
+		<form action="__ACTION__/action/{$action}/typeid/{$typeid}/id/{$id}" method="post" name="myform">
+		<ul class="forminfo">
+		
+		<li><label>用户名:</label><span>{$list.phone}</span><em id="load_user" style="display: none;"></em></li>
+		<li><label>姓名:</label><input name="nickname" class="dfinput" type="text" autocomplete="off" value="{$list.nickname}" /><i></i></li>
+		<li><label>邮箱:</label><input name="email" class="dfinput" type="text" autocomplete="off" value="{$list.email}" /><i></i></li>
+		
+		
+		<li><label>地区:</label>
+			<select class="sellect" id="pro_list" name="provinces">
+				<option value="-1">请选择城市</option>
+				<volist name="prolist" id="prolist">
+					<option value="{$prolist.region_id}" <eq name='list.provinces' value='$prolist.region_id'>selected</eq>>{$prolist.region_name}</option>
+				</volist>
+			</select>
+			<select class="sellect" id='city_list' name="city" <eq name='list.provinces' value='0'>style="display: none;"</eq>>
+				<option value="-1">请选择城市</option>
+				<volist name='citylt' id='citylt'>
+					<option value="{$citylt.region_id}" <eq name='list.city' value='$citylt.region_id'>selected</eq>>{$citylt.region_name}</option>
+				</volist>
+			</select>
+			<select class="sellect" id="county_list" name="county" <eq name='list.city' value='0'>style="display: none;"</eq>>
+				<option value="-1">请选择地区</option>
+				<volist name='countylst' id='countylst'>
+					<option value="{$countylst.region_id}" <eq name='list.county' value='$countylst.region_id'>selected</eq>>{$countylst.region_name}</option>
+				</volist>
+			</select>
+			<em id="load_jz" style="display: none;"></em>
+		</li>
+		<li><label>补充地址:</label><input name="address" class="dfinput" type="text" autocomplete="off" value="{$list.address}" /><i></i></li>
+		
+		<li><label>头像:</label><input type="text" class="dfinput" id="titlepic" name='headpic' value="{$list.headpic}" /> <input type="button" id="uploadbtn" value="选择图片" style="height:30px;width:80px;cursor:pointer;border-radius:2px;background-color:#DDD;" /><i>限jpg gif jpeg png 格式 200kb以内</i></li>
+		<li><label>原图:</label><img src="{$list.headpic}" style="width:100px;"><i></i></li>
+		<li><label>&nbsp;</label><input type="submit" class="btn" value="确认添加" /></li>
+		</ul>
+		</form>
+    </div>
+<script type="text/javascript">
+var kaiguan=0;
+
+$(function(e){
+	
+	//列出市级
+	$('#pro_list').bind('change',function(e){
+		var proval=this.value;
+		if(!$("#city_list").is(":hidden")){
+				$("#city_list").hide(100);
+			}
+			if(!$("#county_list").is(":hidden")){
+				$("#county_list").hide(100);
+			}
+			$('#city_list').empty();
+			$('#city_list').append('<option value="-1">请选择城市</option>');
+			
+			$('#county_list').empty();
+			$('#county_list').append('<option value="-1">请选择地区</option>');
+			
+		if(proval != '-1'){
+			$.ajax({
+				url:host+'/Admin/User/lookaddres',
+				type:'post',
+				data:{proval:proval},
+				dataType:'json',
+				beforeSend:function(xmldata){
+					$('#load_jz').removeClass();
+					$('#load_jz').addClass('icon-spinner icon-spin icon-large');
+					$('#load_jz').show();
+				},
+				success:function(data){
+					$('#load_jz').removeClass();
+					if(data.code == 1){
+						$('#city_list').empty();
+						$('#city_list').append('<option value="-1">请选择城市</option>');
+						var sumval=data.infor.sum;
+						var cont=data.infor.cont;
+						for(i=0;i<sumval;i++){
+							$('#city_list').append('<option value="'+cont[i].region_id+'">'+cont[i].region_name+'</option>');
+						}
+						$("#city_list").show(300);
+					}
+					
+				},
+				error:function(error){
+					$('#load_jz').removeClass();
+					$('#load_jz').addClass('icon-remove-sign');
+					document.getElementById('load_jz').style.color='#ff0000';
+				}
+			});
+		}
+	});
+	
+	
+	//列出县级
+	$('#city_list').bind('change',function(e){
+		var proval=this.value;
+		if(!$("#county_list").is(":hidden")){
+				$("#county_list").hide(100);
+			}
+			
+			$('#county_list').empty();
+			$('#county_list').append('<option value="-1">请选择地区</option>');
+		if(proval != '-1'){
+			$.ajax({
+				url:host+'/Admin/User/lookaddres',
+				type:'post',
+				data:{proval:proval},
+				dataType:'json',
+				beforeSend:function(xmldata){
+					$('#load_jz').removeClass();
+					$('#load_jz').addClass('icon-spinner icon-spin icon-large');
+					$('#load_jz').show();
+				},
+				success:function(data){
+					$('#load_jz').removeClass();
+					if(data.code == 1){
+						$('#county_list').empty();
+						$('#county_list').append('<option value="-1">请选择城市</option>');
+						var sumval=data.infor.sum;
+						var cont=data.infor.cont;
+						for(i=0;i<sumval;i++){
+							$('#county_list').append('<option value="'+cont[i].region_id+'">'+cont[i].region_name+'</option>');
+						}
+						$("#county_list").show(300);
+					}
+					
+				},
+				error:function(error){
+					$('#load_jz').removeClass();
+					$('#load_jz').addClass('icon-remove-sign');
+					document.getElementById('load_jz').style.color='#ff0000';
+				}
+			});
+		}
+	});
+	
+	
+	
+
+	
+});
+</script>
+</block>

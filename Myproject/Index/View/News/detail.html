@@ -1,0 +1,29 @@
+<extend name="Public:head" />
+
+<block name="title">{$news_row.title}</block>
+
+<block name="header">
+<div class="rol cw-tit">
+    <div class="m-box">
+        <div class=""><span class="lt cw-fh" onclick="javascript:history.go(-1);"></span>消息</div>
+    </div>
+</div>
+</block>
+
+<block name="content">
+
+<div class="rol new-xq">
+    <div class="m-box">
+       <div class="new-tit">{$news_row.title}</div>
+       <div class="new-fbsj"><span></span>发表时间：<?php echo date('Y-m-d', strtotime($news_row['addtime'])); ?></div>
+       <div class="new-con">
+         {$news_row.content|htmlspecialchars_decode}
+       </div>
+    </div>
+</div>
+	
+	
+
+
+{:W('Base/showFooter')}
+</block>

@@ -1,0 +1,40 @@
+<extend name="Public:base" />
+
+<block name="title">{$news_row.title}</block>
+
+<block name="header">
+<header class="rol pro-header">
+    <div class="m-box">
+        <a href="javascript:history.go(-1);" class="lt">
+            <img src="__PUBLIC__/wx/img/return-1.png" class="pro-return-1" alt="">
+        </a>
+        <div class="lt pro-header-font">查看详情</div>
+        <a href="{:U('Index/index')}" class="gt">
+            <img src="__PUBLIC__/wx/img/home-1.png" class="pro-home-1" alt="">
+        </a>
+    </div>
+</header>
+</block>
+
+<block name="content">
+<div class="rol">
+    <div class="m-box">
+        <div class="news-1-title rol">{$news_row.title}</div>
+
+        <div class="rol center">
+            <div class="news-1-time">
+                {$news_row.catename}
+                <span><?php echo date('m-d', strtotime($news_row['addtime'])); ?></span>
+            </div>
+        </div>
+        <div class="rol news-1-img">
+            <img src="{$news_row.titlepic}" alt="" class="rol">
+        </div>
+        <div class="rol news-1-font3">
+        {$news_row.content|htmlspecialchars_decode}
+        </div>
+    </div>
+</div>
+
+{:W('Base/showFooter')}
+</block>

@@ -1,0 +1,84 @@
+<extend name="Public:base" />
+
+<block name="title">个人注册信息</block>
+
+<block name="header"></block>
+
+<block name="content">
+
+<header class="rol place-header">
+    <div class="m-box">
+        <a href="javascript:history.go(-1);" class="lt">
+            <img src="__PUBLIC__/wx/img/return-1.png" class="pro-return-1" alt="">
+        </a>
+        <div class="lt pro-header-font">个人注册信息</div>
+        <a href="{:U('Index/index')}" class="gt">
+            <img src="__PUBLIC__/wx/img/home-1.png" class="pro-home-1" alt="">
+        </a>
+    </div>
+</header>
+<div class="rol">
+    <div class="m-box">
+        <form action="__ACTION__" method="POST">
+        <div class="rol n-use-box">
+            <div class="rol n-use-rol">
+                <div class="lt n-use-lt">姓名</div>
+                <input type="text" class="lt n-use-input" name="nickname" id="nickname" />
+            </div>
+            <div class="rol n-use-rol">
+                <div class="lt n-use-lt">性别</div>
+                <label for="sex">
+                <input type="radio" name="sex" value="1" class="lt n-radio nan" checked>
+                <div class="lt n-radio-font n-nan">男</div></label>
+                <label for="sex">
+                <input type="radio" name="sex" value="2" class="lt n-radio nv">
+                <div class="lt n-radio-font n-nv">女</div></label>
+            </div>
+            <div class="rol n-use-rol">
+                <div class="lt n-use-lt">职业</div>
+                <input type="text" class="lt n-use-input" name="jobs" id="jobs" />
+            </div>
+            <div class="rol n-use-rol">
+                <div class="lt n-use-lt">所在城市</div>
+                <input type="text" class="lt n-use-input" name="city" id="city" />
+            </div>
+        </div>
+        <button type="submit" class="rol sign-submit" id="goreg">提交</button>
+        </form>
+    </div>
+</div>
+
+<script>
+$(function() {
+    $("body").addClass('n-use-body');
+
+    $("html").css('background', '#f9fffd ');
+
+    $("#goreg").on('click', function(e){
+    var nickname = $("#nickname").val();
+    var jobs = $("#jobs").val();
+    var city = $("#city").val();
+
+    if(nickname.length < 1) {
+        alert('请填写姓名！');
+        $("#nickname").focus();
+        return false;
+    }
+
+    if(jobs.length < 1) {
+        alert('请填写职业！');
+        $("#jobs").focus();
+        return false;
+    }
+
+    if(city.length < 1) {
+        alert('请填写所在城市！');
+        $("#city").focus();
+        return false;
+    }
+
+    return true;
+});
+});
+</script>
+</block>

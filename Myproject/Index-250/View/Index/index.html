@@ -1,0 +1,99 @@
+<extend name="Public:base" />
+
+<block name="title">首页</block>
+
+<block name="header">
+<header class="header rol">
+    <div class="m-box">
+        <a href="{:U('Index/index')}" class="logo lt">
+            <img src="__PUBLIC__/wx/img/logo.png" alt="">
+        </a>
+        <div class="gt input-box">
+            <form action="{:U('News/search')}" method="get">
+            <input type="text" class="search lt" name="keywords" placeholder="搜索">
+            <div class="header-submit-box lt">
+                <img src="__PUBLIC__/wx/img/header-search.png" class="search-icon" alt="">
+                <input type="submit" class="header-submit lt" value=" ">
+            </div>
+            </form>
+        </div>
+    </div>
+</header>
+</block>
+
+<block name="content">
+<div class="rol banner-box">
+    <img src="__PUBLIC__/wx/img/banner.jpg" alt="">
+</div>
+<div class="rol index-page1">
+    <div class="m-box">
+        <div class="rol title1">ABOUT US</div>
+        <div class="rol center">
+            <div class="title2">关于我们</div>
+        </div>
+        <div class="rol index-font1">
+            北京新华联协和药业是由北京协和医院与中国五百强企业—新华联集团合作成立的专注于变态反应疾病的高科技公司，公司集成协和悠久历史、依托强大的临床专家资源，已经成为世界第一家在变态反应领域能够提供从诊断到治疗全产品链的制造商！
+        </div>
+        <div class="rol center">
+            <a href="{:U('Page/about')}" class="index-more">查看更多</a>
+        </div>
+        <div class="rol">
+            <a href="{:U('Mall/index')}" class="lt index-btn-box center">
+                <img src="__PUBLIC__/wx/img/i1.png" alt="">
+                <div class="rol">热  卖</div>
+            </a>
+            <a href="{:U('Lecture/index')}" class="lt index-btn-box center">
+                <img src="__PUBLIC__/wx/img/i2.png" alt="">
+                <div class="rol">健康讲堂</div>
+            </a>
+            <a href="{:U('UserInfo/index')}" class="lt index-btn-box center">
+                <img src="__PUBLIC__/wx/img/i3.png" alt="">
+                <div class="rol">会员中心</div>
+            </a>
+            <a href="{:U('Message/index')}" class="lt index-btn-box center">
+                <img src="__PUBLIC__/wx/img/i4.png" alt="">
+                <div class="rol">帮  助</div>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="rol">
+    <div class="m-box">
+        <div class="rol title1">NEWS CENTER</div>
+        <div class="rol center">
+            <div class="title2">新闻中心</div>
+        </div>
+        <div class="rol">
+            <foreach name="index_news" item="news_item">
+            <div class="index-news-rol rol">
+                <a href="{:U('News/detail', array('id'=>$news_item['id']))}" class="lt index-news-lt">
+                    <img src="{$news_item.titlepic}" class="rol" alt="{$news_item.title}">
+                </a>
+                <div class="lt index-news-gt">
+                    <a href="{:U('News/detail', array('id'=>$news_item['id']))}" class="rol index-news-title">{$news_item.title}</a>
+                    <div class="rol index-news-font">{$news_item.smalltext}...</div>
+                    <div class="rol index-news-font2">
+                        <span class="lt">{$news_item.catename}</span><span class="lt"><?php echo date('m-d', strtotime($news_item['addtime'])); ?></span>
+                        <span class="gt index-news-num">{$news_item.hits}</span>
+                    </div>
+                </div>
+            </div>
+            </foreach>
+        </div>
+    </div>
+</div>
+
+{:W('Base/showFooter')}
+
+<div class="index-fixed-box">
+    <a href="{:U('recommend')}" class="fixed-btn rol">
+        <img src="__PUBLIC__/wx/img/fixed-1.png" alt="">
+    </a>
+    <a href="{:U('Orders/shopcart')}" class="fixed-btn rol">
+        <img src="__PUBLIC__/wx/img/fixed-2.png" alt="">
+    </a>
+    <a href="#" class="fixed-btn rol">
+        <img src="__PUBLIC__/wx/img/fixed-3.png" alt="">
+    </a>
+</div>
+</block>

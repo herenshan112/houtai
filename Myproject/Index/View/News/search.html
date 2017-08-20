@@ -1,0 +1,57 @@
+<extend name="Public:base" />
+
+<block name="title">"{$keyword}" 搜索结果</block>
+
+<block name="header">
+<header class="header rol">
+    <div class="m-box">
+        <a href="{:U('Index/index')}" class="logo lt">
+            <img src="__PUBLIC__/wx/img/logo.png" alt="">
+        </a>
+        <div class="gt input-box">
+            <form action="{:U('News/search')}" method="get">
+            <input type="text" class="search lt" name="keywords" placeholder="搜索" value="{$keyword}">
+            <div class="header-submit-box lt">
+                <img src="__PUBLIC__/wx/img/header-search.png" class="search-icon" alt="">
+                <input type="submit" class="header-submit lt" value=" ">
+            </div>
+            </form>
+        </div>
+    </div>
+</header>
+</block>
+
+<block name="content">
+<div class="rol banner-box">
+    <img src="__PUBLIC__/wx/img/banner.jpg" alt="">
+</div>
+<div class="rol index-page1">
+    <div class="m-box">
+        <div class="rol title1">SEARCH</div>
+        <div class="rol center">
+            <div class="title2">搜索结果</div>
+        </div>
+    </div>
+</div>
+
+<div class="rol news-box">
+    <div class="m-box">
+        <foreach name="news_lists" key="news_key" item="news_item">
+            <a href="{:U('News/detail', array('id'=>$news_item['id']))}" class="rol news-p-box">
+                <div class="lt news-lt-box">
+                    <div class="rol news-p-title">{$news_item.title}</div>
+                    <div class="rol index-news-font2">
+                        <span class="lt">{$news_cate_item.title} </span><span class="lt"><?php echo date('m-d', strtotime($news_item['addtime'])); ?></span>
+                        <span class="gt index-news-num">{$news_item.hits}</span>
+                    </div>
+                </div>
+                <div class="gt news-gt-box">
+                    <img src="{$news_item.titlepic}" alt="" class="rol">
+                </div>
+            </a>
+        </foreach>
+    </div>
+</div>
+
+{:W('Base/showFooter')}
+</block>

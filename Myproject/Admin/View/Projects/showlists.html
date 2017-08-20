@@ -1,0 +1,66 @@
+<extend name="Public:main" />
+
+<block name="cssjs"></block>
+
+<block name="area">
+<li><a href="#">列表</a></li>
+</block>
+
+<block name="content">
+
+    <div class="rightinfo">
+
+		<table class="imgtable">
+
+			<thead>
+
+			<tr>
+			<th>ID</th>
+			<th>分类</th>
+			<th>标题</th>
+			<th>发布人</th>
+			<th>参加人数/投票数/留言数</th>
+			<th>实施地点</th>
+			<th>人数</th>
+			<th>实施时间</th>
+			<th>发布时间</th>
+			<th>操作</th>
+			</tr>
+
+			</thead>
+
+		
+
+			<tbody>
+			<if condition="$projects_rows neq null">
+				<foreach item="listrow" name="projects_rows">
+					<tr style="height:32px">
+					<td>{$listrow.id}</td>
+					<td>{$listrow.catename}</td>
+					<td><a href="{:U('Projects/detail', array('projectid'=>$listrow['id']))}" title="{$listrow.title}"><?php if(mb_strlen($listrow['title'])>30){echo mb_substr($listrow['title'],0,20,'utf-8').'...';} else {echo $listrow['title'];} ?></a></td>
+					<td>{$listrow.team} - {$listrow.truename}</td>
+					<td>{$listrow.joinnum} / {$listrow.votenum} / {$listrow.gbooknum}</td>
+					<td>{$listrow.placename}</td>
+					<td>{$listrow.num}人</td>
+					<td><?php echo date("Y-m-d H:i",$listrow['executedate']); ?></td>
+					<td>{$listrow.modified}</td>
+					<td><a href="{:U('Projects/mod', array('projectid'=>$listrow['id']))}">修改</a>&#12288;<a href="{:U('Projects/del', array('projectid'=>$listrow['id']))}" onclick="if (confirm('确定要删除吗？')) return true; else return false;">删除</a></td>
+					</tr>
+				</foreach>
+			<else />
+				<tr style="height:32px"><td colspan="9">暂无记录！</td></tr>
+			</if>
+			</tbody>
+
+		
+
+		</table>
+
+		<div class="yellow">{$pageshow}</div>
+
+    </div>
+
+<script type="text/javascript">
+$('.imgtable tbody tr:odd').addClass('odd');
+</script>
+</block>

@@ -1,0 +1,81 @@
+<extend name="Public:base" />
+
+<block name="title">订单中心</block>
+
+<block name="header">
+<header class="rol place-header">
+    <div class="m-box">
+        <a href="javascript:history.go(-1);" class="lt">
+            <img src="__PUBLIC__/wx/img/return-1.png" class="pro-return-1" alt="">
+        </a>
+        <div class="lt pro-header-font">订单中心</div>
+        <a href="{:U('Index/index')}" class="gt">
+            <img src="__PUBLIC__/wx/img/home-1.png" class="pro-home-1" alt="">
+        </a>
+    </div>
+</header>
+</block>
+
+<block name="content">
+<div class="rol order-nav-box">
+    <div class="m-box">
+        <a href="{:U('index')}" class="lt order-nav-btn">
+            <div class="rol order-icon-rol center">
+                <img src="__PUBLIC__/wx/img/o1-off.png" alt="">
+            </div>
+            <div class="rol order-1-font">待付款</div>
+        </a>
+        <a href="{:U('send')}" class="lt order-nav-btn">
+            <div class="rol order-icon-rol center">
+                <img src="__PUBLIC__/wx/img/o2-off.png" alt="">
+            </div>
+            <div class="rol order-1-font">待发货</div>
+        </a>
+        <a href="{:U('recv')}" class="lt order-nav-btn on">
+            <div class="rol order-icon-rol center">
+                <img src="__PUBLIC__/wx/img/o3-on.png" alt="">
+            </div>
+            <div class="rol order-1-font">待收货</div>
+        </a>
+        <a href="{:U('pj')}" class="lt order-nav-btn">
+            <div class="rol order-icon-rol center">
+                <img src="__PUBLIC__/wx/img/o4-off.png" alt="">
+            </div>
+            <div class="rol order-1-font">待评价</div>
+        </a>
+        <a href="{:U('serv')}" class="lt order-nav-btn">
+            <div class="rol order-icon-rol center">
+                <img src="__PUBLIC__/wx/img/o5-off.png" alt="">
+            </div>
+            <div class="rol order-1-font">售后服务</div>
+        </a>
+    </div>
+</div>
+
+
+<div class="rol order-1-box">
+    <div class="rol order-1-rol1">
+        <div class="m-box">
+            <div class="order-lt-1 lt">
+                <img src="__PUBLIC__/wx/img/buy-1.png" alt="">
+            </div>
+            <div class="order-gt-1 lt">
+                <div class="rol order-1-title">
+                    <div class="lt">【新联华协和药业】</div>
+                    <div class="gt">￥199</div>
+                </div>
+                <div class="rol order-1-font2">益生菌粉固体饮料</div>
+                <div class="rol order-1-font2 right">数量：1</div>
+            </div>
+        </div>
+    </div>
+    <div class="rol order-1-rol2">
+        <div class="m-box">
+            <div class="gt or-btn">确定收货</div>
+            <div class="gt or-btn">物流信息追踪</div>
+        </div>
+    </div>
+</div>
+
+{:W('Base/showFooter')}
+</block>

@@ -1,0 +1,9 @@
+<foreach item="list" name="list">
+	<if condition="$list.id eq 3">
+		<li><cite></cite><a href="__MODULE__/News/newslist" target="rightFrame">{$list.name}</a><i></i></li>
+	<elseif condition="$list.id eq 7" />
+		<li><cite></cite><a href="__MODULE__/Contact/conlist" target="rightFrame">{$list.name}</a><i></i></li>
+	<else />
+		<li><cite></cite><a href="__MODULE__/Foot/index/id/{$list.id}" target="rightFrame">{$list.name}</a><i></i></li>
+	</if>
+</foreach>

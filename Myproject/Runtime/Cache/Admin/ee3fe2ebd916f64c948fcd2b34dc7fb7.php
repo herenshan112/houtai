@@ -1,0 +1,12 @@
+<?php if (!defined('THINK_PATH')) exit(); function proc_url($url) { if(substr($url,0,7)=='http://' OR substr($url,0,8)=='https://') { return $url; } if(substr($url,0,1)=='/') { return $url; } if(preg_match('/^[a-z0-9_]+\/[a-z0-9_]+\/?$/i', $url)) { return U($url); } if(preg_match('/^[U|u]\((.*)\)$/', $url, $match_arr)) { if(strpos($match_arr[1], ',')!==false) { $url_temp_arr = explode(',', $match_arr[1], 2); $url_action = trim(trim($url_temp_arr[0]), "'"); $url_params = trim($url_temp_arr[1]); $url_params_arr = array(); if(preg_match('/array\((.*)\)/', $url_params, $params_arr)) { $params_arr_temp = explode(',', $params_arr[1]); foreach($params_arr_temp as $params_arr_item) { $match_arr_item = explode('=>', trim($params_arr_item)); for($i=0;$i<count($match_arr_item);$i+=2) { $k = trim(trim(trim($match_arr_item[$i]), "'"), '"'); $v = trim(trim(trim($match_arr_item[$i+1]), "'"), '"'); $url_params_arr[$k] = $v; } } } return U($url_action, $url_params_arr); } $url_action = trim(trim($url_temp_arr[0]), "'"); return U($url_action); } return $url; } ?>
+
+<?php if(is_array($menu_lists)): foreach($menu_lists as $key=>$menu_item): ?><dd>
+	<div class="title">
+	<span><img src="/Public/Admin/images/leftico01.png" /></span><?php echo ($menu_item["name"]); ?>
+	</div>
+	<ul class="menuson">
+	<?php if(is_array($menu_item['submenu'])): foreach($menu_item['submenu'] as $key=>$submenu_item): if(substr($submenu_item['url'],0,1)=='@') { if(preg_match('/^@([W|w])\((.*)\)$/i', $submenu_item['url'], $match_arr)) { if(strpos($match_arr[2], ',')!==false) { $url_param_arr = explode(',', $match_arr[2], 2); $url_main_param = trim(trim($url_param_arr[0]), "'"); $url_other_param = trim($url_param_arr[1]); W($url_main_param, $url_other_param); } else { W($match_arr[2]); }; } } else { ?>
+		<li<?php if(strtolower($submenu_item['url'])=="admin/right") echo ' class="active"';?>><cite></cite><a href="<?php echo (proc_url($submenu_item["url"])); ?>"<?php if($submenu_item['opentype']=='1') { echo ' target="_blank"'; } else if($submenu_item['opentype']=='2') { echo ' target="_parent"'; } else if($submenu_item['opentype']=='3') { echo ' target="_top"'; } else { echo ' target="rightFrame"'; }?>><?php echo ($submenu_item["name"]); ?></a><i></i></li>
+	<?php } endforeach; endif; ?>
+	</ul>
+</dd><?php endforeach; endif; ?>

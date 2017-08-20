@@ -1,0 +1,43 @@
+<extend name="Public:head_myus" />
+
+<block name="title">发货方式</block>
+
+<block name="header">
+<div class="rol cw-tit fhfs">
+    <div class="m-box">
+        发货方式
+    </div>
+</div>
+</block>
+
+<block name="content">
+<form action="__ACTION__/action/ljfhcl" method="post" name="myform">  
+<div class="rol">
+    <div class="bz-f1-tit wlfh" onclick="xxfhfzcl('fhxz',1,2)"><b></b>物流发货<span class="gt rjt rjt1" id='fhxz1'></span></div>
+    <div class="wlfh-condb" id='con_fhxz_1'>
+        <div>物流公司：<span><select class="xggrszlsel" name="wlgsname">
+        	<option value="0">请选择物流公司</option>
+        	<volist name='wlsg' id='wlsg'>
+        		<option value="{$wlsg.id}">{$wlsg.name}</option>
+        	</volist>
+        </select></span></div>
+        <div>物流单号：<span><input type="text" class="xggrszl" name="kuaidinum" id="kuaidinum" placeholder="请输入物流单号" /></span></div>
+    </div>
+</div>
+<div class="rol">
+    <div class="bz-f1-tit wlfh smaz" onclick="xxfhfzcl('fhxz',2,2)"><b></b>上门安装<span class="gt rjt" id='fhxz2'></span></div>
+    <div class="wlfh-condb"  id='con_fhxz_2' style="display: none;">
+        <div>安装地址：<span><input type="text" class="xggrszl" name="azdizhi" id="azdizhi" placeholder="请输入安装地址" /></span></div>
+        <div>安装员姓名：<span><input type="text" class="xggrszl" name="azname" id="azname" placeholder="请输入安装员姓名" /></span></div>
+        <div>安装员联系方式：<span><input type="text" class="xggrszl" name="aztel" id="aztel" placeholder="请输入安装员联系方式" /></span></div>
+    </div>
+</div>
+<div class="rol">
+    <div class="m-box">
+    	<input type="hidden" name="fhsetval" id="fhsetval" value="1" />
+    	<input type="hidden" name="ordid" id="ordid" value="{$id}" />
+    	<input type="submit" name="anzhuang" id="anzhuang" value="确认"  class="qr" />
+    </div>
+</div>
+</form>
+</block>

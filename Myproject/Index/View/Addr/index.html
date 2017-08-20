@@ -1,0 +1,84 @@
+<extend name="Public:base" />
+
+<block name="title">地址管理</block>
+
+<block name="header">
+<header class="rol place-header">
+    <div class="m-box">
+        <div class="lt">
+        <a href="javascript:history.go(-1);" class="lt">
+            <img src="__PUBLIC__/wx/img/return-1.png" class="pro-return-1" alt="">
+        </a>
+        <div class="lt pro-header-font">地址管理</div>
+        <a href="{:U('Index/index')}" class="gt">
+            <img src="__PUBLIC__/wx/img/home-1.png" class="pro-home-1" alt="">
+        </a>
+    </div>
+</header>
+</block>
+
+<block name="content">
+
+<div class="rol place-1-box">
+    <div class="m-box">
+        <div class="lt buy-one buy-btn-box place-1-btn">
+            <img src="__PUBLIC__/wx/img/buy-on.png" class="lt" alt="" class="checkid">
+        </div>
+        <div class="lt place-1-gt">
+            <div class="rol place-1-font">
+                <div class="lt place-1-font1">收货人 :</div>
+                <div class="lt place-1-font2">孙小二</div>
+            </div>
+            <div class="rol place-1-font">
+                <div class="lt place-1-font1">电话 :</div>
+                <div class="lt place-1-font2">15888888888</div>
+            </div>
+            <div class="rol place-1-font">
+                <div class="lt place-1-font1">收货地址 :</div>
+                <div class="lt place-1-font2">北京市朝阳区</div>
+            </div>
+        </div>
+        <div class="gt place-1-gt1">
+            <img src="__PUBLIC__/wx/img/place-i1.png" alt="">
+        </div>
+    </div>
+</div>
+
+<div class="rol place-1-box1">
+    <div class="m-box">
+        <!--div class="rol place-1-font3">勾选为默认地址</div-->
+        <a href="{:U('add')}" class="rol place-1-btn1">添加新地址</a>
+    </div>
+</div>
+<div class="rol center place-1-d">
+    <img src="__PUBLIC__/wx/img/buy-d.png" alt="" id="deladdr">
+</div>
+<div class="rol place-1-f-btn" style="position: fixed;bottom: 0;left: 0">
+    完成
+</div>
+<form action="{:U('del')}" method="POST" id="delform">
+<input type="hidden" name="delid[]" id="delid" value="">
+</form>
+<script>
+$(function(){
+    $("#deladdr").click(function(event) {
+        if (!confirm('删除是不可恢复的,确认要删除吗?')) {
+            return false;
+        }
+        
+        $("#delform").submit();
+    });
+
+    $(".checkid").click(function(event) {
+        var id_str = "";
+        $(".place-1-btn").each(function(index, el) {
+            var temp_itemdom = $(".place-1-btn:eq("+index+")");
+            if ( temp_itemdom.hasClass('on') ) {
+                id_str = id_str + $temp_itemdom.data('id') + ",";
+            }
+        });
+        $("#delid").val(id_str);
+    });
+});
+</script>
+</block>

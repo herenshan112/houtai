@@ -1,0 +1,29 @@
+<extend name="Public:head_myus" />
+
+<block name="title">结算中心</block>
+
+<block name="header">
+<div class="rol cw-tit">
+     <div class="m-box">
+       <div class=""><a href="{:U('myciwu')}"><span class="lt cw-fh"></span></a>结算中心</div>
+     </div>
+  </div>
+</block>
+
+<block name="content">
+	
+	<form action="{:U('qrjsbztx')}" method="post" name="myform">  
+		<div class="txszesp txsz-list rol">
+		    <div class="m-box">
+		        <div class="lt">备注</div>
+		        <div class="gt tx-img"><input class="xggrsdzl" style="text-align: left;" type="text" name="qrjsbz" id="qrjsbz" value="" /></div>
+		    </div>
+		</div>
+		<div class="rol">
+	    <div class="m-box">
+	    	<input type="hidden" name="ordid" id="ordid" value="{$id}" />
+	        <input type="submit" class="qr btn" style="margin-top: 15px;" value="确认已结算">
+	    </div>
+	</form>
+    {:W('Base/showFooter')}
+</block>

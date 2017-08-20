@@ -1,0 +1,24 @@
+<extend name="Public:head" />
+
+<block name="title">我的消息</block>
+
+<block name="header">
+<div class="rol cw-tit">
+    <div class="m-box">
+        <div class=""><a href="{:U('UserInfo/index')}"><span class="lt cw-fh"></span></a>我的消息</div>
+    </div>
+</div>
+</block>
+
+<block name="content">
+
+<volist name="list" id="list">
+<div class="rol wdxx-bot">
+    <div class="m-box">
+        <div class="wdxx-xxbt">{$list.title}</div>
+        <div class="wdxx-xxnr">{$list.contval}<a onclick="if (confirm('确定要删除该消息吗？')) return true; else return false;" href="{:U('User/myxiaoxi',array('action'=>'delt','id'=>$list['id']))}" style="float: right; color: #f00;">删除</a></div>
+    </div>
+</div>
+</volist>
+
+</block>

@@ -1,0 +1,60 @@
+<extend name="Public:main" />
+
+<block name="cssjs"></block>
+
+<block name="area">
+<li><a href="#">列表</a></li>
+</block>
+
+<block name="content">
+
+    <div class="rightinfo">
+
+		<table class="imgtable">
+
+			<thead>
+
+			<tr>
+			<th>ID</th>
+			<th>项目</th>
+			<th>留言者</th>
+			<th>是否审核</th>
+			<th>内容</th>
+			<th>留言时间</th>
+			<th>操作</th>
+			</tr>
+
+			</thead>
+
+		
+
+			<tbody>
+			<if condition="$gbook_rows neq null">
+				<foreach item="listrow" name="gbook_rows">
+					<tr style="height:32px">
+					<td>{$listrow.id}</td>
+					<td>{$listrow.projectname}</td>
+					<td>{$listrow.team} - {$listrow.truename}</td>
+					<td><if condition="$listrow['ischecked'] eq 1">已审核<else /><span style="color:#F00;">未审核</span></if></td>
+					<td><?php echo strip_tags($listrow['message']); ?></td>
+					<td><?php echo date("Y-m-d H:i:s",$listrow['posttime']); ?></td>
+					<td><a href="{:U('Gbook/detail', array('gbookid'=>$listrow['id']))}">查看</a>&#12288;<a href="{:U('Gbook/del', array('gbookid'=>$listrow['id']))}" onclick="if (confirm('确定要删除吗？')) return true; else return false;">删除</a></td>
+					</tr>
+				</foreach>
+			<else />
+				<tr style="height:32px"><td colspan="6">暂无记录！</td></tr>
+			</if>
+			</tbody>
+
+		
+
+		</table>
+
+		<div class="yellow">{$pageshow}</div>
+
+    </div>
+
+<script type="text/javascript">
+$('.imgtable tbody tr:odd').addClass('odd');
+</script>
+</block>

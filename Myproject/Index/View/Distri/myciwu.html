@@ -1,0 +1,97 @@
+<extend name="Public:head_myus" />
+
+<block name="title">财务中心</block>
+
+<block name="header">
+<div class="rol cw-tit">
+     <div class="m-box">
+       <div class=""><a href="{:U('index')}"><span class="lt cw-fh"></span></a>财务中心</div>
+     </div>
+  </div>
+<div class="rol cw-nav">
+    <a <eq name="setval" value="wdfh">class="cw-nav-act"</eq>  href="{:U('myciwu',array('action'=>'list'))}">我的发货</a>
+    <a <eq name="setval" value="wdtg">class="cw-nav-act"</eq> href="{:U('myciwu',array('action'=>'wdtg'))}">我的推广</a>
+</div>
+</block>
+
+<block name="content">
+<div class="rol">
+   <div id="wdfh">
+   	
+   	
+       <div class="rol">
+       		<if condition="($yf eq 1) OR ($yf eq '') "> 
+           <div class="wdfh-f1">
+               <div class="lt by">本月</div>
+               <eq name="setval" value="wdtg">
+               		<div class="gt ckyzd"><a href="{:U('myciwu',array('action'=>'wdtg','yf'=>1))}">查看月账单<span class="jt"></span></a></div>
+               <else />
+               		<div class="gt ckyzd"><a href="{:U('myciwu',array('action'=>'list','yf'=>1))}">查看月账单<span class="jt"></span></a></div>
+               </eq>
+               
+           </div>
+           <volist name='dylist' id='dylist'>
+           	<a href="{:U('myciwu',array('action'=>'wdfhcont','id'=>$dylist['id']))}">
+           <div class="wdfh-f2 rol foot_link">
+              <div class="lt wdfh-f2-data">
+              	<eq name="setval" value="wdtg">
+              	  <div>{$dylist.addtime|get_week}</div>
+                  <div>{$dylist.addtime|date="m-d",###}</div>
+              	<else />
+                  <div>{$dylist.fhtimess|get_week}</div>
+                  <div>{$dylist.fhtime|date="m-d",###}</div>
+                </eq>
+              </div>
+              <div class="lt wdfh-f2-con">
+                  <div>订单编号：{$dylist.ordernum}</div>
+                  <div>买家信息：{$dylist.userid|getuscoddnt}</div>
+                  <div>商品总额：¥ {$dylist.money}</div>
+                  <div>经销商价格：¥ <eq name="dylist.jxjg" value="0">{$dylist.money}<else />{$dylist.jxjg}</eq></div>
+              </div>
+              <div class="gt wdfh-f3">
+                   <div class="jycg">{$dylist.ddztk}</div>
+                   <div class="jycg-bot"><span>{$dylist.code_jxs|jxstgly}推广</span><span>{$dylist.fahuofang|jxstgly}发货</span><br><span>交易方式:<switch name="dylist.paytype">    <case value="1">微信支付</case>    <case value="2">支付宝支付</case>    <default />线下支付</switch></span></div>
+               </div>
+           </div>
+           </a>
+           </volist>
+          </if>
+           
+           <if condition="($yf eq -1) OR ($yf eq '') "> 
+           <div class="wdfh-f1">
+               <div class="lt by">上月</div>
+               <eq name="setval" value="wdtg">
+               		<div class="gt ckyzd"><a href="{:U('myciwu',array('action'=>'wdtg','yf'=>-1))}">查看月账单<span class="jt"></span></a></div>
+               <else />
+               		<div class="gt ckyzd"><a href="{:U('myciwu',array('action'=>'list','yf'=>-1))}">查看月账单<span class="jt"></span></a></div>
+               </eq>
+           </div>
+           <volist name='sylist' id='sylist'>
+           <div class="wdfh-f2 rol foot_link">
+              <div class="lt wdfh-f2-data">
+                  <div>{$sylist.fhtimess|get_week}</div>
+                  <div>{$sylist.fhtime|date="m-d",###}</div>
+              </div>
+              <div class="lt wdfh-f2-con">
+                  <div>订单编号：{$sylist.ordernum}</div>
+                  <div>买家信息：{$sylist.userid|getuscoddnt}</div>
+                  <div>商品总额：¥ {$sylist.money}</div>
+                  <div>经销商价格：¥ <eq name="dylist.jxjg" value="0">{$sylist.money}<else />{$dylist.jxjg}</eq></div>
+              </div>
+              <div class="gt wdfh-f3">
+                   <div class="jycg">{$sylist.ddztk}</div>
+                   <div class="jycg-bot"><span>{$sylist.code_jxs|jxstgly}推广</span><span>{$sylist.fahuofang|jxstgly}发货</span><br><span>交易方式:<switch name="sylist.paytype">    <case value="1">微信支付</case>    <case value="2">支付宝支付</case>    <default />线下支付</switch></span></div>
+               </div>
+           </div>
+           </volist>
+           </if>
+           
+           
+       </div>
+       
+       
+       
+       
+   </div>
+</div>
+</block>

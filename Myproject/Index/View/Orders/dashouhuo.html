@@ -1,0 +1,99 @@
+<extend name="Public:head_myus" />
+
+<block name="title">订单中心</block>
+
+<block name="header">
+	
+
+<div class="rol cw-tit ddzx">
+    <div class="m-box">
+        <div class=""><a href="javascript:history.go(-1);" class="lt"><span class="lt cw-fh"></span></a>订单中心</div>
+    </div>
+</div>
+
+</block>
+
+<block name="content">
+<div class="rol ddzx-nav">
+    <a href="{:U('serv')}">全部</a>
+    <a href="{:U('index')}">待付款</a>
+    <a href="{:U('daigfahuo')}">待发货</a>
+    <a  class="ddzx-nav-act" href="{:U('dashouhuo')}">待收货</a>
+    <a href="{:U('pingjia')}">已完成</a>
+</div>
+
+
+<foreach name="order_rows" item="order_row">
+
+
+
+
+<div class="active">
+    <div id="dfh">
+        
+        <foreach name="order_rows" item="order_row">
+        <div class="rol ddzx-jg">
+                <div class="m-box">
+                    <div class="lt ">
+                        <div>订单编号：<font color="#ff0000">{$order_row.ordernum}</font></div>
+                    </div>
+                </div>
+        </div>
+        	
+        <div class="rol ddzx-list">
+        	<php>
+        		$smje=0;
+        		foreach ($order_row['shoplist'] as $key => $valsop) {
+        	</php>	
+            <div class="rol ">
+                <div class="m-box">
+                    <div class="rol cwzx-cp-list ddzx-cp-list">
+                        
+                        <div class="lt cwzx-cp-lt">
+                            <img class="gwc_img" src="{$valsop.titlepic}" alt=""/>
+                        </div>
+                        <div class="lt cwzx-cp-gt">
+                            <div class="cwzx-cp-tit">
+                                <span>{$valsop.type|shoptype}</span>{$valsop.title}
+                            </div>
+                            <div class="cwzx-cp-jg">
+                                <span class="lt ddzx-jk">￥{$valsop.price}</span>
+                                <span class="gt">数量：{$valsop.num}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <php>
+            		$smje+=$valsop['price']*$valsop['num'];
+        		}
+        	</php>
+            <div class="rol ddzx-jg">
+                <div class="m-box">
+                    <div class="lt jxs-dd">
+                        <div>下单日期</div>
+                        <div>{$order_row.addtime|date='Y-m-d',###}</div>
+                    </div>
+                    <span>合计￥{$smje}元</span>
+                    <a class="but_zf bkyj" href="{:U('Orders/qrshcz',array('id'=>$order_row['id']))}" onclick="if (confirm('您确定已经收到货了吗？')) return true; else return false;">确认收货</a>
+                </div>
+            </div>
+            <div class="rol ddzx-jg">
+                <div class="m-box" style="text-align: left;">
+                	<neq name='order_row.shippernum' value=''>
+                		物流：{$order_row.shipperid|wlgsmc}&nbsp;物流单号：{$order_row.shippernum}
+                	<else />
+                		上门安装:{$order_row.anzname}&nbsp;TEL:{$order_row.anztel}
+                	</neq>
+                </div>
+            </div>
+        </div>
+        </foreach>
+        
+    </div>
+    
+    
+</div>
+
+
+</block>

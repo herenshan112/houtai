@@ -1,0 +1,52 @@
+<extend name="Public:head" />
+
+<block name="title">个人资料</block>
+
+<block name="header">
+
+</block>
+
+<block name="content">
+<div class="txsz rol">
+    <div class="m-box">
+        <div class="lt">头像</div>
+        <div class="gt tx-img"><img src="{$list.headpic}" alt="{$list.nickname}"/><span></span></div>
+    </div>
+</div>
+<div class="txsz txsz-list rol">
+    <div class="m-box">
+        <div class="lt">昵称</div>
+        <div class="gt tx-img">{$list.nickname}<span></span></div>
+    </div>
+</div>
+<div class="txsz txsz-list rol">
+    <div class="m-box">
+        <div class="lt">手机号</div>
+        <div class="gt tx-img">{$list.phone}<b></b></div>
+    </div>
+</div>
+<div class="txsz txsz-list rol">
+    <div class="m-box">
+        <div class="lt">微信</div>
+        <div class="gt tx-img">{$list.weixinname}<span></span></div>
+    </div>
+</div>
+<div class="txsz txsz-list rol">
+    <div class="m-box">
+        <div class="lt">性别</div>
+        <div class="gt tx-img"><eq name='list.sex' value='1'>男<else />女</eq><span></span></div>
+    </div>
+</div>
+<div class="txsz txsz-list rol">
+    <div class="m-box">
+        <div class="lt">出生日期</div>
+        <div class="gt tx-img">{$list.shengri|date='Y-m-d',###}<span></span></div>
+    </div>
+</div>
+<div class="rol">
+    <div class="m-box">
+        <a class="qr btn" style="margin-top: 15px;" href="{:U('User/mycont',array('action'=>'eite'))}">修改资料</a>
+    </div>
+</div>
+{:W('Base/showFooter')}
+</block>

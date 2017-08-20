@@ -1,0 +1,133 @@
+<extend name="Public:head" />
+
+<block name="title">产品中心</block>
+
+<block name="header">
+<include file='Public/head_por' />
+</block>
+
+<block name="content">
+<include file='Public/false' />
+
+
+<!--导航-->
+<div class="rol">
+    <div class="m-box ">
+        <div class="rol scsy-nav1">
+            <a href="{:U('prolist',array('action'=>'tj'))}">
+                <b class="tj1"></b>
+                <div>特价</div>
+            </a>
+            <a href="{:U('prolist',array('action'=>'xp'))}">
+                <b class="tj2"></b>
+                <div>新品</div>
+            </a>
+            <a href="{:U('prolist',array('action'=>'tuij'))}">
+                <b class="tj3"></b>
+                <div>推荐</div>
+            </a>
+            <a href="{:U('prolist')}">
+                <b class="tj4"></b>
+                <div>产品</div>
+            </a>
+        </div>
+        <img class="img" src="/Public/index/img/scsy1.jpg" alt=""/>
+        <div class="scsy-rmfl-nav">
+            <div class="scsy-rmfl-tit-ch"><b></b><span>热门分类</span><b></b></div>
+            <div class="scsy-rmfl-tit-en">Hot translation</div>
+        </div>
+    </div>
+</div>
+<!--分类1-->
+<div class="rol scsy-rm-nav-box">
+    <div class="m-box scsy-rm-nav">
+    	<volist name='typelist' id='typelist' key='jb'>
+    		<a href="{:U('prolist',array('action'=>'type','tpval'=>$typelist['id']))}"><div >{$typelist.title}</div></a>
+    	</volist>
+    </div>
+</div>
+
+<!--昨日热销-->
+<div class="rol">
+    <div class="zrrx-img"><img src="/Public/index/img/zrrx.png" alt=""/></div>
+    <div class="zrrx-list">
+    	<volist name='zrhotx' id='zrhotx'>
+    		<a href="{:U('procont',array('id'=>$zrhotx['id']))}">
+	            <img src="{$zrhotx.titlepic}" alt="{$zrhotx.title}"/>
+	            <div class="zrrx-list-txt"><span>{$zrhotx.tyname}</span>{$zrhotx.title}</div>
+	            <div class="zrrx-list-bot">
+	               <div class="lt zrrx-jh">
+	               	<in name='zrhotx.tejia' value='2,5,6'>
+	               		<neq name='zrhotx.tejiaprice' value='0'>
+	               			<span>￥{$zrhotx.tejiaprice}</span>
+	               			<s class="rjg">¥ {$zrhotx.price}</s>
+	               		<else />
+	               			<span>￥{$zrhotx.price}</span>
+	               		</neq>
+	               	<else />
+	               		<span>￥{$zrhotx.price}</span>
+	               	</in>
+	               </div>
+	                <div class="gt zrrx-fx">
+	                    <span class="zrrx-fx-img"></span>
+	                    <div class="zrrx-fx-txt">月销{$zrhotx.salenum}笔</div>
+	                </div>
+	            </div>
+	            <switch name="zrhotx.tejia">    
+	            	<case value="1"><span class="rm">热卖</span></case>    
+	            	<case value="2"><span class="rm">促销</span></case>   
+	            	<case value="3"><span class="rm">新品</span></case>   
+	            	<case value="4"><span class="rm">超值</span></case>   
+	            	<case value="5"><span class="rm">打折</span></case>   
+	            	<case value="6"><span class="rm">特价</span></case>   
+	            	<default />
+	            </switch>
+	        </a>
+    	</volist>
+    </div>
+</div>
+<!--新品推荐-->
+<div class="rol ind-new">
+    <div class="zrrx-img"><img src="/Public/index/img/xptj.png" alt=""/></div>
+    <div class="zrrx-list">
+    	<volist name='xinptj' id='xinptj'>
+        <a href="{:U('procont',array('id'=>$xinptj['id']))}">
+            <img src="{$xinptj.titlepic}" alt=""/>
+            <div class="zrrx-list-txt"><span>{$xinptj.tyname}</span>{$xinptj.title}</div>
+            <div class="zrrx-list-bot">
+                <div class="lt zrrx-jh pro-jg2">
+                	<in name='xinptj.tejia' value='2,5,6'>
+	               		<neq name='xinptj.tejiaprice' value='0'>
+	               			<span>￥{$xinptj.tejiaprice}</span>
+	               			<s class="rjg">¥ {$xinptj.price}</s>
+	               		<else />
+	               			<span>￥{$xinptj.price}</span>
+	               		</neq>
+	               	<else />
+	               		<span>￥{$xinptj.price}</span>
+	               	</in>
+                </div>
+                <div class="gt zrrx-fx">
+                    <span class="zrrx-fx-img"></span>
+                    <div class="zrrx-fx-txt">月销{$xinptj.salenum}笔</div>
+                </div>
+            </div>
+            <switch name="xinptj.tejia">    
+            	<case value="1"><span class="rm">热卖</span></case>    
+	            	<case value="2"><span class="rm">促销</span></case>   
+	            	<case value="3"><span class="rm">新品</span></case>   
+	            	<case value="4"><span class="rm">超值</span></case>   
+	            	<case value="5"><span class="rm">打折</span></case>   
+	            	<case value="6"><span class="rm">特价</span></case>    
+            	<default />
+            </switch>
+        </a>
+        </volist>
+        
+    </div>
+</div>
+<script src="/Public/index/js/jquery-3.0.0.min.js"></script>
+<script src="/Public/index/js/bootstrap.min.js"></script>
+
+{:W('Base/showFooter')}
+</block>

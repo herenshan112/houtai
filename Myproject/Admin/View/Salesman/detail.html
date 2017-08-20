@@ -1,0 +1,27 @@
+<extend name="Public:main" />
+
+<block name="cssjs"></block>
+
+<block name="area"><li><a href="#">查看</a></li></block>
+
+<block name="content">
+	<div class="formbody">
+		<div class="formtitle"><span>查看</span></div>
+
+		<ul class="forminfo">
+		
+		<li><label>经销商编码:</label><cite>{$user.diynum}</cite><i></i></li>
+
+		<li><label>姓名:</label><cite>{$user.nickname}</cite><i></i></li>
+		<li><label>电话:</label><cite>{$user.phone}</cite><i></i></li>
+
+		<li><label>身份证号:</label><cite>{$user.idno}</cite><i></i></li>
+		
+		<li><label>所在城市:</label><cite>{$user.city}</cite><i></i></li>
+		<li><label>所属企业:</label><cite>{$user.jobs}</cite><i></i></li>
+
+		<li><label>添加时间:</label><cite>{$user.addtime}</cite><i></i></li>
+
+		</ul>
+    </div>
+</block>

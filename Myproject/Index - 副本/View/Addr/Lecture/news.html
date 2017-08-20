@@ -1,0 +1,142 @@
+<extend name="Public:base" />
+
+<block name="title">健康常识</block>
+
+<block name="content">
+<div class="rol banner-box">
+    <img src="__PUBLIC__/wx/img/banner.jpg" alt="">
+</div>
+<div class="rol index-page1">
+    <div class="m-box">
+        <div class="rol title1">Health Knowledge</div>
+        <div class="rol center">
+            <div class="title2">健康常识</div>
+        </div>
+    </div>
+</div>
+
+<foreach name="news_cate" item="news_cate_item">
+<div class="rol news-title">
+    <div>{$news_cate_item.title}</div>
+</div>
+<div class="rol news-box">
+    <div class="m-box">
+        <foreach name="news_cate_item['news_rows']" key="news_key" item="news_item">
+        <if condition="$news_key eq 0">
+            <a href="{:U('News/detail', array('id'=>$news_item['id']))}" class="rol news-title-box">
+                <div class="rol news-title-title">{$news_item.title}</div>
+                <div class="rol news-title-img">
+                    <img src="{$news_item.titlepic}" alt="{$news_item.title}" class="rol">
+                </div>
+                <div class="rol index-news-font2">
+                    <span class="lt">{$news_cate_item.title} </span><span class="lt"><?php echo date('m-d', strtotime($news_item['addtime'])); ?></span>
+                    <span class="gt index-news-num">{$news_item.hits}</span>
+                </div>
+            </a>
+        <else />
+            <a href="{:U('News/detail', array('id'=>$news_item['id']))}" class="rol news-p-box">
+                <div class="lt news-lt-box">
+                    <div class="rol news-p-title">{$news_item.title}</div>
+                    <div class="rol index-news-font2">
+                        <span class="lt">{$news_cate_item.title} </span><span class="lt"><?php echo date('m-d', strtotime($news_item['addtime'])); ?></span>
+                        <span class="gt index-news-num">{$news_item.hits}</span>
+                    </div>
+                </div>
+                <div class="gt news-gt-box">
+                    <img src="{$news_item.titlepic}" alt="" class="rol">
+                </div>
+            </a>
+        </if>
+        </foreach>
+        <!--div class="rol news-p-box">
+            <div class="lt news-lt-box">
+                <div class="rol news-p-title">打嗝不止怎么办 治疗打嗝方法</div>
+                <div class="rol index-news-font2">
+                    <span class="lt">预防流行性疾病 </span><span class="lt">12-06</span>
+                    <span class="gt index-news-num">44</span>
+                </div>
+            </div>
+            <div class="gt news-gt-box">
+                <img src="__PUBLIC__/wx/img/news-img2.jpg" alt="" class="rol">
+            </div>
+        </div-->
+    </div>
+</div>
+
+<div class="rol index-page1">
+</div>
+</foreach>
+
+<!--div class="rol news-title">
+    <div>预防疾病</div>
+</div>
+<div class="rol news-box">
+    <div class="m-box">
+        <div class="rol news-title-box">
+            <div class="rol news-title-title">打嗝不止怎么办 治疗打嗝方法</div>
+            <div class="rol news-title-img">
+                <img src="__PUBLIC__/wx/img/news-img1.jpg" alt="" class="rol">
+            </div>
+            <div class="rol index-news-font2">
+                <span class="lt">预防流行性疾病 </span><span class="lt">12-06</span>
+                <span class="gt index-news-num">44</span>
+            </div>
+        </div>
+        <div class="rol news-p-box">
+            <div class="lt news-lt-box">
+                <div class="rol news-p-title">打嗝不止怎么办 治疗打嗝方法</div>
+                <div class="rol index-news-font2">
+                    <span class="lt">预防流行性疾病 </span><span class="lt">12-06</span>
+                    <span class="gt index-news-num">44</span>
+                </div>
+            </div>
+            <div class="gt news-gt-box">
+                <img src="__PUBLIC__/wx/img/news-img2.jpg" alt="" class="rol">
+            </div>
+        </div>
+        <div class="rol news-p-box">
+            <div class="lt news-lt-box">
+                <div class="rol news-p-title">打嗝不止怎么办 治疗打嗝方法</div>
+                <div class="rol index-news-font2">
+                    <span class="lt">预防流行性疾病 </span><span class="lt">12-06</span>
+                    <span class="gt index-news-num">44</span>
+                </div>
+            </div>
+            <div class="gt news-gt-box">
+                <img src="__PUBLIC__/wx/img/news-img2.jpg" alt="" class="rol">
+            </div>
+        </div>
+    </div>
+</div-->
+</block>
+
+<block name="footer">
+<footer class="rol footer">
+    <div class="m-box">
+        <a class="lt footer-box">
+            <div class="rol center f-img">
+                <img src="__PUBLIC__/wx/img/f1.png" class="" alt="">
+            </div>
+            <div class="rol f-font">商城中心</div>
+        </a>
+        <a class="lt footer-box">
+            <div class="rol center f-img">
+                <img src="__PUBLIC__/wx/img/f2.png" class="" alt="">
+            </div>
+            <div class="rol f-font">我的积分</div>
+        </a>
+        <a class="lt footer-box">
+            <div class="rol center f-img">
+                <img src="__PUBLIC__/wx/img/f3.png" class="" alt="">
+            </div>
+            <div class="rol f-font">我的订单</div>
+        </a>
+        <a class="lt footer-box">
+            <div class="rol center f-img">
+                <img src="__PUBLIC__/wx/img/f4.png" class="" alt="">
+            </div>
+            <div class="rol f-font">推荐好友</div>
+        </a>
+    </div>
+</footer>
+</block>

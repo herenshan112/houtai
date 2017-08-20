@@ -1,0 +1,3 @@
+<foreach name='pages_rows' item='rowitem'>
+	<li><cite></cite><a href="{:U('Pages/page', array('id'=>$rowitem['id']))}"<?php if($rowitem['opentype']=='1') { echo ' target="_blank"'; } else if($rowitem['opentype']=='2') { echo ' target="_parent"'; } else if($rowitem['opentype']=='3') { echo ' target="_top"'; } else { echo ' target="rightFrame"'; }?>>{$rowitem.title}</a><i></i></li>
+</foreach>

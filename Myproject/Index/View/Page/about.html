@@ -1,0 +1,35 @@
+<extend name="Public:head" />
+
+<block name="title">关于我们</block>
+
+<block name="content">
+    <div class="rol about-box">
+  <div class="m-box">
+      <div class="about-box1 rol">
+          <!--<img src="/Public/index/img/about.jpg" alt=""/>-->
+          <div class="about-txt">
+              {$gywm.cont|htmlspecialchars_decode}
+          </div>
+      </div>
+      <div class="about-box2 rol">
+         <div class="about-ry rol">
+             <span class="lt">荣誉资质</span>
+             <a class="gt" href="#">更多 >></a>
+         </div>
+         <div class="rol">
+         	<volist name="list" id="list">
+         		<a href="{:U('News/detail',array('id'=>$list['id']))}">
+             <div class="rol ry-list">
+                <img src="{$list.titlepic}" alt="{$list.title}"/>
+                <div>{$list.title}</div>
+            </div>
+            </a>
+            </volist>
+             
+         </div>
+      </div>
+  </div>
+</div>
+
+{:W('Base/showFooter')}
+</block>

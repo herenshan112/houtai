@@ -1,0 +1,61 @@
+<extend name="Public:head" />
+
+<block name="title">修改个人资料</block>
+
+<block name="header">
+
+</block>
+
+<block name="content">
+	<script type="text/javascript" charset="utf-8" src="/Public/Admin/js/uploadfile.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/Public/Admin/js/JTimer_1.3.js"></script>
+	<script>  
+          JTC.setDateFormat('yyyy-MM-dd');   //设置返回格式  
+   	</script>
+<form action="__ACTION__/action/eitecl" method="post" name="myform">
+<div class="txsz rol">
+    <div class="m-box">
+        <div class="lt">头像</div>
+        <div class="gt tx-img"><img id="mytxpic" src="{$list.headpic}" alt="{$list.nickname}" onclick="getElementById('uppicimg').click()"  /><span id="sussic156"></span></div>
+        <input type="hidden" name="toppickjs" id="toppic" value="{$list.headpic}" />
+        <input type="file" multiple="uppicimg" id="uppicimg" style="height:0;width:0;z-index: -1; position: absolute;left: 10px;top: 5px;"/> <input type="hidden" name="uppicimgtype" id="uppicimgtype" value="4" />
+    </div>
+</div>
+<div class="txszss txsz-list rol">
+    <div class="m-box">
+        <div class="lt">昵称</div>
+        <div class="gt tx-img"><input class="xggrzl" type="text" name="nicheng" id="nicheng" value="{$list.nickname}" /></div>
+    </div>
+</div>
+<div class="txszss txsz-list rol">
+    <div class="m-box">
+        <div class="lt">手机号</div>
+        <div class="gt tx-img"><input class="xggrzl" type="text" name="telval" id="telval" value="<neq name="list.phone" value="0">{$list.phone}</neq>" /></div>
+    </div>
+</div>
+<div class="txszss txsz-list rol">
+    <div class="m-box">
+        <div class="lt">微信</div>
+        <div class="gt tx-img"><input class="xggrzl" type="text" name="weixin" id="weixin" value="{$list.weixinname}" /></div>
+    </div>
+</div>
+<div class="txszss txsz-list rol">
+    <div class="m-box">
+        <div class="lt">性别</div>
+        <div class="gt tx-img"><input class="xggrzl" type="text" name="xingbie" id="xingbie" value="<eq name='list.sex' value='1'>男<else />女</eq>" /></div>
+    </div>
+</div>
+<div class="txszss txsz-list rol">
+    <div class="m-box">
+        <div class="lt">出生日期</div>
+        <div class="gt tx-img"><input class="xggrzl" type="text" name="shengri" id="shengri" value="{$list.shengri|date='Y-m-d',###}" onclick="JTC.setday()"  /></div>
+    </div>
+</div>
+<div class="rol">
+    <div class="m-box">
+        <input type="submit" class="qr btn" style="margin-top: 15px;" value="修改资料">
+    </div>
+</div>
+</form>
+{:W('Base/showFooter')}
+</block>

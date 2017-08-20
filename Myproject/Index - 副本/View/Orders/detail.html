@@ -1,0 +1,42 @@
+<extend name="Public:base" />
+
+<block name="title">订单详情</block>
+
+<block name="header">
+<header class="rol place-header">
+    <div class="m-box">
+        <a href="javascript:history.go(-1);" class="lt">
+            <img src="__PUBLIC__/wx/img/return-1.png" class="pro-return-1" alt="">
+        </a>
+        <div class="lt pro-header-font">订单详情</div>
+        <a href="{:U('Index/index')}" class="gt">
+            <img src="__PUBLIC__/wx/img/home-1.png" class="pro-home-1" alt="">
+        </a>
+    </div>
+</header>
+</block>
+
+<block name="content">
+<div class="rol qy-box">
+    <div class="m-box">
+        <div class="rol" style="font-size: 24px;">
+        <p><span style="color:#29c7ea ;font-size: 30px;">订单信息：</span><br>
+        <foreach name="order_buy_rows" item="order_buy_rows_item">{$order_buy_rows_item.title} &yen;{$order_buy_rows_item.price} * {$order_buy_rows_item.num}<br></foreach>
+        </p>
+        </div>
+        <div class="rol" style="font-size: 24px;">
+        <p><span style="color:#29c7ea ;font-size: 30px;">收货信息：</span><br>收货人：{$order_detail_row.uname}<br>电话：{$order_detail_row.uphone}<br>收货地址：{$order_detail_row.uaddr}<br></p>
+        </div>
+        <if condition="$order_row['invoice'] neq ''">
+        <div class="rol" style="font-size: 24px;">
+        <p><span style="color:#29c7ea ;font-size: 30px;">发票信息：</span><br>抬头：{$order_row.invoice}<br>项目：食品<br>金额：{$order_row.money}<br></p>
+        </div>
+        </if>
+        <div class="rol" style="font-size: 24px;">
+        <p><span style="color:#29c7ea ;font-size: 30px;">支付信息：</span><br>支付方式：<if condition="$order_row['paytype'] eq 0">积分兑换<br>支付积分：{$order_row.corn}<elseif condition="$order_row['paytype'] eq 1"/>微信支付<br>金额：&yen;{$order_row.money}<elseif condition="$order_row['paytype'] eq 2"/>支付宝支付<br>金额：&yen;{$order_row.money}</if><br></p>
+        </div>
+    </div>
+</div>
+
+{:W('Base/showFooter')}
+</block>

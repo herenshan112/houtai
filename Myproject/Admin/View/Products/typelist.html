@@ -1,0 +1,89 @@
+<extend name="Public:main" />
+
+<block name="cssjs">
+
+</block>
+
+<body>
+
+	<block name="area">
+
+		<li><a href="#">产品分类列表</a></li>
+		<ul class="toolbar1" style="margin: 3px 10px 0 0;">
+		<li class="click"><a href="{:U('typelist', array('action'=>'add'))}"><span></span>添加产品分类</a></li>
+		</ul>
+	</block>
+
+	
+
+ <block name="content">
+
+    <div class="rightinfo">
+
+		<table class="imgtable">
+
+			<thead>
+
+			<tr>
+
+			<th>序号</th>
+			<th>栏目</th>
+			<th>写入时间</th>
+			<th>状态</th>
+			<th>操作</th>
+
+			</tr>
+
+			</thead>
+
+		
+
+			<tbody>
+
+			<foreach item="list" name="products_list" key="k">
+
+				<tr>
+
+				<td>{$k+1}</td>
+				<td>{$list.delimiter}{$list.title}</td>
+				<td>{$list.time|date='Y-m-d H:i:s',###}</td>
+				<td><neq name='list.setval' value='0'>启用<else /><font color="#ff0000">关闭</font></neq></td>
+
+				<td>
+
+					<p><a href="__CONTROLLER__/typelist/action/eite/id/{$list.id}">修改</a></p>
+
+					<p><a href="__CONTROLLER__/typelist/action/del/id/{$list.id}" onclick="if (confirm('确定要删除吗？')) return true; else return false;">删除</a></p>
+
+				</td>
+
+				</tr>
+			
+			</foreach>
+
+			</tbody>
+
+		
+
+		</table>
+
+		<div class="yellow">{$page}</div>
+
+    </div>
+
+    
+
+<script type="text/javascript">
+
+	$('.imgtable tbody tr:odd').addClass('odd');
+
+	</script>
+
+</block>
+
+</body>
+
+
+
+</html>
+

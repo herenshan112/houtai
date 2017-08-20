@@ -1,0 +1,88 @@
+<extend name="Public:head_myus" />
+
+<block name="title">财务中心</block>
+
+<block name="header">
+<div class="rol cw-tit">
+     <div class="m-box">
+       <div class=""><a href="{:U('myciwu')}"><span class="lt cw-fh"></span></a>财务中心</div>
+     </div>
+  </div>
+</block>
+
+<block name="content">
+	<div class="rol cwzx-box">
+        <div class="rol cwzx-box1">
+            <div class="m-box ">
+                <div class="cw-list rol">
+                    <span class="lt cw-list-lt">推广人</span>
+                    <span class="gt cw-list-gt">{$dylist.code_jxs|jxstgly}</span>
+                </div>
+                <div class="cw-list rol">
+                    <span class="lt cw-list-lt">发货商</span>
+                    <span class="gt cw-list-gt">{$dylist.fahuofang|jxstgly}</span>
+                </div>
+                <div class="cw-list rol">
+                    <span class="lt cw-list-lt">总计金额</span>
+                    <span class="gt cw-list-gt cw-list-gt-jk">￥{$dylist.money}</span>
+                </div>
+                <div class="cw-list rol">
+                    <span class="lt cw-list-lt">支付方式</span>
+                    <span class="gt cw-list-gt"><switch name="dylist.paytype">    <case value="1">微信支付</case>    <case value="2">支付宝支付</case>    <default />线下支付</switch></span>
+                </div>
+                <div class="cw-list rol">
+                    <span class="lt cw-list-lt">经销商价</span>
+                    <span class="gt cw-list-gt cw-list-gt-yj">￥<eq name="dylist.jxjg" value="0">{$dylist.money}<else />{$dylist.jxjg}</eq></span>
+                </div>
+            </div>
+        </div>
+        <div class="rol cwzx-box2">
+        	<volist name="dylist.shoplist" id='splb'>
+            <div class="m-box">
+            	
+                <div class="rol cwzx-cp-list">
+                    <div class="lt cwzx-cp-lt">
+                        <img src="{$splb.titlepic}" alt="{$splb.title}" class="gwc_img" />
+                    </div>
+                    <div class="lt cwzx-cp-gt">
+                        <div class="cwzx-cp-tit">
+                            <span>{$splb.type|shoptype}</span>{$splb.title}
+                        </div>
+                        <div class="cwzx-cp-jg">
+                            <span class="lt cwzx-cp-jg-lt">￥
+                            	{$splb.price}
+                            </span>
+                            <span class="gt cwzx-cp-jg-gt">×{$splb.num}</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            </volist>
+        </div>
+        
+        <eq name='dylist.sfjsset' value='1'>
+        
+        <div class="rol">
+		    <div class="m-box">
+		   
+		        <a href="{:U('qrjsym',array('id'=>$dylist['id']))}" class="qr btn" style="margin-top: 15px;">确认结算</a>
+		    </div>
+		</div>
+        <else />
+        	<eq name='dylist.sfjsset' value='2'>
+        		<div class="rol">
+				    <div class="m-box">
+					   结算完成<br>
+					   管理员于{$jscary.jiesuantime|date='Y-m-d H:i:s',###}发起结算。<br> 
+					   备注：{$jscary.jiesuanbeizhu}<br> 
+					   本人于：{$jscary.qrtime|date='Y-m-d H:i:s',###}确认结算。<br> 
+					   备注：{$jscary.qrbeizhu}<br> 
+				    </div>
+				</div>
+        	</eq>
+        </eq>
+        
+    </div>
+   
+</block>

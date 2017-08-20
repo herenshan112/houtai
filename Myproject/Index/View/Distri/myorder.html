@@ -1,0 +1,121 @@
+<extend name="Public:head_myus" />
+
+<block name="title">我的订单</block>
+
+<block name="header">
+<div class="rol cw-tit ddzx">
+    <div class="m-box">
+        <div class=""><a href="{:U('index')}"><span class="lt cw-fh"></span></a>订单中心</div>
+    </div>
+</div>
+<div class="rol ddzx-nav">
+    <!--<a <eq name="setval" value="all">class="ddzx-nav-act"</eq> href="{:U('myorder',array('action'=>'all'))}">全部</a>-->
+    <a <eq name="setval" value="dfk">class="ddzx-nav-act"</eq> href="{:U('myorder',array('action'=>'dfk'))}">待付款</a>
+    <a <eq name="setval" value="dfh">class="ddzx-nav-act"</eq> href="{:U('myorder')}">待发货</a>
+    <a <eq name="setval" value="dsh">class="ddzx-nav-act"</eq> href="{:U('myorder',array('action'=>'dsh'))}">待收货</a>
+    <a <eq name="setval" value="ywc">class="ddzx-nav-act"</eq> href="{:U('myorder',array('action'=>'ywc'))}">已完成</a>
+</div>
+</block>
+
+<block name="content">
+<div class="rol ddzx-con-list">
+	
+    <div id="dfh" class="active">
+        <volist name="list" id="list">
+        <div class="rol ddzx-list">
+        	
+        	<div class="rol ddzx-jg">
+                <div class="m-box">
+                    <div class="lt ">
+                        <div>订单编号：<a href="{:U('ordercont',array('ordnum'=>$list['ordernum']))}"><font color="#ff0000">{$list.ordernum}</font></a></div>
+                    </div>
+                </div>
+        	</div>
+        	<php>
+        		$smje=0;
+        		foreach ($list['shoplist'] as $key => $valsop) {
+        	</php>	
+            <div class="rol cwzx-box2">
+                <div class="m-box">
+                    <div class="rol cwzx-cp-list ddzx-cp-list">
+                    <div class="ddzx-dfh"><switch name="valsop.tejia">    
+	            	<case value="1">热卖</case>    
+	            	<case value="2">促销</case>   
+	            	<case value="3">新品</case>   
+	            	<case value="4">超值</case>   
+	            	<case value="5">打折</case>   
+	            	<case value="6">特价</case>   
+	            	<default />
+	            </switch></div>
+                        <div class="lt cwzx-cp-lt">
+                            <img class="gwc_img" src="{$valsop.titlepic}" alt=""/>
+                        </div>
+                        <div class="lt cwzx-cp-gt">
+                            <div class="cwzx-cp-tit">
+                                <span>{$valsop.type|shoptype}</span>{$valsop.title}
+                            </div>
+                            <div class="cwzx-cp-jg">
+                                <span class="lt ddzx-jk">￥{$valsop.price}</span>
+                                <span class="gt">购买数量：{$valsop.num}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <php>
+            		$smje+=$valsop['price']*$valsop['num'];
+        		}
+        	</php>
+            <div class="rol ddzx-jg">
+                <div class="m-box">
+                	
+                	<switch name="setval">    
+                		<case value="dfh">
+                			
+                			<div class="lt jxs-dd">
+		                        <div>来源：{$list.code_jxs|jxstgly}</div>
+		                        <div>{$list.addtime|date='Y-m-d',###}</div>
+		                    </div>
+		                    <span>合计￥{$smje}元</span>
+		                    <a class="but_zf bkyj" href="{:U('Distri/myorder',array('action'=>'fqfh','id'=>$list['id']))}" onclick="if (confirm('您确定要放弃该订单吗？')) return true; else return false;">放弃发货</a>
+		                    <a class="but_zf bkyj redcol" href="{:U('Distri/myorder',array('action'=>'ljfh','id'=>$list['id']))}">立即发货</a>
+                			
+                		</case>    
+                		<case value="dsh">
+                			<div class="lt jxs-dd">
+		                        <div>来源：{$list.code_jxs|jxstgly}&nbsp;发货：{$list.fahuofang|jxstgly}</div>
+		                        <div>下单：{$list.addtime|date='Y-m-d',###}&nbsp;发货：{$list.fhtime|date='Y-m-d',###}</div>
+		                    </div>
+		                    <span>合计￥{$smje}元</span>
+                		</case>    
+                		<case value="dfk">
+                			<div class="lt jxs-dd">
+		                        <div>来源：{$list.code_jxs|jxstgly}</div>
+		                        <div>下单：{$list.addtime|date='Y-m-d',###}</div>
+		                    </div>
+		                    <span>合计￥{$smje}元</span>
+                		</case>    
+                		<case value="ywc">
+                			<div class="lt jxs-dd">
+		                        <div>来源：{$list.code_jxs|jxstgly}&nbsp;发货：{$list.fahuofang|jxstgly}</div>
+		                        <div>下单：{$list.addtime|date='Y-m-d',###}&nbsp;发货：{$list.fhtime|date='Y-m-d',###}</div>
+		                    </div>
+		                    <span>合计￥{$smje}元</span>
+                		</case>    
+                		<default />default
+                	</switch>
+                	
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+        </volist>
+    </div>
+    
+    
+</div>
+</block>

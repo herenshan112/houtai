@@ -1,0 +1,280 @@
+[ 2017-06-15T09:03:50+08:00 ] 127.0.0.1 /Index/Index/qrcode/code/1VY3S1QH2CZO/op/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T09:09:16+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T09:09:21+08:00 ] 127.0.0.1 /Index/Orders/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-15T09:09:23+08:00 ] 127.0.0.1 /Index/Orders/send.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-15T09:09:23+08:00 ] 127.0.0.1 /Index/Orders/recv.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T09:09:24+08:00 ] 127.0.0.1 /Index/Orders/pj.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-15T09:09:24+08:00 ] 127.0.0.1 /Index/Orders/serv.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T09:09:26+08:00 ] 127.0.0.1 /Index/Mall/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T09:09:29+08:00 ] 127.0.0.1 /Index/Mall/product/id/7.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T09:09:30+08:00 ] 127.0.0.1 /Index/Mall/addcart.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ms_user` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `ms_user` WHERE `phone` = '15069130853' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ms_products` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `ms_products` WHERE `id` = 7 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ms_shopcart` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `ms_shopcart` WHERE `uid` = 1 AND `productid` = 7 LIMIT 1   [ RunTime:0.0000s ]
+SQL: INSERT INTO `ms_shopcart` (`uid`,`productid`,`num`,`addtime`) VALUES ('1','7','1','2017-06-15 09:09:30') [ RunTime:0.0000s ]
+
+[ 2017-06-15T09:09:52+08:00 ] 127.0.0.1 /Index/Orders/shopcart.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T09:10:03+08:00 ] 127.0.0.1 /Index/Mall/product/id/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T09:10:04+08:00 ] 127.0.0.1 /Index/Mall/addcart.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ms_user` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `ms_user` WHERE `phone` = '15069130853' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ms_products` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `ms_products` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ms_shopcart` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `ms_shopcart` WHERE `uid` = 1 AND `productid` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: INSERT INTO `ms_shopcart` (`uid`,`productid`,`num`,`addtime`) VALUES ('1','2','1','2017-06-15 09:10:04') [ RunTime:0.0000s ]
+
+[ 2017-06-15T09:10:07+08:00 ] 127.0.0.1 /Index/Orders/shopcart.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T09:10:10+08:00 ] 127.0.0.1 /Index/Orders/doorder.html?orderIds=51%2C50%2C
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T09:10:37+08:00 ] 127.0.0.1 /Index/Orders/order.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T09:10:37+08:00 ] 127.0.0.1 /Index/Orders/pay/id/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T09:11:48+08:00 ] 127.0.0.1 /Index/Orders/pay/id/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T09:11:52+08:00 ] 127.0.0.1 /Index/Orders/pay
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T09:11:55+08:00 ] 127.0.0.1 /Index/Orders/send.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T09:22:40+08:00 ] 127.0.0.1 /Index/Mall/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T09:22:42+08:00 ] 127.0.0.1 /Index/Mall/product/id/3.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T09:22:44+08:00 ] 127.0.0.1 /Index/Orders/doorder.html?productid=3&productnum=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T09:22:46+08:00 ] 127.0.0.1 /Index/Orders/order.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T09:22:46+08:00 ] 127.0.0.1 /Index/Orders/pay/id/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T09:22:47+08:00 ] 127.0.0.1 /Index/Orders/pay
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T09:22:48+08:00 ] 127.0.0.1 /Index/Orders/wxpay/id/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-15T09:22:52+08:00 ] 127.0.0.1 /Index/Orders/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-15T09:23:00+08:00 ] 127.0.0.1 /Index/Orders/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-15T11:48:51+08:00 ] 127.0.0.1 /Index/Index/qrcode/code/O59P1VVCTQSS/op/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-15T16:06:02+08:00 ] 127.0.0.1 /Index/Orders/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T16:06:07+08:00 ] 127.0.0.1 /Index/Mall/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-15T16:06:10+08:00 ] 127.0.0.1 /Index/Mall/product/id/7.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T16:06:11+08:00 ] 127.0.0.1 /Index/Mall/addcart.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `ms_user` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `ms_user` WHERE `phone` = '15069130853' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ms_products` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `ms_products` WHERE `id` = 7 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ms_shopcart` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `ms_shopcart` WHERE `uid` = 1 AND `productid` = 7 LIMIT 1   [ RunTime:0.0000s ]
+SQL: INSERT INTO `ms_shopcart` (`uid`,`productid`,`num`,`addtime`) VALUES ('1','7','1','2017-06-15 16:06:11') [ RunTime:0.0010s ]
+
+[ 2017-06-15T16:06:16+08:00 ] 127.0.0.1 /Index/Mall/product/id/3.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-15T16:06:18+08:00 ] 127.0.0.1 /Index/Mall/addcart.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ms_user` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `ms_user` WHERE `phone` = '15069130853' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ms_products` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `ms_products` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ms_shopcart` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `ms_shopcart` WHERE `uid` = 1 AND `productid` = 3 LIMIT 1   [ RunTime:0.0010s ]
+SQL: INSERT INTO `ms_shopcart` (`uid`,`productid`,`num`,`addtime`) VALUES ('1','3','1','2017-06-15 16:06:18') [ RunTime:0.0000s ]
+
+[ 2017-06-15T16:06:23+08:00 ] 127.0.0.1 /Index/Mall/product/id/7.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T16:06:25+08:00 ] 127.0.0.1 /Index/Mall/addcart.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ms_user` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `ms_user` WHERE `phone` = '15069130853' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ms_products` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `ms_products` WHERE `id` = 7 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ms_shopcart` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `ms_shopcart` WHERE `uid` = 1 AND `productid` = 7 LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `ms_shopcart` SET `uid`='1',`productid`='7',`num`='2',`addtime`='2017-06-15 16:06:11' WHERE `id` = 52 [ RunTime:0.0000s ]
+
+[ 2017-06-15T16:06:27+08:00 ] 127.0.0.1 /Index/Orders/shopcart.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T16:06:33+08:00 ] 127.0.0.1 /Index/Orders/doorder.html?orderIds=53%2C52%2C
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T16:06:37+08:00 ] 127.0.0.1 /Index/Orders/order.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T16:06:37+08:00 ] 127.0.0.1 /Index/Orders/pay/id/3.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T16:06:39+08:00 ] 127.0.0.1 /Index/Orders/pay
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T16:06:43+08:00 ] 127.0.0.1 /Index/Orders/send.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T16:07:19+08:00 ] 127.0.0.1 /Index/Mall/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-15T16:07:21+08:00 ] 127.0.0.1 /Index/Mall/product/id/7.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+

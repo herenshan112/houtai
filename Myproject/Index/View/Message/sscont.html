@@ -1,0 +1,51 @@
+<extend name="Public:head_myus" />
+
+<block name="title">搜索</block>
+
+<block name="header"></block>
+
+<block name="content">
+<div class="rol sc-pro-top">
+	<form method="post" action="{:U('Message/sousuo')}" name="ssform">
+    <input class="sc-pro-ss-txt" type="submit" value="搜索"/>
+    <div class="cp-ss">
+        <input class="sc-pro-ss-inp" type="search"/>
+        <input class="sc-pro-txt sp-ss" type="text" placeholder="净水器" name="ssgjc" />
+        <div class="gb"></div>
+    </div>
+    </form>
+</div>
+<div class="rol">
+    <div class="rol">
+    	<volist name='list' id='list' empty="$empty">
+        <div class="rol cwzx-cp-list ddzx-cp-list">
+        	<a href="{:U('Mall/procont',array('id'=>$list['id']))}">
+            <div class="lt cwzx-cp-lt">
+                <img  src="{$list.titlepic}" alt="{$list.title}" />
+            </div>
+            <div class="lt cwzx-cp-gt cwzx-cp-gt1" >
+                <div class="cwzx-cp-tit">
+                    <span>{$list.tyname}</span>{$list.title}
+                </div>
+                <div class="cwzx-cp-jg yx">
+                    <div class="zrrx-fx-txt yx-txt">月销{$list.salenum}笔</div>
+                    <in name='list.tejia' value='2,5,6'>
+	               		<neq name='list.tejiaprice' value='0'>
+	               			<span  class="lt ddzx-jk">￥{$list.tejiaprice}</span>
+	               			<s class="rjg">¥ {$list.price}</s>
+	               		<else />
+	               			<span  class="lt ddzx-jk">￥{$list.price}</span>
+	               		</neq>
+	               	<else />
+	               		<span  class="lt ddzx-jk">￥{$list.price}</span>
+	               	</in>
+                </div>
+            </div>
+           </a>
+        </div>
+        </volist>
+        
+    </div>
+
+</div>
+</block>

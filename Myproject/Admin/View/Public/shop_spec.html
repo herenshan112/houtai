@@ -1,0 +1,58 @@
+<div class="pu_wkj" id="secodiv">
+		<div class="seco_cont">
+        
+        	<div class="seco_title">
+            	<b>选择配件</b>
+                <span onClick="close_div('secodiv')">&nbsp;</span>
+            </div>
+            
+            <div class="seco_cont_cont">
+            	<div class="seco_cont_div">
+                	<div class="seco_condiv_title">
+                    	<a>查询</a>
+                        <input type="text" name="sousoxg" id="sousoxg" value="">
+                        <select name="sousuotype" id="sousuotype">
+                        	<option value="1">商品名称</option><!--
+                            <option value="2">关键字</option>
+                            <option value="3">全文模糊搜索</option>
+                            <option value="4">游戏编号</option>
+                            <option value="5">ID</option>-->
+                        </select>
+                        <span onClick="shopsousuo()">确认查询</span>
+                    </div>
+                    
+                    <div class="seco_list_div">
+                    	<div class="seco_list">
+                        	<ul id="shoplist">
+                            	
+                            </ul>
+                            <div class="page_div">
+                            	<label id="page_list"><a href=""><<</a><a href=""><</a><a href="">1</a><a href="">2</a><a href="">></a><a href="">>></a></label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                <div class="seco_cont_divs">
+                	<div class="seco_condiv_title"><b>已选择关联商品</b></div>
+                    <div class="seco_list_divs">
+                    	<div class="seco_list">
+                        	<ul id="codegmlist">
+                            	
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="seco_entery">
+                    <input type="hidden" name="gaetitle" id="gaetitle" value="">
+                    <input type="hidden" name="gamenum" id="gamenum" value="">
+                    	<input type="button" value="确定选择" onClick="choshopval('gaetitle','gamenum','shopxzlst')">
+                        <input type="button" value="取消选择" onClick="allqxshop()" class="hover">
+                    </div>
+                    
+                </div>
+            </div>
+        
+        </div>
+	</div>

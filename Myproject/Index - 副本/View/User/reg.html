@@ -1,0 +1,133 @@
+<extend name="Public:base" />
+
+<block name="title">注册</block>
+
+<block name="header">
+<header class="rol signout-header">
+    欢迎注册
+</header>
+</block>
+
+<block name="content">
+<div class="rol">
+    <div class="m-box">
+        <form action="__ACTION__" method="POST">
+        
+        <div class="rol sing-input-box1">
+            <div class="rol sign-input">
+                <input type="tel" name="phone" id="phone" placeholder="请输入手机号" maxlength="11" class="rol">
+            </div>
+            <div class="rol sign-input">
+                <input type="tel" name="varcode" id="varcode" placeholder="请输入验证码" class="rol" maxlength="6" autocomplete="off">
+                <button type="button" class="sign-yz" id="sendphonecode">获取验证码</button>
+            </div>
+            <div class="rol sign-input">
+                <input type="password" name="password" id="password" maxlength="16" placeholder="请输入密码" class="rol">
+            </div>
+            <div class="rol sign-input">
+                <input type="password" name="password2" id="password2" maxlength="16" placeholder="请确认密码" class="rol">
+            </div>
+        </div>
+        <div class="rol sing-input-box1" style="height: auto;border: none;">
+            <div class="rol sign-input" style="height:50px;line-height: 50px;border: none;font-size: 30px;">&nbsp;您关注的疾病问题是:</div>
+            <div class="rol sign-input" style="border: 1px solid #e7e7e7;height:101px;">
+                <input type="text" name="qa" id="qa" maxlength="20" placeholder="请填写疾病问题" class="rol">
+            </div>
+        </div>
+        <input type="hidden" name="reccode" value="{$reccode}">
+        <button type="submit" class="rol sign-submit" id="goreg">注册</button>
+        </form>
+        <a href="{:U('login')}" class="rol sign-font2">
+            登陆已有账号
+        </a>
+    </div>
+</div>
+<script>
+$("#goreg").on('click', function(e){
+    var password = $("#password").val();
+    var password2 = $("#password2").val();
+    var phone = $("#phone").val();
+    var varcode = $("#varcode").val();
+    var qa = $("#qa").val();
+    
+    var myreg = /^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+
+    if(!myreg.test(phone)) { 
+        alert('请输入有效的手机号码！'); 
+        $("#phone").focus();
+        return false; 
+    }
+
+    if(varcode.length != 6) {
+        alert('验证码为6位！');
+        $("#varcode").focus();
+        return false;
+    }
+
+    if(password.length < 6) {
+        alert('密码长度至少为6位！');
+        $("#password").focus();
+        return false;
+    }
+
+    if(password != password2) {
+        alert('两次密码输入不相同！');
+        $("#password2").focus();
+        return false;
+    }
+
+    if(qa.length < 1) {
+        alert('请填写疾病问题！');
+        $("#password").focus();
+        return false;
+    }
+
+    return true;
+});
+$("#sendphonecode").bind('click', function(e){
+    var phonenum = $("#phone").val();
+
+    var myreg = /^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+    if(!myreg.test(phonenum)) { 
+        alert('请输入有效的手机号码！'); 
+        $("#phone").focus();
+        return false; 
+    }
+
+    $.ajax({
+        url: '{:U('sendcode')}',
+        type: 'POST',
+        dataType: 'json',
+        data: {'phonenum': phonenum},
+    })
+    .done(function(data) {
+        if(data.code=='-1') {
+            alert(data.msg);
+            return false;
+        } else if(data.code=='1') {
+            alert(data.msg);
+            $("#sendphonecode").attr("disabled", "disabled");
+            $("#sendphonecode").timesend();
+        }
+    });
+});
+
+var timesec = 60;
+
+jQuery.fn.timesend=function(){
+    if(timesec==0) {
+        timesec = 60;
+        $("#sendphonecode").removeAttr("disabled");
+        $("#sendphonecode").text('获取验证码');
+    } else {
+        $("#sendphonecode").attr("disabled", "disabled");
+        $("#sendphonecode").text("重新获取("+timesec+")");
+        timesec--;
+        setTimeout(function() {
+            $("#sendphonecode").timesend();
+        },
+        1000)
+    }
+}
+</script>
+</block>

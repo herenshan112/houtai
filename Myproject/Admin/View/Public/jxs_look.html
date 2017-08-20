@@ -1,0 +1,192 @@
+<div class="pu_wkj" id="secodiv" style="display: none;">
+		<div class="seco_cont">
+        
+        	<div class="seco_title">
+            	<b>选择经销商</b>
+                <span onClick="close_div('secodiv')">&nbsp;</span>
+            </div>
+            
+            <div class="seco_cont_cont">
+            	<div class="seco_cont_div">
+                	<div class="seco_condiv_titlefb">
+                    	<a>渠道查询</a>
+                        <input type="text" name="sousoxg" id="sousoxg" value="" style="width: 250px;">
+                        <select name="sousuotype" id="sousuotype">
+                        	<option value="1">经销商帐号</option>
+                            <option value="2">经销商姓名</option><!--
+                            <option value="3">全文模糊搜索</option>
+                            <option value="4">游戏编号</option>
+                            <option value="5">ID</option>-->
+                        </select>
+                        <span onClick="lookqudaokl()">确认查询</span>
+                        <i>
+                        	<a>销售区域</a>
+	                        <select id="pro_list" name="provinces">
+	                        	<option value="-1">省</option>
+	                        	<volist name='prolist' id='prolist'>
+	                        		<option value="{$prolist.region_id}">{$prolist.region_name}</option>
+	                        	</volist>
+	                        </select>
+	                        <select id='city_list' name="city" style="display: none;">
+	                        	<option value="-1">市</option>
+	                        </select>
+	                        <select id="county_list" name="county" style="display: none;">
+	                        	<option value="-1">县</option>
+	                        </select>
+                        </i>
+                    </div>
+                    
+                    <div class="seco_list_divs">
+                    	<div class="seco_listjxs">
+                        	<ul id="shoplist">
+                            	
+                            </ul>
+                            <div class="page_div">
+                            	<label id="page_list"><a href=""><<</a><a href=""><</a><a href="">1</a><a href="">2</a><a href="">></a><a href="">>></a></label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                <div class="seco_cont_divs">
+                	<div class="seco_condiv_title"><b>已选择经销商</b></div>
+                    <div class="seco_list_divs">
+                    	<div class="seco_list">
+                        	<ul id="codegmlist">
+                            	
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="seco_entery">
+                    <input type="hidden" name="gaetitle" id="gaetitle" value="">
+                    <input type="hidden" name="gamenum" id="gamenum" value="">
+                    	<input type="button" value="确定选择" onClick="chousjxsval('gaetitle','gamenum','shopxzlst')">
+                        <input type="button" value="取消选择" onClick="allqxshop()" class="hover">
+                    </div>
+                    
+                </div>
+            </div>
+        
+        </div> 
+    
+</div>
+
+<div class="pu_wkj" id="taozhjgkj" style="display: none;">
+	<div class="tjkj_cont">
+		<div class="seco_title">
+            <b>商品调价</b><input type="hidden" name="ddnumbh" id="ddnumbh" value="" />
+            <span onClick="close_jxstj('taozhjgkj')">&nbsp;</span>
+        </div>
+        
+        <div class="tzjgshop_lst">
+        	<div class="tzjs_cont" id='jsxtjlistc'>
+        		
+        	
+        		
+        	</div>
+        </div>
+        
+	</div>
+</div>
+<script>
+$(function(e){
+	
+	//列出市级
+	$('#pro_list').bind('change',function(e){
+		var proval=this.value;
+		if(!$("#city_list").is(":hidden")){
+				$("#city_list").hide(100);
+			}
+			if(!$("#county_list").is(":hidden")){
+				$("#county_list").hide(100);
+			}
+			$('#city_list').empty();
+			$('#city_list').append('<option value="-1">请选择城市</option>');
+			
+			$('#county_list').empty();
+			$('#county_list').append('<option value="-1">请选择地区</option>');
+			
+		if(proval != '-1'){
+			$.ajax({
+				url:host+'/Admin/User/lookaddres',
+				type:'post',
+				data:{proval:proval},
+				dataType:'json',
+				beforeSend:function(xmldata){
+					$('#load_jz').removeClass();
+					$('#load_jz').addClass('icon-spinner icon-spin icon-large');
+					$('#load_jz').show();
+				},
+				success:function(data){
+					$('#load_jz').removeClass();
+					if(data.code == 1){
+						$('#city_list').empty();
+						$('#city_list').append('<option value="-1">请选择城市</option>');
+						var sumval=data.infor.sum;
+						var cont=data.infor.cont;
+						for(i=0;i<sumval;i++){
+							$('#city_list').append('<option value="'+cont[i].region_id+'">'+cont[i].region_name+'</option>');
+						}
+						$("#city_list").show(300);
+					}
+					
+				},
+				error:function(error){
+					$('#load_jz').removeClass();
+					$('#load_jz').addClass('icon-remove-sign');
+					document.getElementById('load_jz').style.color='#ff0000';
+				}
+			});
+		}
+	});
+	
+	
+	//列出县级
+	$('#city_list').bind('change',function(e){
+		var proval=this.value;
+		if(!$("#county_list").is(":hidden")){
+				$("#county_list").hide(100);
+			}
+			
+			$('#county_list').empty();
+			$('#county_list').append('<option value="-1">请选择地区</option>');
+		if(proval != '-1'){
+			$.ajax({
+				url:host+'/Admin/User/lookaddres',
+				type:'post',
+				data:{proval:proval},
+				dataType:'json',
+				beforeSend:function(xmldata){
+					$('#load_jz').removeClass();
+					$('#load_jz').addClass('icon-spinner icon-spin icon-large');
+					$('#load_jz').show();
+				},
+				success:function(data){
+					$('#load_jz').removeClass();
+					if(data.code == 1){
+						$('#county_list').empty();
+						$('#county_list').append('<option value="-1">请选择城市</option>');
+						var sumval=data.infor.sum;
+						var cont=data.infor.cont;
+						for(i=0;i<sumval;i++){
+							$('#county_list').append('<option value="'+cont[i].region_id+'">'+cont[i].region_name+'</option>');
+						}
+						$("#county_list").show(300);
+					}
+					
+				},
+				error:function(error){
+					$('#load_jz').removeClass();
+					$('#load_jz').addClass('icon-remove-sign');
+					document.getElementById('load_jz').style.color='#ff0000';
+				}
+			});
+		}
+	});
+	
+	
+	
+});
+</script>

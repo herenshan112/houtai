@@ -1,0 +1,25 @@
+<div class="pu_wkj" id="expordiv" style="display: none;">
+	<div class="tjkj_cont">
+		<div class="seco_title">
+            <b id="dctstitle">信息导出</b><input type="hidden" name="ddnumbh" id="ddnumbh" value="" />
+            <span onClick="close_xinxidac('expordiv')">&nbsp;</span>
+        </div>
+        
+        <div class="tzjgshop_lst">
+        	<div class="tzjs_cont_ll" id='jsxtjlistc'>
+        		
+        		<ul class="expor_div">
+        			<li id="jxszhdy"><label>经销商帐号：</label><input class="scinput" type="text" placeholder="请输入经销商帐号" name="jxsuser" name="jxsuser" value=""><em class="tisjo">留空默认导出全部经销商</em></li>
+        			<li><label>开始时间：</label><input type="text" class="scinput" name="begtimeks" id="begtimeks" placeholder="请输入开始日期" value="" onclick="JTC.setday()" /></li>
+        			<li><label>结束时间：</label><input type="text" class="scinput" name="endtimeks" id="endtimeks" placeholder="请输入结束日期" value="" onclick="JTC.setday()" /><em id="ertisky" class="jkhns"></li>
+        			<li style="color: #f00;"><label>&nbsp;</label>不选择开始结束时间的话，默认是全部时间的内容！</li>
+        		</ul>
+        		<div>
+        			<input class="button_expor" type="button" value="确定导出" onclick="exporxxcl()" />
+        		</div>
+        		<input type="hidden" name="exportype" id="exportype" value="" />
+        	</div>
+        </div>
+        
+	</div>
+</div>

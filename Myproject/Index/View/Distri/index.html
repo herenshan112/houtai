@@ -1,0 +1,64 @@
+<extend name="Public:head_myus" />
+
+<block name="title">经销商中心</block>
+
+<block name="header">
+
+</block>
+
+<block name="content">
+<div class="jldb rol">
+    <div class="rol jxs-tx">
+        <div class="m-box">
+            <div class="lt jxs-tx-txt">头像</div>
+            <div class="gt">
+                <a href="{:U('Distri/mycont')}"><img src="{$list.headpic}" alt="{$list.myname}"/></a>
+            </div>
+        </div>
+    </div>
+    <div class="rol jxs-tx jxs-cpzx">
+    	<a href="{:U('Mall/index')}">
+        <div class="m-box">
+            <span class="jsx-cpzx1"></span>产品中心
+        </div>
+        </a>
+    </div>
+    <div class="rol jxs-tx jxs-cpzx">
+    	<a href="{:U('Distri/myorder')}">
+        <div class="m-box">
+            <span class="jsx-cpzx2"></span>订单中心
+        </div>
+        </a>
+    </div>
+    <div class="rol jxs-tx jxs-cpzx">
+    	<a href="{:U('Distri/myciwu')}">
+        <div class="m-box">
+            <span class="jsx-cpzx3"></span>账务中心
+        </div>
+       </a>
+    </div>
+    <div class="rol jxs-tx jxs-cpzx">
+    	<a href="{:U('Distri/mynews')}">
+        <div class="m-box">
+            <span class="jsx-cpzx4"></span>信息中心
+        </div>
+       </a>
+    </div>
+    <div class="rol jxs-tx jxs-cpzx">
+    	<a href="{:U('Distri/myorcode')}">
+        <div class="m-box">
+            <span class="jsx-cpzx5"></span>我的二维码
+        </div>
+       </a>
+    </div>
+    <div class="rol jxs-tx jxs-cpzx">
+    	<a href="{:U('UserInfo/exitlogin')}">
+        <div class="m-box">
+            <span class="wdgwc6"></span>退出登陆
+        </div>
+       </a>
+    </div>
+</div>
+<!--底部-->
+{:W('Base/showFooter')}
+</block>

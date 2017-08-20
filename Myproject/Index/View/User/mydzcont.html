@@ -1,0 +1,172 @@
+<extend name="Public:head" />
+
+<block name="title">添加收货地址</block>
+
+<block name="header">
+
+</block>
+
+<block name="content">
+<form action="__ACTION__/action/{$action}/typeid/{$typeid}" method="post" name="myform">
+
+<div class="rol cw-tit fhfs">
+    <div class="m-box">
+        收货地址
+    </div>
+</div>
+<div class="rol">
+    <div class="wlfh-con">
+    	<div class="bz-f1-tit wlfh"></div>
+        <div><span>收货人姓名：</span><input type="text" name="nameshr" id="nameshr" value="" placeholder="请输入收货人姓名" class="shdzcls" /></div>
+        <div><span>联系电话：</span><input type="text" name="shrtel" id="shrtel" value="" placeholder="请输入收货人电话" class="shdzcls" /></div>
+        <div><span>所在省份：</span>
+        	<select name="addsheng" class="shdzclsele" id="pro_list">
+        		<option value="-1">请选择省份</option>
+        		<volist name="prolist" id="prolist">
+					<option value="{$prolist.region_id}">{$prolist.region_name}</option>
+				</volist>
+        	</select>
+        	<select name="addshi" class="shdzclsele" id='city_list' style="display: none;">
+        		<option value="-1">请选择城市</option>
+        	</select>
+        	<select name="addxian" class="shdzclsele" id="county_list" style="display: none;">
+        		<option value="-1">请选择县区</option>
+        	</select>
+        </div>
+        <div><span>补充地址：</span><input type="text" name="bucongdizhi" id="shrtel" value="" placeholder="请输入补充地址" class="shdzcls" /></div>
+        <div><span>设为默认：</span><input type="checkbox" name="setmoren" id="setmoren" value="1" class="check2"  />是</div>
+    </div>
+</div>
+<div class="rol">
+    <div class="m-box">
+        <button class="qr btn">确认</button>
+    </div>
+</div>
+</form>
+<script type="text/javascript">
+var kaiguan=0;
+
+$(function(e){
+	
+	//列出市级
+	$('#pro_list').bind('change',function(e){
+		var proval=this.value;
+		if(!$("#city_list").is(":hidden")){
+				$("#city_list").hide(100);
+			}
+			if(!$("#county_list").is(":hidden")){
+				$("#county_list").hide(100);
+			}
+			$('#city_list').empty();
+			$('#city_list').append('<option value="-1">请选择城市</option>');
+			
+			$('#county_list').empty();
+			$('#county_list').append('<option value="-1">请选择地区</option>');
+			
+		if(proval != '-1'){
+			$.ajax({
+				url:host+'/Admin/User/lookaddres',
+				type:'post',
+				data:{proval:proval},
+				dataType:'json',
+				beforeSend:function(xmldata){
+					$('#load_jz').removeClass();
+					$('#load_jz').addClass('icon-spinner icon-spin icon-large');
+					$('#load_jz').show();
+				},
+				success:function(data){
+					$('#load_jz').removeClass();
+					if(data.code == 1){
+						$('#city_list').empty();
+						$('#city_list').append('<option value="-1">请选择城市</option>');
+						var sumval=data.infor.sum;
+						var cont=data.infor.cont;
+						for(i=0;i<sumval;i++){
+							$('#city_list').append('<option value="'+cont[i].region_id+'">'+cont[i].region_name+'</option>');
+						}
+						$("#city_list").show(300);
+					}
+					
+				},
+				error:function(error){
+					$('#load_jz').removeClass();
+					$('#load_jz').addClass('icon-remove-sign');
+					document.getElementById('load_jz').style.color='#ff0000';
+				}
+			});
+		}
+	});
+	
+	
+	//列出县级
+	$('#city_list').bind('change',function(e){
+		var proval=this.value;
+		if(!$("#county_list").is(":hidden")){
+				$("#county_list").hide(100);
+			}
+			
+			$('#county_list').empty();
+			$('#county_list').append('<option value="-1">请选择地区</option>');
+		if(proval != '-1'){
+			$.ajax({
+				url:host+'/Admin/User/lookaddres',
+				type:'post',
+				data:{proval:proval},
+				dataType:'json',
+				beforeSend:function(xmldata){
+					$('#load_jz').removeClass();
+					$('#load_jz').addClass('icon-spinner icon-spin icon-large');
+					$('#load_jz').show();
+				},
+				success:function(data){
+					$('#load_jz').removeClass();
+					if(data.code == 1){
+						$('#county_list').empty();
+						$('#county_list').append('<option value="-1">请选择城市</option>');
+						var sumval=data.infor.sum;
+						var cont=data.infor.cont;
+						for(i=0;i<sumval;i++){
+							$('#county_list').append('<option value="'+cont[i].region_id+'">'+cont[i].region_name+'</option>');
+						}
+						$("#county_list").show(300);
+					}
+					
+				},
+				error:function(error){
+					$('#load_jz').removeClass();
+					$('#load_jz').addClass('icon-remove-sign');
+					document.getElementById('load_jz').style.color='#ff0000';
+				}
+			});
+		}
+	});
+	
+	$(".btn").click(function(e) {
+		if($('#nameshr').val()==''){
+			alert('请输入收货人姓名');
+			return false;
+		}
+		if($('#shrtel').val()==''){
+			alert('请输入收货人电话');
+			return false;
+		}
+		if($('#pro_list').val()== -1){
+			alert('请选择收货省份');
+			return false;
+		}
+		if($('#city_list').val()== -1){
+			alert('请选择收货人所在市');
+			return false;
+		}
+		if($('#county_list').val()== -1){
+			alert('请选择收货人所在县');
+			return false;
+		}
+		$("form[name='myform']").submit();
+	});
+	
+
+
+});
+</script>
+</block>

@@ -1,0 +1,34 @@
+<extend name="Public:base" />
+
+<block name="title">推荐</block>
+
+<block name="header">
+<header class="rol place-header">
+    <div class="m-box">
+    	<a href="javascript:history.go(-1);" class="lt">
+            <img src="__PUBLIC__/wx/img/return-1.png" class="pro-return-1" alt="">
+        </a>
+        <div class="lt pro-header-font">个人推广二维码</div>
+        <a href="{:U('Index/index')}" class="gt">
+            <img src="__PUBLIC__/wx/img/home-1.png" class="pro-home-1" alt="">
+        </a>
+    </div>
+</header>
+</block>
+
+<block name="content">
+<div class="rol two-rol">
+    <div class="two-ro-box">
+        <div class="two-ro-box1">
+            <img src="{$user_row.headpic}" alt="" class="rol" onerror="this.src='__PUBLIC__/wx/img/nohead.jpg'">
+        </div>
+    </div>
+</div>
+<div class="rol center two-font1">昵称：{$user_row.nickname}</div>
+<div class="rol center two-font1">账号：{$user_row.phone}</div>
+<div class="rol center two-erwei">
+    <img src="{:U('Index/qrcode', array('code'=>$reccode, 'op'=>'1'))}" alt="">
+</div>
+<div class="rol center two-font2">快来注册吧</div>
+{:W('Base/showFooter')}
+</block>

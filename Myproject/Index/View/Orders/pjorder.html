@@ -1,0 +1,77 @@
+<extend name="Public:base" />
+
+<block name="title">订单评价</block>
+
+<block name="header">
+<header class="rol place-header">
+    <div class="m-box">
+        <a href="javascript:history.go(-1);" class="lt">
+            <img src="__PUBLIC__/wx/img/return-1.png" class="pro-return-1" alt="">
+        </a>
+        <div class="lt pro-header-font">订单评价</div>
+        <a href="{:U('Index/index')}" class="gt">
+            <img src="__PUBLIC__/wx/img/home-1.png" class="pro-home-1" alt="">
+        </a>
+    </div>
+</header>
+</block>
+
+<block name="content">
+<form action="__ACTION__" method="POST">
+
+<foreach name="order_buy_rows" item="order_buy_item">
+<div class="rol">
+    <div class="m-box">
+        <div class="rol">
+            <input type="hidden" name="id[]" value="{$order_buy_item.productid}">
+            <div class="lt pj-1">
+                <img src="{$order_buy_item.titlepic}" style="max-width: 72px;max-height: 72px;" class="lt" alt="">
+            </div>
+            <div class="lt pj-font1" style="width: auto;">{$order_buy_item.title}</div>
+            <div style="float: none;clear: both;">
+            <!--div class="lt pj-star">
+                <img src="__PUBLIC__/wx/img/star-off.png" class="lt star" data-star="1" alt="">
+                <img src="__PUBLIC__/wx/img/star-off.png" class="lt star" data-star="2" alt="">
+                <img src="__PUBLIC__/wx/img/star-off.png" class="lt star" data-star="3" alt="">
+                <img src="__PUBLIC__/wx/img/star-off.png" class="lt star" data-star="4" alt="">
+                <img src="__PUBLIC__/wx/img/star-off.png" class="lt star" data-star="5" alt="">
+            </div>
+            <input type="hidden" name="score[]" value="5"-->
+            </div>
+        </div>
+        <div class="rol pj-rol1">
+            <textarea class="pj-input" name="content[]" rows="2" style="height: auto" placeholder="请输入评价内容..."></textarea>
+        </div>
+    </div>
+</div>
+</foreach>
+
+<!--div class="rol pj-foot-rol">
+    <div class="m-box">
+        <div class="lt pj-lt3">物流服务</div>
+        <div class="lt pj-star pj-star3">
+            <img src="__PUBLIC__/wx/img/star-off.png" class="lt star" data-star="1" alt="">
+            <img src="__PUBLIC__/wx/img/star-off.png" class="lt star" data-star="2" alt="">
+            <img src="__PUBLIC__/wx/img/star-off.png" class="lt star" data-star="3" alt="">
+            <img src="__PUBLIC__/wx/img/star-off.png" class="lt star" data-star="4" alt="">
+            <img src="__PUBLIC__/wx/img/star-off.png" class="lt star" data-star="5" alt="">
+        </div>
+    </div>
+</div-->
+<input type="hidden" name="orderid" value="{$order_row.id}">
+<button type="submit" class="rol place-1-f-btn" style="border: none; position: fixed; bottom: 0; left: 0">提交评价</button>
+</form>
+
+<script>
+$(function(){
+    $(".star").click(function(event) {
+        var star_idx = $(this).data('star');
+        var p_node = $(this).parent('.pj-star');
+        p_node.children('.star:lt('+star_idx+')').attr('src', '__PUBLIC__/wx/img/star-on.png');
+        p_node.children('.star:gt('+(star_idx-1)+')').attr('src', '__PUBLIC__/wx/img/star-off.png');
+
+        p_node.next('input').val(star_idx);
+    });
+});
+</script>
+</block>

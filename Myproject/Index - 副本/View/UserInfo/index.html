@@ -1,0 +1,113 @@
+<extend name="Public:base" />
+
+<block name="title">个人中心</block>
+
+<block name="header">
+<header class="rol per-header">
+    <div class="rol per-rol1">
+        <div class="two-ro-box">
+            <div class="two-ro-box1">
+                <img src="{$user_row.headpic}" alt="" class="rol" onerror="this.src='__PUBLIC__/wx/img/nohead.jpg'">
+            </div>
+        </div>
+    </div>
+    <div class="rol center per-font1">{$user_row.nickname}</div>
+</header>
+</block>
+
+<block name="content">
+<div class="rol per-box">
+    <div class="m-box">
+        <div class="rol per-rol2">
+            <div class="lt per-font2">基本资料</div>
+        </div>
+        <div class="rol per-rol2">
+            <div class="lt per-font2">手机</div>
+            <div class="lt per-font3">{$user_row.phone}</div>
+        </div>
+        <div class="rol per-rol2">
+            <div class="lt per-font2">城市</div>
+            <div class="lt per-font3">{$user_row.city}</div>
+        </div>
+        <div class="rol per-rol2">
+            <div class="lt per-font2">密码</div>
+            <div class="lt per-font3">******</div>
+            <a href="{:U('modpass')}" class="gt per-i1">修改密码</a>
+        </div>
+        <!--div class="rol per-rol2">
+            <div class="lt per-font2">地址管理</div>
+            <a href="{:U('Addr/index')}" class="gt per-i1">管理地址</a>
+        </div-->
+    </div>
+</div>
+<div class="rol per-box">
+    <div class="m-box">
+        <div class="rol per-rol2">
+            <div class="lt per-font2">订单中心</div>
+        </div>
+        <a href="{:U('Orders/index')}" class="rol per-rol2">
+            <div class="lt per-font2">订单状态</div>
+            <img src="__PUBLIC__/wx/img/place-i1.png" alt="" class="gt place-i1">
+        </a>
+    </div>
+</div>
+
+<!-- 医生不显示 -->
+<if condition="$user_row['cateid'] eq 1">
+<div class="rol per-box">
+    <div class="m-box">
+        <div class="rol per-rol2">
+            <div class="lt per-font2">会员积分管理</div>
+        </div>
+        <a href="{:U('jifen')}" class="rol per-rol2">
+            <div class="lt per-font2">积分详情</div>
+            <img src="__PUBLIC__/wx/img/place-i1.png" alt="" class="gt place-i1">
+        </a>
+    </div>
+</div>
+<else />
+<div class="rol per-box">
+    <div class="m-box">
+        <div class="rol per-rol2">
+            <div class="lt per-font2">推荐购买管理</div>
+        </div>
+        <a href="{:U('buydetail')}" class="rol per-rol2">
+            <div class="lt per-font2">购买详情</div>
+            <img src="__PUBLIC__/wx/img/place-i1.png" alt="" class="gt place-i1">
+        </a>
+    </div>
+</div>
+</if>
+
+<div class="rol per-box">
+    <div class="m-box">
+        <div class="rol per-rol2">
+            <div class="lt per-font2">推荐<if condition="$user_row['cateid'] eq 1">好友<else />会员</if></div>
+        </div>
+        <a href="{:U('tjdetail')}" class="rol per-rol2">
+            <div class="lt per-font2">推荐详情</div>
+            <img src="__PUBLIC__/wx/img/place-i1.png" alt="" class="gt place-i1">
+        </a>
+        <a href="{:U('tuijian')}" class="rol per-rol2">
+            <div class="lt per-font2"><if condition="$user_row['cateid'] eq 1">个人<else />会员</if>推广二维码</div>
+            <img src="__PUBLIC__/wx/img/place-i1.png" alt="" class="gt place-i1">
+        </a>
+    </div>
+</div>
+
+<a href="{:U('User/logout')}" class="rol" style="display: block;width: 90%;margin-left: 5%;text-align: center;background: #FF6A6A; color: #fff; height: 80px; line-height: 80px; border-radius: 5px; font-size: 36px;">安全退出</a>
+
+{:W('Base/showFooter')}
+
+<?php if(substr($user_row['headpic'],0,4)=='http'){ ?>
+<script>
+$.ajax({
+    url: '{:U("Index/headimg")}',
+    type: 'GET',
+    dataType: 'html',
+})
+.done(function() {
+});
+</script>
+<?php } ?>
+</block>

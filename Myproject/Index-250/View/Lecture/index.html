@@ -1,0 +1,71 @@
+<extend name="Public:base" />
+
+<block name="title">健康讲堂</block>
+
+<block name="header"></block>
+
+<block name="content">
+<style>
+.health-rol{
+    height:110px;
+    border-bottom:1px solid #5b5b5b;
+    font-size:34px;
+    color:#666666;
+}
+.health-rol p {
+    margin: 0;
+    line-height:60px;
+}
+.health-rol p.p2 {
+    color: #999;
+    line-height:40px;
+    font-size: 28px;
+}
+.health-rol .i-right {
+    margin-top: 30px;
+}
+</style>
+<div class="rol health-header">
+    <img src="__PUBLIC__/wx/img/health.png" alt="" class="rol">
+</div>
+<!--div class="rol">
+    <div class="m-box">
+        <a href="{:U('news')}" class="lt health-box">
+            <div class="rol center health-img">
+                <img src="__PUBLIC__/wx/img/health-1.png" alt="">
+            </div>
+            <div class="rol health-font">健康常识</div>
+        </a>
+        <a href="{:U('movie')}" class="lt health-box">
+            <div class="rol center health-img">
+                <img src="__PUBLIC__/wx/img/health-2.png" alt="">
+            </div>
+            <div class="rol health-font">视频中心</div>
+        </a>
+        <a href="{:U('download')}" class="lt health-box">
+            <div class="rol center health-img">
+                <img src="__PUBLIC__/wx/img/health-3.png" alt="">
+            </div>
+            <div class="rol health-font">下载中心</div>
+        </a>
+        <a href="{:U('Message/index')}" class="lt health-box">
+            <div class="rol center health-img">
+                <img src="__PUBLIC__/wx/img/health-4.png" alt="">
+            </div>
+            <div class="rol health-font">在线留言</div>
+        </a>
+    </div>
+</div-->
+<foreach name="cate_lists" item="cate_item">
+<a href="{:U('news', array('pid'=>$cate_item['id']))}" class="rol health-rol">
+    <div class="m-box">
+        <div class="lt"><p>{$cate_item.title}</p><p class="p2">({$cate_item.smalltext})</p></div>
+        <div class="gt i-right">
+            <img src="__PUBLIC__/wx/img/i-right.png" alt="">
+        </div>
+    </div>
+</a>
+</foreach>
+
+{:W('Base/showFooter')}
+</block>

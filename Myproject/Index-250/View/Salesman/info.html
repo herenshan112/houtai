@@ -1,0 +1,89 @@
+<extend name="Public:base" />
+
+<block name="title">个人中心</block>
+
+<block name="header">
+<header class="rol per-header">
+    <div class="rol per-rol1">
+        <div class="two-ro-box">
+            <div class="two-ro-box1">
+                <img src="{$sales_row.headpic}" alt="" class="rol" onerror="this.src='__PUBLIC__/wx/img/nohead.jpg'">
+            </div>
+        </div>
+    </div>
+    <div class="rol center per-font1">{$sales_row.nickname}</div>
+</header>
+</block>
+
+<block name="content">
+<div class="rol per-box">
+    <div class="m-box">
+        <div class="rol per-rol2">
+            <div class="lt per-font2">基本资料</div>
+        </div>
+        <div class="rol per-rol2">
+            <div class="lt per-font2">手机</div>
+            <div class="lt per-font3">{$sales_row.phone}</div>
+        </div>
+        <div class="rol per-rol2">
+            <div class="lt per-font2">城市</div>
+            <div class="lt per-font3">{$sales_row.city}</div>
+        </div>
+        <div class="rol per-rol2">
+            <div class="lt per-font2">行业</div>
+            <div class="lt per-font3">{$sales_row.jobs}</div>
+        </div>
+        <!--div class="rol per-rol2">
+            <div class="lt per-font2">地址管理</div>
+            <a href="{:U('Addr/index')}" class="gt per-i1">管理地址</a>
+        </div-->
+    </div>
+</div>
+
+<div class="rol per-box">
+    <div class="m-box">
+        <div class="rol per-rol2">
+            <div class="lt per-font2">推荐购买</div>
+        </div>
+        <a href="{:U('buydetail')}" class="rol per-rol2">
+            <div class="lt per-font2">购买详情</div>
+            <img src="__PUBLIC__/wx/img/place-i1.png" alt="" class="gt place-i1">
+        </a>
+    </div>
+</div>
+
+<div class="rol per-box">
+    <div class="m-box">
+        <div class="rol per-rol2">
+            <div class="lt per-font2">医生推荐</div>
+        </div>
+        <a href="{:U('tjdetail', array('op'=>'2'))}" class="rol per-rol2">
+            <div class="lt per-font2">医生推荐详情</div>
+            <img src="__PUBLIC__/wx/img/place-i1.png" alt="" class="gt place-i1">
+        </a>
+        <a href="{:U('tuijian', array('op'=>'2'))}" class="rol per-rol2">
+            <div class="lt per-font2">医生推广二维码</div>
+            <img src="__PUBLIC__/wx/img/place-i1.png" alt="" class="gt place-i1">
+        </a>
+    </div>
+</div>
+
+<div class="rol per-box">
+    <div class="m-box">
+        <div class="rol per-rol2">
+            <div class="lt per-font2">个人推荐</div>
+        </div>
+        <a href="{:U('tjdetail', array('op'=>'1'))}" class="rol per-rol2">
+            <div class="lt per-font2">个人推荐详情</div>
+            <img src="__PUBLIC__/wx/img/place-i1.png" alt="" class="gt place-i1">
+        </a>
+        <a href="{:U('tuijian', array('op'=>'1'))}" class="rol per-rol2">
+            <div class="lt per-font2">个人推广二维码</div>
+            <img src="__PUBLIC__/wx/img/place-i1.png" alt="" class="gt place-i1">
+        </a>
+    </div>
+</div>
+
+<a href="{:U('logout')}" class="rol" style="display: block;width: 90%;margin-left: 5%;text-align: center;background: #FF6A6A; color: #fff; height: 80px; line-height: 80px; border-radius: 5px; font-size: 36px;">安全退出</a>
+
+</block>

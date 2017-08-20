@@ -1,0 +1,22 @@
+<extend name="Public:head" />
+
+<block name="title">新闻中心</block>
+
+<block name="content">
+
+
+<foreach name="news_cate" item="news_cate_item">
+
+<foreach name="news_cate_item['news_rows']" key="news_key" item="news_item">
+<a class="new-list" href="{:U('News/detail', array('id'=>$news_item['id']))}">
+    <div class="m-box">
+        <div class="new-list-tit">{$news_item.title}</div>
+        <div class="new-list-con">{$news_item.smalltext}</div>
+        <img src="{$news_item.titlepic}" alt=""/>
+    </div>
+</a>
+</foreach>	
+
+</foreach>
+{:W('Base/showFooter')}
+</block>

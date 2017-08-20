@@ -1,0 +1,40 @@
+<extend name="Public:head" />
+
+<block name="title">搜索</block>
+
+<block name="header"></block>
+
+<block name="content">
+<div class="rol ss-con">
+    <div class="rol sc-pro-top">
+    	<form method="post" action="{:U('Message/sousuo')}" name="ssform">
+        <input class="sc-pro-ss-txt" type="submit" value="搜索"/>
+        <div class="cp-ss ss-list">
+            <input class="sc-pro-ss-inp" type="search"/>
+            <input class="sc-pro-txt ss" type="text" placeholder="请输入您要搜索的商品" name="ssgjc" />
+        </div>
+        </form>
+    </div>
+    <div class="rol djss-box">
+        <div class="djss">大家都在搜</div>
+        <div class="rol djss-list">
+        	<volist name='djdzs' id='djdzs'>
+            <a href="{:U('Message/sousuo',array('ssgjc'=>$djdzs['ss_title']))}"><span>{$djdzs.ss_title}</span></a>
+           </volist>
+        </div>
+    </div>
+    <div class="rol lsss-list">
+        <div class="m-box">
+        	<volist name='wdls' id='wdls'>
+            <a href="{:U('Message/sousuo',array('ssgjc'=>$wdls['ss_title']))}"><div class="lsss">{$wdls.ss_title}</div></a>
+           </volist>
+        </div>
+    </div>
+    <div class="rol">
+        <div class="qk ">
+            <a href="{:U('Message/qcsousuo')}"><span></span><input class="qk-txt" type="submit" value="清空历史搜索"/></a>
+        </div>
+
+    </div>
+</div>
+</block>

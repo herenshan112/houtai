@@ -1,0 +1,66 @@
+<extend name="Public:head" />
+
+<block name="title">我的收货地址</block>
+
+<block name="header">
+
+</block>
+
+<block name="content">
+<div class="rol whdz-box">
+	<volist name='mymrads' id='mymrads'>
+   <div class="m-box">
+   		<neq name="ordnum" value="">
+   			<a href="{:U('Orders/jiesuan',array('ordnum'=>$ordnum,'addid'=>$mymrads['id']))}">
+   		<else />
+   			<a href="{:U('UserInfo/index')}">
+   		</neq>
+   		
+       <div class="whdz-con">
+           <div class="whdz-nam">{$mymrads.name}     {$mymrads.shtel|telyincang}</div>
+           <div class="whdz-adr">{$mymrads.sheng|lookdiziname}  {$mymrads.shi|lookdiziname}  {$mymrads.xian|lookdiziname}  {$mymrads.addresval}</div>
+       </div>
+       </a>
+       <div class="whdz-dz rol">
+           <div class="lt whdz-mrdz"><input name="morensz" class="check2" type="checkbox" value="{$mymrads.id}" <eq name='mymrads.setmr' value='1'>checked</eq> />默认地址</div>
+           <div class="gt">
+              <a href="{:U('User/mydizhi',array('action'=>'eite','id'=>$mymrads['id'],'ordnum'=>$ordnum))}"><div class="lt whdz-bj"> <span></span><b>编辑</b></div></a>
+               <a href="{:U('User/mydizhi',array('action'=>'delt','id'=>$mymrads['id'],'ordnum'=>$ordnum))}"><div class="lt whdz-sc"><span></span> <b>删除</b></div></a>
+           </div>
+       </div>
+   </div>
+   	</volist>
+</div>
+<div class="rol">
+   <div class="m-box">
+      <a href="{:U('User/mydizhi',array('action'=>'add','ordnum'=>$ordnum))}"><button class="whdz-xjdz">+新建地址</button></a>
+   </div>
+</div>
+<script type="text/javascript">
+        $(function () {
+            var allBox = $(":checkbox");
+            allBox.click(function () {
+            	
+                allBox.removeAttr("checked");
+                $(this).attr("checked", "checked");
+				//alert($(this).val())
+				var dzid=$(this).val();
+                $.ajax({
+                	url:host+'/Index/User/szmr',
+                	type:'post',
+                	data:{id:dzid,uid:{$uscont.id}},
+                	dataType:'json',
+                	success:function(data){
+                		//if(dat)
+                	},
+                	error:function(){
+                		
+                	},
+                });
+                
+            });
+        });
+        
+        
+</script>
+</block>

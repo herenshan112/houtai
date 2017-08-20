@@ -1,0 +1,39 @@
+<extend name="Public:head_myus" />
+
+<block name="title">经销商中心</block>
+
+<block name="header">
+
+</block>
+
+<block name="content">
+<div class="rol xx-con">
+   <div class="rol xxzx-nav">
+       <div class="m-box">
+           <a <eq name="tyid" value="8"> class="xx-nav-act" </eq> href="{:U('Distri/mynews')}">总部新闻</a>
+           <a <eq name="tyid" value="9"> class="xx-nav-act" </eq> href="{:U('Distri/mynews',array('tyid'=>9))}">最新活动</a>
+           <a <eq name="tyid" value="29"> class="xx-nav-act" </eq> href="{:U('Distri/mynews',array('tyid'=>29))}">代理政策</a>
+       </div>
+   </div>
+   <div class="rol">
+       <div id="zbxw">
+       		<volist name="list" id="list">
+           <a class="xx-list" href="{:U('News/detail', array('id'=>$list['id']))}">
+               <div class="m-box">
+                   <img src="{$list.titlepic}" alt="{$list.title}"/>
+                   <div class="gt xx-list-gt">
+                       <div class="xx-list-gt-tit" style="overflow: hidden; height: 75px;">{$list.smalltext}</div>
+                       <div class="xx-list-gt-data">{$list.addtime}</div>
+                   </div>
+               </div>
+           </a>
+           </volist>
+           
+       </div>
+       
+       
+   </div>
+</div>
+<!--底部-->
+
+</block>

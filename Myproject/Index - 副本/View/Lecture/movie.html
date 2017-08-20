@@ -1,0 +1,34 @@
+<extend name="Public:base" />
+
+<block name="title">视频中心</block>
+
+<block name="header"></block>
+
+<block name="content">
+<div class="rol banner-box">
+    <img src="__PUBLIC__/wx/img/banner.jpg" alt="">
+</div>
+<div class="rol index-page1">
+    <div class="m-box">
+        <div class="rol title1">VIDEO CENTER</div>
+        <div class="rol center">
+            <div class="title2">视频中心</div>
+        </div>
+    </div>
+</div>
+<foreach name="news_rows" key="news_key" item="news_item">
+<div class="rol">
+    <a href="{:U('moviedetail', array('id'=>$news_item['id']))}"><img src="{$news_item.titlepic}" alt="{$news_item.title}" class="rol"></a>
+    <div class="rol video-rol">
+        <div class="m-box">
+            <a href="{:U('moviedetail', array('id'=>$news_item['id']))}" class="rol video-font2">{$news_item.title}</a>
+            <div class="rol video-font3">
+                <span class="lt video-time"><?php echo date('m-d', strtotime($news_item['addtime'])); ?></span>
+            </div>
+        </div>
+    </div>
+</div>
+</foreach>
+
+{:W('Base/showFooter')}
+</block>

@@ -1,0 +1,66 @@
+<extend name="Public:base" />
+
+<block name="title">产品中心</block>
+
+<block name="header">
+<header class="header rol">
+    <div class="m-box">
+        <a href="{:U('Index/index')}" class="logo lt">
+            <img src="__PUBLIC__/wx/img/logo.png" alt="">
+        </a>
+        <div class="gt input-box">
+            <form action="__ACTION__" method="get">
+            <input type="text" class="search lt" name="keywords" placeholder="搜索" value="{$Think.get.keywords}">
+            <div class="header-submit-box lt">
+                <img src="__PUBLIC__/wx/img/header-search.png" class="search-icon" alt="">
+                <input type="submit" class="header-submit lt" value=" ">
+            </div>
+            </form>
+        </div>
+    </div>
+</header>
+</block>
+
+<block name="content">
+<div class="rol banner-box">
+    <img src="__PUBLIC__/wx/img/banner.jpg" alt="">
+</div>
+<div class="rol pro-box">
+    <div class="m-box">
+        <div class="rol title1">PRODUCT CENTER</div>
+        <div class="rol center">
+            <div class="title2">产品中心</div>
+        </div>
+    </div>
+</div>
+<foreach name="product_rows" item="product_item">
+<a href="{:U('product', array('id'=>$product_item['id']))}" class="rol">
+    <img src="{$product_item.titlepic}" alt="" class="rol pro-img1">
+</a>
+<div class="rol pro-font-rol">
+    <div class="m-box">
+        <div class="rol pro-title">{$product_item.title}</div>
+        <div class="rol pro-font1">{$product_item.smalltext}</div>
+        <div class="rol pro-f-box">
+            <span class="lt pro-money">￥{$product_item.price}</span>
+            <span class="lt pro-num">已售出：<?php echo $product_item['salenum']+$product_item['vsalenum'];?>件</span>
+            <a href="{:U('product', array('id'=>$product_item['id']))}" class="gt pro-btn">查看详情</a>
+        </div>
+    </div>
+</div>
+</foreach>
+
+{:W('Base/showFooter')}
+
+<div class="index-fixed-box">
+    <a href="{:U('Index/recommend')}" class="fixed-btn rol">
+        <img src="__PUBLIC__/wx/img/fixed-1.png" alt="">
+    </a>
+    <a href="{:U('Orders/shopcart')}" class="fixed-btn rol">
+        <img src="__PUBLIC__/wx/img/fixed-2.png" alt="">
+    </a>
+    <a href="#" class="fixed-btn rol">
+        <img src="__PUBLIC__/wx/img/fixed-3.png" alt="">
+    </a>
+</div>
+</block>

@@ -1,0 +1,50 @@
+<extend name="Public:main" />
+
+<block name="cssjs">
+
+</block>
+
+<body>
+
+<block name="area">
+
+	<li><a href="#">添加</a></li>
+
+</block>
+
+<block name="content">
+
+    
+
+    <div class="formbody">
+
+    
+
+		<div class="formtitle"><span>添加</span></div>
+
+		
+
+		<form action="__ACTION__?id={$list.id}" method="post" enctype="multipart/form-data" name="myform">
+		<ul class="forminfo">
+
+		<li><label>标题:</label><input name="title" class="dfinput" type="text" value="{$list.title}" /><i></i></li>
+		
+		<li><label>简介:</label><textarea name="smalltext" class="textinput" style="height: 80px">{$list.smalltxt}</textarea><i></i></li>
+		<li><label>内容:</label><textarea id="pagecontent" name="content" rows="20" cols="100" style="width:65%;height:300px;visibility:hidden;">{$list.cont}</textarea></li>
+		
+		<li><label>&nbsp;</label><input type="submit" class="btn" value="确认添加" /></li>
+		</ul>
+		</form>
+
+    
+    </div>
+
+
+</block>
+
+</body>
+
+
+
+</html>
+

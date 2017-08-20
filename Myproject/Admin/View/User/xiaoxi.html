@@ -1,0 +1,28 @@
+<extend name="Public:main" />
+
+<block name="cssjs"></block>
+
+
+<block name="area"><li><a href="#">发布消息</a></li></block>
+
+<block name="content">
+    <div class="formbody">
+		<div class="formtitle"><span>发布消息</span></div>
+		<form action="__ACTION__?action={$action}&id={$id}" method="post" enctype="multipart/form-data" name="myform">
+		<ul class="forminfo">
+
+		<input type="hidden" name="jsrid" value="{$fbid}" />
+		
+		<li <neq name='fbid' value='0'>style='display:none'</neq>><label>会员帐号:</label><input name="uszhanh" class="dfinput" type="text"><i>不填写内容，默认发送给全部经销商</i></li>
+		
+		
+		<li><label>消息标题:</label><input name="title" class="dfinput" type="text" value="{$list.title}"><i></i></li>
+
+		<li><label>消息内容:</label><textarea name="smalltext" class="textinput" style="height: 80px">{$list.contval}</textarea><i></i></li>
+
+		<li><label>&nbsp;</label><input type="submit" class="btn" value="确认添加"></li>
+
+		</ul>
+		</form>
+    </div>
+</block>

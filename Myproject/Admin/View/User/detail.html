@@ -1,0 +1,23 @@
+<extend name="Public:main" />
+
+<block name="cssjs"></block>
+
+<block name="area"><li><a href="#">查看</a></li></block>
+
+<block name="content">
+	<div class="formbody">
+		<div class="formtitle"><span>查看</span></div>
+
+		<ul class="forminfo">
+		
+		<li><label>姓名:</label><cite>{$user.nickname}</cite><i></i></li>
+		<li><label>电话:</label><cite>{$user.phone}</cite><i></i></li>
+		<li><label>性别:</label><cite><?php if($user['sex']==1)echo '男';else if($user['sex']==2) echo '女'; ?></cite><i></i></li>
+		<li><label>职业:</label><cite>{$user.jobs}</cite><i></i></li>
+		<li><label>所在城市:</label><cite>{$user.city}</cite><i></i></li>
+		<li><label>疾病问题:</label><cite>{$user.qa}</cite><i></i></li>
+		<li><label>注册时间:</label><cite>{$user.addtime}</cite><i></i></li>
+		<li><label>当前积分:</label><cite>{$user.corn|intval}</cite><i></i></li>
+		</ul>
+    </div>
+</block>

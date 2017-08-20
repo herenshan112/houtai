@@ -1,0 +1,34 @@
+<extend name="Public:base" />
+
+<block name="title">物流信息</block>
+
+<block name="header">
+<header class="rol place-header">
+    <div class="m-box">
+        <a href="javascript:history.go(-1);" class="lt">
+            <img src="__PUBLIC__/wx/img/return-1.png" class="pro-return-1" alt="">
+        </a>
+        <div class="lt pro-header-font">物流信息</div>
+        <a href="{:U('Index/index')}" class="gt">
+            <img src="__PUBLIC__/wx/img/home-1.png" class="pro-home-1" alt="">
+        </a>
+    </div>
+</header>
+</block>
+
+<block name="content">
+<div class="rol qy-box">
+    <div class="m-box">
+        <div class="rol" style="font-size: 24px;">
+        <p><span style="color:#29c7ea ;font-size: 30px;">收货信息：</span><br>收货人：{$order_detail_row.uname}<br>电话：{$order_detail_row.uphone}<br>收货地址：{$order_detail_row.uaddr}<br></p>
+        </div>
+        <div class="rol" style="font-size: 24px;">
+        <p><span style="color:#29c7ea ;font-size: 30px;">物流信息：</span><br>快递公司：{$order_row.shippername}<br>快递单号：{$order_row.shippernum}<br></p>
+
+        <p style="text-align: right;"><a href="https://m.kuaidi100.com/index_all.html?postid={$order_row.shippernum}">查询 &gt;&gt;</a></p>
+        </div>
+    </div>
+</div>
+
+{:W('Base/showFooter')}
+</block>

@@ -1,0 +1,3 @@
+<foreach name='cate_rows' item='rowitem'>
+	<li><cite></cite><a href="{:U('Projects/showlists', array('cateid'=>$rowitem['id']))}" target="rightFrame">{$rowitem.catename}</a><i></i></li>
+</foreach>

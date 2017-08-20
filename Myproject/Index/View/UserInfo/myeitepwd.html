@@ -1,0 +1,30 @@
+<extend name="Public:head" />
+
+<block name="title">修改密码</block>
+
+<block name="header">
+<div class="rol cw-tit">
+    <div class="m-box">
+        <div class=""><a href="{:U('UserInfo/index')}"><span class="lt cw-fh"></span></a>修改密码</div>
+    </div>
+</div>
+</block>
+
+<block name="content">
+<form action="__ACTION__/action/eitecl" method="post" name="myform">
+<div class="rol">
+	<div class="wlfh-con">
+    	<div class="bz-f1-tit wlfh"></div>
+        <div><span>原始密码：</span><input type="password" name="oldpwd" id="oldpwd" value="" class="shdzcls" /></div>
+        <div><span>新密码：</span><input type="password" name="newpwd" id="newpwd" value="" class="shdzcls" /></div>
+        <div><span>确认密码：</span><input type="password" name="qrpwd" id="qrpwd" value="" class="shdzcls" /></div>
+
+    </div>
+</div>
+<div class="rol">
+    <div class="m-box">
+        <input type="submit" class="qr btn" value="确认修改" />
+    </div>
+</div>
+</form>
+</block>

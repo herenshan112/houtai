@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="__PUBLIC__/Admin/css/style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript" src="__PUBLIC__/Admin/js/jquery.js"></script>
+
+<script type="text/javascript">
+$(function(){	
+	//导航切换
+	$(".menuson li").click(function(){
+		$(".menuson li.active").removeClass("active")
+		$(this).addClass("active");
+	});
+	
+	$('.title').click(function(){
+		var $ul = $(this).next('ul');
+		$('dd').find('ul').slideUp();
+		if($ul.is(':visible')){
+			$(this).next('ul').slideUp();
+		}else{
+			$(this).next('ul').slideDown();
+		}
+	});
+})	
+</script>
+
+
+</head>
+
+<body style="background:#f0f9fd;">
+	<div class="lefttop"><span></span>后台管理</div>
+    
+    <dl class="leftmenu">
+        
+    <dd>
+		<div class="title">
+		<span><img src="__PUBLIC__/Admin/images/leftico01.png" /></span>后台首页
+		</div>
+    	<ul class="menuson">
+        <li class="active"><cite></cite><a href="__CONTROLLER__/right" target="rightFrame">信息</a><i></i></li>
+        <li class="active"><cite></cite><a href="__CONTROLLER__/modpass" target="rightFrame">修改密码</a><i></i></li>
+        </ul>    
+    </dd>
+	
+	<dd>
+		<div class="title">
+		<span><img src="__PUBLIC__/Admin/images/leftico01.png" /></span>轮播图
+		</div>
+    	<ul class="menuson">
+        <li><cite></cite><a href="__MODULE__/Slider/showlists" target="rightFrame">列表</a><i></i></li>
+        <li><cite></cite><a href="__MODULE__/Slider/add" target="rightFrame">添加</a><i></i></li>
+        </ul>    
+    </dd>
+	
+	<dd>
+        <div class="title">
+        <span><img src="__PUBLIC__/Admin/images/leftico01.png" /></span>案例管理
+        </div>
+        <ul class="menuson">  
+        
+        <li><cite></cite><a href="__MODULE__/Cases/showlists" target="rightFrame">列表</a><i></i></li>
+        <li><cite></cite><a href="__MODULE__/Cases/add" target="rightFrame">添加</a><i></i></li>
+        </ul>
+    </dd>
+	
+	<dd>
+        <div class="title">
+        <span><img src="__PUBLIC__/Admin/images/leftico01.png" /></span>产品管理
+        </div>
+        <ul class="menuson">
+        <li><cite></cite><a href="__MODULE__/Product/catelists" target="rightFrame">产品分类</a><i></i></li>
+        <li><cite></cite><a href="__MODULE__/Product/cateadd" target="rightFrame">添加分类</a><i></i></li>
+        <li><cite></cite><a href="__MODULE__/Product/prodlists" target="rightFrame">产品列表</a><i></i></li>
+        <li><cite></cite><a href="__MODULE__/Product/prodadd" target="rightFrame">添加产品</a><i></i></li>
+        </ul>
+    </dd>
+
+    <dd>
+        <div class="title">
+        <span><img src="__PUBLIC__/Admin/images/leftico01.png" /></span>新媒体
+        </div>
+        <ul class="menuson">
+        <li><cite></cite><a href="__MODULE__/New/jindex" target="rightFrame">原创视频</a><i></i></li>
+        <li><cite></cite><a href="__MODULE__/New/jadd" target="rightFrame">添加原创</a><i></i></li>
+        <li><cite></cite><a href="__MODULE__/New/index" target="rightFrame">列表</a><i></i></li>
+        <!-- <li><cite></cite><a href="__MODULE__/New/add" target="rightFrame">添加</a><i></i></li> -->
+        </ul>
+    </dd>
+
+    <dd>
+        <div class="title">
+        <span><img src="__PUBLIC__/Admin/images/leftico01.png" /></span>单页管理
+        </div>
+        <ul class="menuson">
+        <li><cite></cite><a href="__MODULE__/Zp/index" target="rightFrame">作品列表</a><i></i></li>
+        
+        </ul>
+    </dd>
+
+    <dd>
+        <div class="title">
+        <span><img src="__PUBLIC__/Admin/images/leftico01.png" /></span>新闻资讯
+        </div>
+        <ul class="menuson">
+        <li><cite></cite><a href="__MODULE__/News/newslists" target="rightFrame">新闻列表</a><i></i></li>
+        <li><cite></cite><a href="__MODULE__/News/newsadd" target="rightFrame">添加新闻</a><i></i></li>
+        <li><cite></cite><a href="__MODULE__/News/catelists" target="rightFrame">分类列表</a><i></i></li>
+        <li><cite></cite><a href="__MODULE__/News/cateadd" target="rightFrame">添加分类</a><i></i></li>
+        </ul>
+    </dd>
+
+    
+	
+	<!-- <dd>
+		<div class="title">
+		<span><img src="__PUBLIC__/Admin/images/leftico01.png" /></span>网站优化
+		</div>
+    	<ul class="menuson">
+        <li><cite></cite><a href="__MODULE__/Keywords/keywords" target="rightFrame">SEO</a><i></i></li>
+        </ul>
+    </dd> -->
+
+    <!-- <dd>
+		<div class="title">
+		<span><img src="__PUBLIC__/Admin/images/leftico01.png" /></span>友情链接
+		</div>
+    	<ul class="menuson">
+        <li><cite></cite><a href="__MODULE__/Link/linkadd" target="rightFrame">添加</a><i></i></li>
+        <li><cite></cite><a href="__MODULE__/Link/linkindex" target="rightFrame">列表</a><i></i></li>
+        </ul>
+    </dd> -->
+	
+
+	
+    </dl>
+    
+</body>
+</html>

@@ -1,0 +1,180 @@
+<extend name="Public:main" />
+
+<block name="cssjs"></block>
+
+<block name="area"><li><a href="#">经销商经销价格统计</a></li></block>
+
+	
+<block name="content">
+<style type="text/css">
+.imgtable th, .imgtable td {
+	text-align: center;
+	text-indent: 0;
+}
+</style>
+    <div class="rightinfo">
+		<div class="tools">
+			<ul class="seachform" style="float:left;">
+				<form name="search_form" action="{:U('lookjxsjgx')}?ly={$ly}" method="post">
+				<li><label>查询：</label><input type="text" class="scinput" name="ordernum" placeholder="请输入关键词..." value="{$p_ordernum}" />
+					<select name="lookset" id="lookset" class="scinputfb">
+						<option value="0" <eq name='lookset' value='0'>selected</eq>>订单号</option>
+						<option value="1" <eq name='lookset' value='1'>selected</eq>>产品名称</option>
+						<option value="2" <eq name='lookset' value='2'>selected</eq>>经销商帐号</option>
+						<option value="3" <eq name='lookset' value='3'>selected</eq>>经销商姓名</option>
+					</select>
+					<select name="ddcxff"  id="ddcxff" style="display: none;" class="scinputfb">
+						
+						<option value="2" <eq name='ddcxff' value='2'>selected</eq>>发货</option>
+						
+						
+						
+					</select>
+					<input type="text" class="scinput" name="starttime" id="starttime" placeholder="请输入查询日期" value="{$starttime}" /><div id="stdd" style="width: 350px;"></div>
+				</li>
+				
+				<!--li><label>：</label><input type="text" class="scinput" name="domain" placeholder="请输入域查询..." value="{$Think.get.domain}" /></li-->
+				<li><label>&nbsp;</label><input type="submit" value="查询" class="scbtn" /></li>
+				<li><label>&nbsp;</label><input type="button" value="导出" class="scbtn" onclick="exportongji(4)" /></li>
+				<li class="jsztcx"><a href="{:U('jxsjiage',array('action'=>'wei'))}" class="scbtn" style="text-align: center; margin-right: 10px;">未结算</a><a href="{:U('jxsjiage',array('action'=>'deng'))}" class="scbtn" style="text-align: center; margin-right: 10px;">等待经销商确认</a><a href="{:U('jxsjiage',array('action'=>'wan'))}" class="scbtn" style="text-align: center; margin-right: 10px;">完成</a></li>
+				</form>
+				
+				
+			</ul>
+	
+			<!--<ul class="toolbar1">
+				<li class="click"><a href="{:U('daochu', array('typeid'=>-1))}" target="_blank"><span></span>信息导出</a></li>
+			</ul>-->
+
+			<!--ul class="toolbar1">
+			<li><span><img src="images/t05.png" /></span>设置</li>
+			</ul-->
+		</div>
+		<table class="imgtable">
+
+			<thead>
+
+			<tr>
+
+			<th>订单编号</th>
+			<th>会员信息</th>
+			<th>商品</th>
+			<th>订单金额</th>
+			<th>经销商金额</th>
+			<th>下单时间</th>
+			<th>状态</th>
+			<th>支付信息</th>
+			<th>收货信息</th>
+			<th>是否已结算</th>
+			<th>操作</th>
+
+			</tr>
+
+			</thead>
+
+		
+
+			<tbody>
+
+			<foreach name="orders_list" item="list">
+
+				<tr>
+
+				<td>{$list.ordernum}</td>
+				<td><p>{$list.user.nickname}</p><p>{$list.user.phone}</p></td>
+				<td><p>&nbsp;</p>
+				<foreach name="list['buy']" item="buy_row">
+					<p>{$buy_row.title} 【数量：{$buy_row.num}&nbsp;商品价格:{$buy_row.price}元&nbsp;经销商价格:<font color="#ff0000">{$buy_row.price_jsx}</font>元</p>
+				</foreach>
+				<p>&nbsp;</p></td>
+				<td>&yen;{$list.money}元</td>
+				<td>&yen;{$list.ordernum|jsxjagejs}元</td>
+				<td>
+					<p>下单：{$list.addtime|date='Y-m-d H:i:s',###}</p>
+					推广来源：{$list.code_jxs|ordersource}
+				</td>
+				<td>{$list.stat}<eq name='list.fhsetval' value='1'><br><eq name='list.orderstatus' value='5'>委托<else />发货</eq>时间:{$list.fpsj|date='Y-m-d H:i:s',###}<br>发货方：{$list.fahuofang|fhfordersource}</eq></td>
+				<td><?php
+				if($list['orderstatus']>1) {
+					echo '<p>支付方式：';
+					if ($list['paytype'] == 0) {
+						echo '线下支付';
+					} else if ($list['paytype'] == 1) {
+						echo '微信';
+					} else if ($list['paytype'] == 2) {
+						echo '支付宝';
+					}
+					echo '</p>';
+					if ($list['paytype'] == 0) {
+						echo '<p>消费积分：';
+						echo $list['corn'];
+						echo '</p>';
+					} else if ($list['paytype'] == 1){
+						echo '<p>支付金额：';
+						echo $list['total_fee']/100 . '元';
+						echo '</p>';
+						echo '<p>支付编号：';
+						echo $list['transaction_id'];
+						echo '</p>';
+					}
+					echo '<p>支付时间：';
+					echo date('Y-m-d H:i:s', strtotime($list['time_end']));
+					echo '</p>';
+				} else {
+					echo '未支付';
+				} ?></td>
+				
+				<td><br><p>收货人：{$list.detail.uname}</p><p>电话：{$list.detail.uphone}</p><p>地址：{$list.detail.uaddr}</p><br></td>
+				<td>
+					<switch name="list.sfjsset">    
+						<case value="1"><font color="#D9D300">等待经销商确认</font></case>    
+						<case value="2"><font color="#008000">完成</font></case>    
+						<default /><font color="#ff0000">未结算</font>
+					</switch>
+				</td>
+				<td>
+					<if condition="$list['orderstatus'] eq 2">
+					<p><a href="__CONTROLLER__/fahuo/id/{$list.id}">发货</a></p>
+					<!--else />
+					<p><a href="__CONTROLLER__/detail/id/{$list.id}">查看</a></p-->
+					
+					</if>
+					<p><a href="{:U('lookjs')}?id={$list.id}">查看</a></p>
+					<notin name='list.sfjsset' value='1,2'><a href="{:U('jiesuan')}?setval=1&id={$list.id}"><font color="#ff0000">结算</font></a></notin>
+					<!--p><a href="__CONTROLLER__/mod/id/{$list.id}">修改</a></p-->
+					<p><a href="/Admin/Orders/del/id/{$list.id}/status/{$Think.get.status}" onclick="if (confirm('确定要删除吗？')) return true; else return false;">删除</a></p>
+				</td>
+
+				</tr>
+
+			</foreach>
+
+			</tbody>
+
+		
+
+		</table>
+
+		<div class="yellow">{$page}</div>
+
+    </div> <include file='Public/expor_ty' />
+<script type="text/javascript" src="__PUBLIC__/Admin/js/calendar.js"></script>
+<script>
+$('.imgtable tbody tr:odd').addClass('odd');
+$('#stdd').calendar({
+    trigger: '#starttime',
+    zIndex: 999,
+	format: 'yyyy-mm-dd',
+    onSelected: function (view, date, data) {
+        console.log('event: onSelected')
+    },
+    onClose: function (view, date, data) {
+        console.log('event: onClose')
+        console.log('view:' + view)
+        console.log('date:' + date)
+        console.log('data:' + (data || 'None'));
+    }
+});
+</script>
+
+</block>

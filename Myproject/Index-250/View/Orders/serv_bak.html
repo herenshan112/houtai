@@ -1,0 +1,61 @@
+<extend name="Public:base" />
+
+<block name="title">订单中心</block>
+
+<block name="header">
+<header class="rol place-header">
+    <div class="m-box">
+        <a href="javascript:history.go(-1);" class="lt">
+            <img src="__PUBLIC__/wx/img/return-1.png" class="pro-return-1" alt="">
+        </a>
+        <div class="lt pro-header-font">订单中心</div>
+        <a href="{:U('Index/index')}" class="gt">
+            <img src="__PUBLIC__/wx/img/home-1.png" class="pro-home-1" alt="">
+        </a>
+    </div>
+</header>
+</block>
+
+<block name="content">
+<div class="rol order-nav-box">
+    <div class="m-box">
+        <a href="{:U('index')}" class="lt order-nav-btn">
+            <div class="rol order-icon-rol center">
+                <img src="__PUBLIC__/wx/img/o1-off.png" alt="">
+            </div>
+            <div class="rol order-1-font">待付款</div>
+        </a>
+        <a href="{:U('send')}" class="lt order-nav-btn">
+            <div class="rol order-icon-rol center">
+                <img src="__PUBLIC__/wx/img/o2-off.png" alt="">
+            </div>
+            <div class="rol order-1-font">待发货</div>
+        </a>
+        <a href="{:U('recv')}" class="lt order-nav-btn ">
+            <div class="rol order-icon-rol center">
+                <img src="__PUBLIC__/wx/img/o3-off.png" alt="">
+            </div>
+            <div class="rol order-1-font">待收货</div>
+        </a>
+        <a href="{:U('pj')}" class="lt order-nav-btn">
+            <div class="rol order-icon-rol center">
+                <img src="__PUBLIC__/wx/img/o4-off.png" alt="">
+            </div>
+            <div class="rol order-1-font">待评价</div>
+        </a>
+        <a href="{:U('serv')}" class="lt order-nav-btn on">
+            <div class="rol order-icon-rol center">
+                <img src="__PUBLIC__/wx/img/o5-on.png" alt="">
+            </div>
+            <div class="rol order-1-font">售后服务</div>
+        </a>
+    </div>
+</div>
+
+<div class="rol order-5-i center">
+    <img src="__PUBLIC__/wx/img/or-5.png" alt="">
+</div>
+<div class="rol order-5-font">售后服务电话:400-680-9980</div>
+
+{:W('Base/showFooter')}
+</block>

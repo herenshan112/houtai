@@ -1,0 +1,114 @@
+<extend name="Public:base" />
+
+<block name="title">在线支付</block>
+
+<block name="header">
+<header class="rol place-header">
+    <div class="m-box">
+        <a href="javascript:history.go(-1);" class="lt">
+            <img src="__PUBLIC__/wx/img/return-1.png" class="pro-return-1" alt="">
+        </a>
+        <div class="lt pro-header-font">在线支付</div>
+        <a href="{:U('Index/index')}" class="gt">
+            <img src="__PUBLIC__/wx/img/home-1.png" class="pro-home-1" alt="">
+        </a>
+    </div>
+</header>
+</block>
+
+<block name="content">
+<div class="rol qy-box">
+    <div class="m-box">
+        <div class="rol" style="font-size: 24px;">
+        <p><span style="color:#29c7ea ;font-size: 30px;">订单信息：</span><br>
+        <foreach name="order_buy_rows" item="order_buy_rows_item">{$order_buy_rows_item.title} &yen;{$order_buy_rows_item.price} * {$order_buy_rows_item.num}<br></foreach>
+        </p>
+        </div>
+        <div class="rol" style="font-size: 24px;">
+        <p><span style="color:#29c7ea ;font-size: 30px;">收货信息：</span><br>收货人：{$order_detail_row.uname}<br>电话：{$order_detail_row.uphone}<br>收货地址：{$order_detail_row.uaddr}<br></p>
+        </div>
+        <if condition="$order_row['invoice'] neq ''">
+        <div class="rol" style="font-size: 24px;">
+        <p><span style="color:#29c7ea ;font-size: 30px;">发票信息：</span><br>抬头：{$order_row.invoice}<br>项目：食品<br>金额：{$order_row.money}<br></p>
+        </div>
+        </if>
+    </div>
+</div>
+<div class="rol qy-font1 center">
+    支付方式
+</div>
+<div class="rol qy-box2">
+    <div class="rol qy-rol2 paytype" data-paytype="1">
+        <div class="m-box">
+            <div class="lt qy-lt-2">
+                <img src="__PUBLIC__/wx/img/qy-i1.png" class="qy-i1" alt="">
+            </div>
+            <div class="lt" style="margin-top: 46px; margin-left:10px;font-size: 24px;">微信支付</div>
+            <img src="__PUBLIC__/wx/img/qy-on.png" class="gt qy-btn" alt="">
+        </div>
+    </div>
+    <!--div class="rol qy-rol2 paytype" data-paytype="2">
+        <div class="m-box">
+            <div class="lt qy-lt-2">
+                <img src="__PUBLIC__/wx/img/qy-i2.png" class="qy-i2" alt="">
+            </div>
+            <div class="lt" style="margin-top: 46px; margin-left:10px;font-size: 24px;">支付宝支付</div>
+            <img src="__PUBLIC__/wx/img/qy-off.png" class="gt qy-btn" alt="">
+        </div>
+    </div-->
+    <div class="rol qy-rol2 paytype" data-paytype="3">
+        <div class="m-box">
+            <div class="lt qy-lt-2">
+                <img src="__PUBLIC__/wx/img/corn_buy.png" class="qy-i2" alt="">
+            </div>
+            <div class="lt" style="margin-top: 46px; margin-left:10px;font-size: 24px;">积分兑换</div>
+            <img src="__PUBLIC__/wx/img/qy-off.png" class="gt qy-btn" alt="">
+        </div>
+    </div>
+</div>
+
+<div class="rol qy-box3">
+    <div class="m-box">
+        <div class="lt" style="font-size: 26px;">共{$corn_row.corn}积分，本次兑换需{$order_row.corn}积分</div>
+        <!--input class="gt qy-btn-1" value="0"-->
+    </div>
+</div>
+
+<div class="rol qy-box4">
+    <div class="m-box">
+        <div class="lt">总计<span>￥{$order_row.money}</span></div>
+        <form action="__ACTION__" method="POST">
+            <input type="hidden" name="id" value="{$order_row.id}">
+            <input type="hidden" name="type" value="1">
+            <button type="submit" class="gt qy-btn-3" style="border: none;">立即支付</button>
+        </form>
+        
+    </div>
+</div>
+
+{:W('Base/showFooter')}
+<script>
+$(function(){
+    $(".paytype").click(function(event) {
+        var pay_type = $(this).data('paytype');
+
+        if (pay_type=='3') {
+            if (<?php echo $corn_row['corn']; ?> < 3500) {
+                alert('您当前积分为：<?php echo $corn_row['corn']; ?>分\n总积分为3500分及以上才可以兑换商品。\n您当前不符合积分兑换条件，请选择其他支付方式。');
+            } else if (<?php echo $corn_row['corn']; ?> < <?php echo $order_row['corn']; ?>) {
+                alert('您当前积分为：<?php echo $corn_row['corn']; ?>分\n支付商品需要<?php echo $order_row['corn']; ?>分，请选择其他支付方式。');
+            } else {
+                $("input[name='type']").val(pay_type);
+                $('.paytype .qy-btn').attr('src', '__PUBLIC__/wx/img/qy-off.png');
+                $(this).children('.m-box').children('.qy-btn').attr('src', '__PUBLIC__/wx/img/qy-on.png');
+            }
+        } else {
+            $("input[name='type']").val(pay_type);
+
+            $('.paytype .qy-btn').attr('src', '__PUBLIC__/wx/img/qy-off.png');
+            $(this).children('.m-box').children('.qy-btn').attr('src', '__PUBLIC__/wx/img/qy-on.png');
+        }
+    });
+});
+</script>
+</block>

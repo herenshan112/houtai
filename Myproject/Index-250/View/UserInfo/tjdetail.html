@@ -1,0 +1,46 @@
+<extend name="Public:base" />
+
+<block name="title">推荐详情</block>
+
+<block name="header">
+<header class="rol place-header">
+        <div class="m-box">
+            <a href="javascript:history.go(-1);" class="lt">
+                <img src="__PUBLIC__/wx/img/return-1.png" class="pro-return-1" alt="">
+            </a>
+            <div class="lt pro-header-font">推荐详情</div>
+            <a href="{:U('Index/index')}" class="gt">
+                <img src="__PUBLIC__/wx/img/home-1.png" class="pro-home-1" alt="">
+            </a>
+        </div>
+    </header>
+</block>
+
+<block name="content">
+<if condition="$rec_rows neq null">
+<div class="rol ro-1-title">
+    <div class="m-box">
+        推荐详情
+    </div>
+</div>
+
+<foreach name="rec_rows" item="rec_rows_item">
+<div class="rol ro-1-rol">
+    <div class="m-box">
+        <div class="lt pro-tx-img"><img src="{$rec_rows_item.pic}"></div>
+        <div class="lt pro-pl-name"><?php echo mb_substr($rec_rows_item['name'], 0, 1, 'utf-8') . '*' . mb_substr($rec_rows_item['name'], 2, 1, 'utf-8'); ?></div>
+        <if condition="$user_row['cateid'] eq 1">
+        <div class="gt ro-1-font">推荐成功<span>+100</span></div>
+        <else />
+        <div class="gt ro-1-font"><?php echo date('Y-m-d', strtotime($rec_rows_item['addtime']));?></div>
+        </if>
+        
+    </div>
+</div>
+</foreach>
+<else />
+    <h1 style="text-align: center;">暂无推荐！</h2>
+</if>
+
+{:W('Base/showFooter')}
+</block>

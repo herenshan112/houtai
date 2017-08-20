@@ -1,0 +1,43 @@
+<extend name="Public:base" />
+
+<block name="title">购买详情</block>
+
+<block name="header">
+<header class="rol place-header">
+    <div class="m-box">
+        <a href="javascript:history.go(-1);" class="lt">
+            <img src="__PUBLIC__/wx/img/return-1.png" class="pro-return-1" alt="">
+        </a>
+        <div class="lt pro-header-font">购买详情</div>
+        <a href="{:U('index')}" class="gt">
+            <img src="__PUBLIC__/wx/img/home-1.png" class="pro-home-1" alt="">
+        </a>
+    </div>
+</header>
+</block>
+
+<block name="content">
+<foreach name="rows" item="item">
+<div class="rol ro-1-rol" style="height: auto">
+    <div class="m-box">
+        <div class="lt pro-tx-img"><img src="{$item.user.headpic}"></div>
+        <div class="lt pro-pl-name"><?php echo mb_substr($item['user']['nickname'], 0, 1, 'utf-8') . '*' . mb_substr($item['user']['nickname'], 2, 1, 'utf-8'); ?></div>
+        <div class="gt ro-1-font">购买时间：<?php echo date('Y-m-d', strtotime($item['time_end']));?></div>
+    </div>
+    <div class="m-box" style="line-height:50px">产品：{$item.title} 数量：{$item.num}</div>
+</div>
+</foreach>
+<if condition="$rows neq null">
+<div id="pager"><if condition="$pageno neq 1"><a href="?pageno={$pageno-1}">上一页</a>&nbsp;|&nbsp;</if><a href="?pageno={$pageno+1}">下一页</a></div>
+</if>
+{:W('Base/showFooter')}
+
+<style type="text/css">
+#pager {
+    text-align: center;
+    font-size: 20px;
+    color: #666;
+    line-height: 100px;
+}
+</style>
+</block>

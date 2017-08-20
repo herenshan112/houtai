@@ -1,0 +1,116 @@
+<extend name="Public:head_myus" />
+
+<block name="title">我的二维码</block>
+
+<block name="header">
+
+</block>
+
+<block name="content">
+<style>
+#mcover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    z-index: 20000;
+}
+#mcover img {
+    position: fixed;
+    right: 18px;
+    top: 5px;
+    width: 260px!important;
+    height: 180px!important;
+    z-index: 20001;
+}
+.text {
+    margin: 15px 0;
+    font-size: 14px;
+    word-wrap: break-word;
+    color: #727272;
+}
+#mess_share {
+    margin: 15px 0;
+    display: block;
+}
+#share_1 {
+    float: left;
+    width: 49%;
+    display: block;
+}
+#share_2 {
+    float: right;
+    width: 49%;
+    display: block;
+}
+.clr {
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+}
+.button2 {
+    font-size: 16px;
+    padding: 8px 0;
+    border: 1px solid #adadab;
+    color: #000000;
+    background-color: #e8e8e8;
+    background-image: linear-gradient(to top, #dbdbdb, #f4f4f4);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.45), inset 0 1px 1px #efefef;
+    text-shadow: 0.5px 0.5px 1px #fff;
+    text-align: center;
+    border-radius: 3px;
+    width: 100%;
+}
+#mess_share img {
+    width: 22px!important;
+    height: 22px!important;
+    vertical-align: top;
+    border: 0;
+}
+
+
+/**********************audio***********************/
+
+
+/******************************动画*************************/
+#iframe_screen{
+    background:#fff;
+    position:absolute;
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+    z-index:300000;
+    overflow:hidden;
+}
+
+
+
+
+</style>
+<div id="mcover" onclick="document.getElementById('mcover').style.display='';" style="display:none;">
+                    <img src="/Public/index/img/guide.png" />
+</div>
+<div class="rol ewm-box1">
+    <div class="m-box">
+        <div class="ewm-box">
+            <img src="{:U('/Index/Index/tgqrcode', array('code'=>$list['code']))}" alt="{$list.myname}"/>
+            <div class="ewm-txt">
+                <!--<p>25日下午的爱乐魔法学院真是太热闹，太嗨了！</p>
+                <p>现场来了很多的小朋友，他们都是来完成魔法师</p>
+                <p>的蜕变的呢！可是，要想成为一名小小魔法师可</p>-->
+            </div>
+            <div class="wem-fx">
+                <a href="#" onclick="document.getElementById('mcover').style.display='block';">分享</a>
+                <a href="#" onclick="document.getElementById('mcover').style.display='block';">转发</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--底部-->
+{:W('Base/showFooter')}
+</block>

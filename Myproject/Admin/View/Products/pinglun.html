@@ -1,0 +1,37 @@
+<extend name="Public:main" />
+
+<block name="cssjs"></block>
+
+
+<block name="area"><li><a href="#">{$spxx.title}-评论</a></li></block>
+
+<block name="content">
+    <div class="formbody">
+		<div class="formtitle"><span>{$spxx.title}-评论</span></div>
+		<form action="__ACTION__" method="post" enctype="multipart/form-data" name="myform">
+		<ul class="forminfo">
+
+		<li><label>商品名称:</label><i>{$spxx.title}</i></li>
+		<li><label>商品价格:</label><i>
+			<switch name="User.level">    
+				<case value="2">促销：{$spxx.tejiaprice} 原价:{$spxx.price}</case>    
+				<case value="5">打折：{$spxx.tejiaprice} 原价:{$spxx.price}</case>
+				<case value="6">特价：{$spxx.tejiaprice} 原价:{$spxx.price}</case>
+				<default />{$spxx.price}
+			</switch>
+		</i></li>
+		<li><label>库存状态:</label><i><?php echo $spxx['totalnum'] - $spxx['salenum']; ?> / {$spxx.totalnum}&nbsp;&nbsp;<?php echo stocksum($spxx['totalnum'] - $spxx['salenum']);?></i></li>
+		<li><label>销量:</label><i>{$spxx.salenum}</i></li>
+		<li><span class="title_dingdan">商品评论</span></li>
+		<li></li>
+		<volist name="pllst" id="pllst">
+			<li><i>订单号:{$pllst.ordernum}&nbsp;评论人：{$pllst.nickname}&nbsp;帐号：{$pllst.username}&nbsp;电话：{$pllst.phone}&nbsp;评论内容：{$pllst.content}&nbsp;评论时间：{$pllst.ptime|date='Y-m-d H:i:s',###}</i></li>
+		</volist>
+		
+
+		
+
+		</ul>
+		</form>
+    </div>
+</block>

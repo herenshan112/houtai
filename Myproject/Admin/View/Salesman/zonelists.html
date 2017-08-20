@@ -1,0 +1,75 @@
+<extend name="Public:main" />
+
+<block name="cssjs"></block>
+
+<block name="area">
+<li><a href="#">列表</a></li>
+</block>
+
+<block name="content">
+    <div class="rightinfo">
+    	<div class="tools">
+
+			<ul class="toolbar1" style="float:left;">
+				<li class="click"><a href="{:U('zoneadd')}"><span></span>添加大区</a></li>
+				<li class="click"><a href="{:U('agentadd')}"><span></span>添加代理商</a></li>
+				<li class="click"><a href="{:U('subagentadd')}"><span></span>添加二级分销商</a></li>
+			</ul>
+
+			<!--ul class="toolbar1">
+			<li><span><img src="images/t05.png" /></span>设置</li>
+			</ul-->
+		</div>
+
+		<table class="imgtable">
+
+			<thead>
+			<tr>
+			<th>ID</th>
+			<th>大区</th>
+			<th>代理商</th>
+			<th>二级分销商</th>
+			<th>操作</th>
+			</tr>
+			</thead>
+
+			<tbody>
+			<if condition="$lists neq null">
+				<foreach name="lists" item="list_item">
+					<tr style="height:32px">
+					<td>{$list_item.id}</td>
+					<td>{$list_item.title}</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td><!--a href="{:U('detail', array('id'=>$list_item['id']))}">查看</a--> <a href="{:U('zonemod', array('id'=>$list_item['id']))}">修改</a> <a href="{:U('zonedel', array('id'=>$list_item['id']))}" onclick="return confirm('是否要删除此条记录，删除后不可恢复?');">删除</a></td>
+					</tr>
+					<foreach name="list_item['agent']" item="agent_item">
+						<tr style="height:32px">
+						<td>{$agent_item.id}</td>
+						<td>&nbsp;</td>
+						<td>{$agent_item.title}</td>
+						<td>&nbsp;</td>
+						<td><!--a href="{:U('detail', array('id'=>$list_item['id']))}">查看</a--> <a href="{:U('zonemod', array('id'=>$agent_item['id']))}">修改</a> <a href="{:U('zonedel', array('id'=>$agent_item['id']))}" onclick="return confirm('是否要删除此条记录，删除后不可恢复?');">删除</a></td>
+						</tr>
+						<foreach name="agent_item['subagent']" item="subagent_item">
+							<tr style="height:32px">
+							<td>{$subagent_item.id}</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>{$subagent_item.title}</td>
+							<td><!--a href="{:U('detail', array('id'=>$list_item['id']))}">查看</a--> <a href="{:U('zonemod', array('id'=>$subagent_item['id']))}">修改</a> <a href="{:U('zonedel', array('id'=>$subagent_item['id']))}" onclick="return confirm('是否要删除此条记录，删除后不可恢复?');">删除</a></td>
+							</tr>
+						</foreach>
+					</foreach>
+				</foreach>
+			<else />
+				<tr style="height:32px"><td colspan="6">暂无记录！</td></tr>
+			</if>
+			</tbody>
+		</table>
+		<div class="yellow">{$page}</div>
+    </div>
+<script type="text/javascript">
+$('.imgtable tbody tr:odd').addClass('odd');
+</script>
+</block>

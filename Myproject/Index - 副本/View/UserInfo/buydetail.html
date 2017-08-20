@@ -1,0 +1,59 @@
+<extend name="Public:base" />
+
+<block name="title">购买详情</block>
+
+<block name="header">
+<header class="rol place-header">
+    <div class="m-box">
+        <a href="javascript:history.go(-1);" class="lt">
+            <img src="__PUBLIC__/wx/img/return-1.png" class="pro-return-1" alt="">
+        </a>
+        <div class="lt pro-header-font">购买详情</div>
+        <a href="{:U('info')}" class="gt">
+            <img src="__PUBLIC__/wx/img/home-1.png" class="pro-home-1" alt="">
+        </a>
+    </div>
+</header>
+</block>
+
+<block name="content">
+<form action="__ACTION__" method="get" name="form1">
+<div class="rol">
+    <div class="m-box" style="text-align: center; height: 80px;line-height: 60px;font-size: 26px;">日期：<input type="date" name="startdate" max="<?php echo date('Y-m-d');?>" value="{$Think.get.startdate}" style="border: 1px solid #CCC; border-radius: 3px; height: 60px;padding: 0 10px;width: 170px;font-size: 22px;background-color: #FFF;"> - <input type="date" name="enddate" max="<?php echo date('Y-m-d');?>" value="{$Think.get.enddate}" style="border: 1px solid #CCC; border-radius: 3px; height: 60px;padding: 0 10px;width: 170px;font-size: 22px;background-color: #FFF;"><button type="submit" style="border: none; border-radius: 3px; height: 60px;padding: 0 10px;width: 120px;font-size: 24px;background-color: #29c7ea; color: #FFF; margin-left: 20px;">查询</button></div>
+</div>
+</form>
+
+<foreach name="users_rows" item="user">
+<div class="rol ro-1-rol" style="height: auto">
+    <div class="m-box">
+        <div class="lt pro-tx-img"><img src="<?php if($user['user']['headpic']){echo $user['user']['headpic'];}else{echo '__PUBLIC__/wx/img/nohead.jpg';}?>" /></div>
+        <div class="lt pro-pl-name"><?php echo mb_substr($user['user']['nickname'], 0, 1, 'utf-8') . '*' . mb_substr($user['user']['nickname'], 2, 1, 'utf-8'); ?></div>
+        <div class="gt ro-1-font"><?php echo mb_substr($user['user']['phone'], 0, 3, 'utf-8') . '****' . mb_substr($user['user']['phone'], 7, 4, 'utf-8'); ?></div>
+    </div>
+    <?php $total_count = 0;$total_money=0;?>
+    <foreach name="user['buy']" item="buy_item">
+    <?php $total_count += $buy_item['total_num']; $total_money += $buy_item['total_num']*$buy_item['price'];?>
+    <div class="m-box" style="line-height:30px">产品：{$buy_item.title} 汇总数量：{$buy_item.total_num} 汇总金额：&yen;<?php echo $buy_item['total_num']*$buy_item['price'];?> 元</div>
+    </foreach>
+    <if condition="$total_count gt 0">
+    <div class="m-box" style="line-height:30px"><span style="color: #F00;">总产品数量：{$total_count} &nbsp;总产品金额：&yen; {$total_money} 元</span></div>
+    </if>
+</div>
+</foreach>
+
+
+{:W('Base/showFooter')}
+
+<style type="text/css">
+#pager {
+    text-align: center;
+    font-size: 20px;
+    color: #666;
+    line-height: 100px;
+}
+</style>
+<script type="text/javascript">
+$(function(){
+});
+</script>
+</block>

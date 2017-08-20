@@ -1,0 +1,84 @@
+<extend name="Public:main" />
+
+<block name="cssjs">
+
+</block>
+
+<body>
+
+	<block name="area">
+
+		<li><a href="#">库存预警设置列表</a></li>
+		<span style="float: right; color: #f00; margin-right: 50px; font-size: 16px;"><a href='__CONTROLLER__/early/action/add' style="color: #f00;">添加库存预警</a></span>
+	</block>
+
+	
+
+ <block name="content">
+
+    <div class="rightinfo">
+
+		<table class="imgtable">
+
+			<thead>
+
+			<tr>
+
+			<th>预警名称</th>
+			<th>临界库存</th>
+			<th>预警颜色</th>
+			<th>操作</th>
+
+			</tr>
+
+			</thead>
+
+		
+
+			<tbody>
+
+			<foreach item="list" name="products_list">
+
+				<tr>
+
+				<td>{$list.title}</td>
+				<td>{$list.earlyval}</td>
+				<td align="center"><div style="width: 50px; height: 20px; background-color: {$list.coloval};">&nbsp;</div></td>
+				<td>
+
+					<p><a href="__CONTROLLER__/early/action/eite/id/{$list.id}">修改</a></p>
+
+					<p><a href="__CONTROLLER__/early/action/delt/id/{$list.id}" onclick="if (confirm('确定要删除吗？')) return true; else return false;">删除</a></p>
+
+				</td>
+
+				</tr>
+
+			</foreach>
+
+			</tbody>
+
+		
+
+		</table>
+
+		<div class="yellow">{$page}</div>
+
+    </div>
+
+    
+
+<script type="text/javascript">
+
+	$('.imgtable tbody tr:odd').addClass('odd');
+
+	</script>
+
+</block>
+
+</body>
+
+
+
+</html>
+

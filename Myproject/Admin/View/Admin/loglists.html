@@ -1,0 +1,51 @@
+<extend name="Public:main" />
+
+<block name="cssjs"></block>
+
+<block name="area">
+<li><a href="#">列表</a></li>
+</block>
+
+<block name="content">
+    <div class="rightinfo">
+
+		<table class="imgtable">
+
+			<thead>
+			<tr>
+			<th>ID</th>
+			<th>权限</th>
+			<th>用户名</th>
+			<th>登录IP</th>
+			<th>登录时间</th>
+			</tr>
+			</thead>
+
+			<tbody>
+			<if condition="$log_lists neq null">
+				<foreach name="log_lists" item="log_item">
+					<tr style="height:32px">
+					<td>{$log_item.id}</td>
+					<td>{$log_item.usertype}</td>
+					<td><?php echo $username_lists[$log_item['userid']]['username'].'('.$username_lists[$log_item['userid']]['nickname'].')';?></td>
+					<td><?php echo $log_item['logip'];?></td>
+					<td>{$log_item.logtime}</td>
+					</tr>
+				</foreach>
+			<else />
+				<tr style="height:32px"><td colspan="6">暂无记录！</td></tr>
+			</if>
+			</tbody>
+
+		
+
+		</table>
+
+		<div class="yellow">{$pageshow}</div>
+
+    </div>
+
+<script type="text/javascript">
+$('.imgtable tbody tr:odd').addClass('odd');
+</script>
+</block>

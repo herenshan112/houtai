@@ -1,0 +1,89 @@
+<extend name="Public:main" />
+
+<block name="cssjs">
+
+</block>
+
+<body>
+
+	<block name="area">
+
+		<li><a href="#">产品规格列表</a></li>
+		<ul class="toolbar1" style="margin: 3px 10px 0 0;">
+		<li class="click"><a href="{:U('guige', array('action'=>'add'))}"><span></span>添加产品规格</a></li>
+		</ul>
+	</block>
+
+	
+
+ <block name="content">
+
+    <div class="rightinfo">
+
+		<table class="imgtable">
+
+			<thead>
+
+			<tr>
+
+			<th>id</th>
+			<th>规格</th>
+			<th>写入时间</th>
+			<th>状态</th>
+			<th>操作</th>
+
+			</tr>
+
+			</thead>
+
+		
+
+			<tbody>
+
+			<foreach item="list" name="products_list">
+
+				<tr>
+
+				<td>{$list.gg_id}</td>
+				<td>{$list.gg_title}</td>
+				<td>{$list.gg_time|date='Y-m-d H:i:s',###}</td>
+				<td><neq name='list.gg_set' value='0'>启用<else /><font color="#ff0000">关闭</font></neq></td>
+
+				<td>
+
+					<p><a href="__CONTROLLER__/guige/action/eite/id/{$list.gg_id}">修改</a></p>
+
+					<p><a href="__CONTROLLER__/guige/action/del/id/{$list.gg_id}" onclick="if (confirm('确定要删除吗？')) return true; else return false;">删除</a></p>
+
+				</td>
+
+				</tr>
+			
+			</foreach>
+
+			</tbody>
+
+		
+
+		</table>
+
+		<div class="yellow">{$page}</div>
+
+    </div>
+
+    
+
+<script type="text/javascript">
+
+	$('.imgtable tbody tr:odd').addClass('odd');
+
+	</script>
+
+</block>
+
+</body>
+
+
+
+</html>
+

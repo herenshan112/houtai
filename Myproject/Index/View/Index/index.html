@@ -1,0 +1,68 @@
+<extend name="Public:head" />
+
+<block name="title">首页</block>
+
+<block name="header">
+<include file='Public/head_por' />
+</block>
+
+<block name="content">
+<include file='Public/false' />
+<!--导航-->
+<div class="rol ind-nav-box">
+    <div class="m-box ind-nav">
+        <a href="{:U('Page/about')}">
+            <b class="ind-nav-img1"></b>
+            <div>关于我们</div>
+        </a>
+        <a href="{:U('Mall/index')}">
+            <b class="ind-nav-img2"></b>
+            <div>产品中心</div>
+        </a>
+        <a href="{:U('UserInfo/index')}">
+            <b class="ind-nav-img3"></b>
+            <div>会员中心</div>
+        </a>
+        <a href="{:U('Message/index')}">
+            <b class="ind-nav-img4"></b>
+            <div>帮助中心</div>
+        </a>
+        <a href="{:U('Distri/index')}">
+            <b class="ind-nav-img5"></b>
+            <div>经销商中心</div>
+        </a>
+        <a href="{:U('News/showlists')}">
+            <b class="ind-nav-img6"></b>
+            <div>新闻中心</div>
+        </a>
+    </div>
+</div>
+<!--新闻中心-->
+<div class="rol ind-new">
+    <div class="m-box">
+        <div class="scsy-rmfl-nav">
+            <div class="scsy-rmfl-tit-ch"><b></b><span>新闻资讯</span><b></b></div>
+            <div class="scsy-rmfl-tit-en">NEWS CENTER</div>
+        </div>
+        <div class="ind-new-list">
+        	<foreach name="index_news" item="news_item">
+            <div class="rol ind-new-list-box">
+                <div class="lt ind-new-list-lt">
+                    <div class="ind-new-list-tit"><a href="{:U('News/detail', array('id'=>$news_item['id']))}" class="rol index-news-title">{$news_item.title}</a></div>
+                    <div class="ind-new-list-data"><span></span>{$news_item.addtime|substr=0,10}</div>
+                </div>
+                <div class="gt">
+                    <a href="{:U('News/detail', array('id'=>$news_item['id']))}" class="lt index-news-lt">
+	                    <img class="index_img" src="{$news_item.titlepic}" class="rol" alt="{$news_item.title}">
+	                </a>
+                </div>
+            </div>
+            </foreach>
+            
+        </div>
+    </div>
+</div>
+
+{:W('Base/showFooter')}
+
+</block>

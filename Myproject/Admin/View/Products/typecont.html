@@ -1,0 +1,23 @@
+<extend name="Public:main" />
+
+<block name="cssjs"></block>
+
+
+<block name="area"><li><a href="#">添加分类</a></li></block>
+
+<block name="content">
+    <div class="formbody">
+		<div class="formtitle"><span>添加</span></div>
+		<form action="__ACTION__/action/{$action}/id/{$id}" method="post" enctype="multipart/form-data" name="myform">
+		<ul class="forminfo">
+		
+		<li><label>分类标题:</label><input name="title" class="dfinput" type="text" value="{$list.title}"><i></i></li>
+		<li><label>状态</label><input name="setval" type="radio" value="0" <neq name='list.setval' value='1'>checked</neq> />关闭&nbsp;&nbsp;<input name="setval" type="radio" value="1" <eq name='list.setval' value='1'>checked</eq> />启用</li>
+		<li><label>排序:</label><input name="xuhao" class="dfinput" type="text" value="{$list.xuhao}"><i></i></li>
+
+		<li><label>&nbsp;</label><input type="submit" class="btn" value="确认添加"></li>
+
+		</ul>
+		</form>
+    </div>
+</block>

@@ -1,0 +1,58 @@
+<extend name="Public:main" />
+
+<block name="cssjs"></block>
+
+<block name="area"><li><a href="#">结算</a></li></block>
+
+<block name="content">
+    <div class="formbody">
+		<div class="formtitle"><span>结算</span></div>
+
+		<form action="__ACTION__?action=js" method="post" name="myform">
+		
+		<input type="hidden" name="id" value="{$order_row.id}">
+		<ul class="forminfo">
+		
+		<li><label>订单编号:</label><cite>{$order_row.ordernum}</cite></li>
+		<li><label>推广来源:</label><cite>{$order_row.code_jxs|ordersources}</cite></li>
+		<li><label>发货方:</label><cite>{$order_row.fahuofang|dachukk}</cite></li>
+			
+		<li><span class="title_dingdan">商品信息</span></li>
+		
+		<li id="shanpxxlb">
+		<foreach name="order_row['buy']" item="buy_row">
+		<label>商品:</label><cite>{$buy_row.title} 【数量：{$buy_row.num}&nbsp;&nbsp;原始单价:￥{$buy_row.spyuanjia}<in name='buy_row.shuxing' value='2,5,6'>,&nbsp;&nbsp;<i style="color: #f00;"><switch name="buy_row.shuxing">    <case value="2">促销</case>    <case value="5">打折</case>    <case value="6">特价</case>     <default />特价</switch>:￥{$buy_row.tejiaprice}</i></in><neq name='buy_row.price_jsx' value='0'>,<i style="color: #f00;" id='jxsjg{$buy_row.id}'>&nbsp;&nbsp;经销商:￥{$buy_row.price_jsx}</i></neq>&nbsp;&nbsp;下单单价:￥{$buy_row.price}】</cite><br>
+		</foreach>
+		</li>
+		<li><span class="title_dingdan">收货人信息</span></li>
+		<li><label>收货人:</label><cite>{$order_row.detail.uname}</cite><br><label>电话:</label><cite>{$order_row.detail.uphone}</cite><br><label>地址:</label><cite>{$order_row.detail.uaddr}</cite></li>
+		
+		<li><span class="title_dingdan">结算信息</span></li>
+		
+		<li><label>订单状态:</label><cite>
+			{$fhzt}
+		</cite></li>
+		
+		
+		<li><label>订单价格:</label><cite>{$order_row.money}</cite></li>
+		<li><label>经销商价格:</label><cite>{$order_row.ordernum|jsxjagejs}</cite></li>
+		
+		<switch name="order_row.sfjsset">    
+			<case value="1"><li><label>结算进度:</label><cite><font color="#D9D300">等待经销商确认</font></cite></li><li><label>备注:</label><cite>{$jscont.jiesuanbeizhu}</cite></li></case>    
+			<case value="2"><li><label>结算进度:</label><cite><font color="#008000">完成</font></cite></li><li><label>平台发起备注:</label><cite>{$jscont.jiesuanbeizhu}</cite></li><li><label>经销商确认备注:</label><cite>{$jscont.qrbeizhu}</cite></li></case>    
+			<default /><li><label>结算进度:</label><cite><font color="#ff0000">未结算</font></cite></li>
+		</switch>
+		
+		
+			
+		
+
+		
+		
+		</ul>
+		</form>
+
+    </div>
+
+<include file='Public/jxs_look' />
+</block>
